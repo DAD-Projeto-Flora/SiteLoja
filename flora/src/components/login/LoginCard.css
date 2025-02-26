@@ -1,0 +1,151 @@
+*{
+    font-family: 'Montserrat';
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+  }
+  
+  .login-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 360px;
+    height: 450px;
+    margin-right: 200px;
+  }
+  
+  .login-title {
+    margin-top: 5px;
+    margin-bottom: 45px;
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .login-subtitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+
+  .input-group {
+    margin: 1rem 0;
+    text-align: left;
+  }
+  
+  .input-group label {
+    display: block;
+    font-size: 0.9rem;
+
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    background: #eee;
+    height: 25px;
+    padding: 10px;
+    border-radius: 5px;
+
+  }
+  
+  .input-wrapper .icon {
+    margin-right: 10px;
+   
+  }
+  
+  .input-wrapper input {
+    border: none;
+    background: none;
+    outline: none;
+    flex: 1;
+    font-size: 1rem;
+  }
+
+  .input-wrapper img{
+    margin-right: 10px;
+  }
+  
+  .toggle-password {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .forgot-password {
+    text-align: right;
+    margin-top: 10px;
+  }
+  
+  .forgot-password a {
+    font-size: 0.9rem;
+    color: #0077cc;
+    text-decoration: none;
+  }
+  
+  .forgot-password a:hover {
+    text-decoration: underline;
+  }
+  
+  .login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #004b70;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;;
+    height: 45px;
+    font-weight: 600;
+  }
+  
+  .login-button:hover {
+    background-color: #003655;
+  }
+  
+  .register-text {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
+  
+  .register-link {
+    color: #0077cc;
+    text-decoration: none;
+  }
+  
+  .register-link:hover {
+    text-decoration: underline;
+  }
+
+  .login-circle{
+    position: relative;
+    margin-right: auto;
+    z-index: -1;
+    height: 100vh;
+  }
+  
+  .login-leaf{
+    position: absolute;
+    margin-right: 50vw;
+    
+  }
+
+  .eye_fill{
+    width: 17px;
+    height: 17px;
+  }
+
+  .eye_not_fill{
+    width: 18px;
+    height: 18px;
+  }

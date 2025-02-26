@@ -1,0 +1,96 @@
+
+
+/* Header.css */
+.header {
+    background-color: #FFFFFF;
+    padding: 10px 0;
+    box-shadow: 0px 4px 17.6px 0px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0;
+    width: 100vw;
+}
+
+li{
+    margin: 0 35px 0 0;
+}
+  
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    font-family: "Montserrat", serif;
+    font-style: bold;
+}
+  
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+  
+.nav-links {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .nav-links li {
+    margin-left: 20px;
+  }
+  
+  .nav-links a {
+    color: #00557C;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+
+  .search-form {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input {
+    background-color: #F1F1F1;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #F1F1F1;
+    border-radius: 7px;  /* Bordas arredondadas */
+    width: 22vw;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: "Montserrat", serif;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #00557C;  /* Cor roxa para foco */
+  
+  }
+  
+  .search-input::placeholder {
+    color: #aaa;
+    font-style: italic;
+  }
+  
+  /* Remover o botão de search, já que não é mais necessário */
+  .search-button {
+    display: none;
+  }
+
+.buttons > button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.user-button{
+    margin: 0 3vw 0 0;
+}
+
+.cart-button{
+    margin: 0 2vw 0 0;
+}
+  
