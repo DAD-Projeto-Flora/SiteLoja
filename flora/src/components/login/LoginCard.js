@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./LoginCard.css";
+import { Link } from "react-router-dom";
 
 export default function LoginCard() {
   const [showPassword, setShowPassword] = useState(false);
@@ -38,7 +39,7 @@ export default function LoginCard() {
             <a href="#">Esqueceu a senha?</a>
           </div>
         </div>
-        <button className="login-button">Login</button>
+        <Link to="/profile"><button className="login-button">Login</button></Link>
         <p className="register-text">
           Não tem uma conta ainda? <a href="/register" className="register-link">Registre-se</a>
         </p>

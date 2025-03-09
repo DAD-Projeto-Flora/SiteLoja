@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/home/Header';
 import Sidebar from '../components/SideBar';
+import CardProfile from '../components/profile/CardProfile';
 
 
 
@@ -10,8 +11,7 @@ const Profile = () => {
         <Header />
         <main>
             <Sidebar />
-            <h1>Perfil</h1>
-
+            <CardProfile />
         </main>
         </div>
     );

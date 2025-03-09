@@ -18,7 +18,7 @@
 }
 
 .product-image {
-  width: 100px; /* Ajuste conforme necessário */
+  width: 50px; /* Ajuste conforme necessário */
   height: auto;
 }
 
@@ -29,7 +29,7 @@
 .product-title {
   font-size: 14px;
   color: #333;
-  margin: 8px 0;
+  
 }
 
 .product-rating {
@@ -52,4 +52,5 @@
   font-weight: bold;
   color: #0077b6;
   margin-top: 6px;
+  margin-bottom: 6px;
 }

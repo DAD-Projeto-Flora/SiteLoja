@@ -4,6 +4,7 @@ import Banner from '../components/home/Banner';
 import ProductCard from '../components/home/ProductCard';
 import CardCategory from '../components/home/CardCategory';
 import './Home.css';
+import BestSellers from '../components/home/BestSellers'
 
 const Home = () => {
   return (
@@ -29,6 +30,8 @@ const Home = () => {
             title="Casa"
           />
         </div>
+
+        <BestSellers/>
                  
       </main>
     </div>
