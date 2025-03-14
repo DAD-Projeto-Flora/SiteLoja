@@ -21,6 +21,11 @@ const Sidebar = () => {
           <img src="/setting.svg" alt="Settings Icon" />
         </button>
       </NavLink>
+      <NavLink to="/history" activeClassName="active">
+        <button>
+          <img src="/history.svg" alt="History Icon" />
+        </button>
+      </NavLink>
     </div>
   );
 };

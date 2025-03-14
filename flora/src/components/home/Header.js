@@ -39,6 +39,9 @@ const Header = () => {
             <li>
               <a href="/parceiros">Parceiros</a>
             </li>
+            <li>
+              <a href="/categorias">Categorias</a>
+            </li>
           </ul>
 
           <form className="search-form" onSubmit={handleSearchSubmit}>
