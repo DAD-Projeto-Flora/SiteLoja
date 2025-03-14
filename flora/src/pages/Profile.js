@@ -11,7 +11,14 @@ const Profile = () => {
         <Header />
         <main>
             <Sidebar />
-            <CardProfile />
+            <CardProfile 
+            image="https://www.w3schools.com/howto/img_avatar2.png"
+            name="Maria Joaquina da Silva"
+            user="Maria Joaquina"
+            email="maria.joaquina@gmail.com"
+            tel="11 996119488"
+            gender="Feminino"
+            endereco="Rio de Janeiro"/>
         </main>
         </div>
     );
