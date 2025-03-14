@@ -17,6 +17,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "start2": "node --max-old-space-size=4096 app.js",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -38,3 +39,5 @@
     ]
   }
 }
+
+

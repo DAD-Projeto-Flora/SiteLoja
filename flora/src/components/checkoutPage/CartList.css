@@ -1,0 +1,38 @@
+.cart {
+  background: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.table-container {
+  max-height: 100px; /* Define uma altura máxima para ativar o scroll vertical */
+  overflow-y: auto; /* Permite rolagem vertical */
+  overflow-x: auto; /* Permite rolagem horizontal */
+  border-radius: 5px;
+  border: 1px solid #ddd; /* Opcional, para melhorar a visualização */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap; /* Evita que o texto quebre para novas linhas */
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
