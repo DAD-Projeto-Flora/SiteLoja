@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/home/Header';
 import Sidebar from '../components/SideBar';
-
+import PurchaseHistory from '../components/history/PurchaseHistory';
 
 const History = () => {
     return (
@@ -9,7 +9,10 @@ const History = () => {
         <Header />
         <main>
             <Sidebar />
-            <h1>History</h1>
+            <PurchaseHistory 
+                image="https://www.w3schools.com/howto/img_avatar2.png"
+                name="Maria Joaquina da Silva"
+                email="maria.joaquina@gmail.com"/>
         </main>
         </div>
     );
