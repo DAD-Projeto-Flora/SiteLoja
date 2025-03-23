@@ -1,37 +1,43 @@
 import React from "react";
-import "./PurchaseHistory.css";
+import "./PurchaseHistory.css"; // Importa o arquivo de estilos
+import HistoryCard from "./HistoryCard";
 
-const PurchaseHistory = ({ orders }) => {
+const PurchaseHistory = ({ name, email, image }) => {
+  const purchases = [
+    { 
+      date: '2025-02-01', 
+      items: [
+        { img: "https://www.w3schools.com/howto/img_avatar2.png", name: 'Camiseta', price: 29.99, brand: 'Nike', qnt: 1 }, 
+        { name: 'Boné', price: 19.99 }
+      ]
+    },
+    { 
+      date: '2025-02-10', 
+      items: [
+        { name: 'Tênis', price: 79.99 }
+      ] 
+    },
+    { 
+      date: '2025-02-15', 
+      items: [
+        { name: 'Jaqueta', price: 120.00 }, 
+        { name: 'Calça', price: 89.90 }
+      ] 
+    }
+  ];
+
+  const purchasesWithTotal = purchases.map(purchase => ({
+    ...purchase,
+    price_total: purchase.items.reduce((sum, item) => sum + (item.price || 0), 0)
+  }));
+
   return (
-    <div className="purchase-history">
-      {orders.map((order, index) => (
-        <div key={index} className="order-card">
-          <div className="order-header">
-            <h3>{order.items.length > 1 ? "Produtos comprados" : "Produto comprado"}</h3>
-            <span>Total do pedido: R$ {order.total.toFixed(2)}</span>
-          </div>
-
-          <div className={`order-items ${order.items.length > 1 ? "multiple-items" : "single-item"}`}>
-            {order.items.map((item, idx) => (
-              <div key={idx} className="item">
-                <img src={item.image} alt={item.name} />
-                <div>
-                  <p><strong>{item.name}</strong></p>
-                  <p>Marca: {item.brand}</p>
-                  <p>Quantidade: {item.quantity}x</p>
-                  <p>Variação: {item.variation}</p>
-                  <p>Preço: R$ {item.price.toFixed(2)}</p>
-                </div>
-                <div>
-                <button className="reorder-button">Comprar novamente</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+    <div className="profile-container">
+      <div className="header-decoration"></div>
+      
+      <HistoryCard purchases={purchasesWithTotal} />
     </div>
   );
 };
 
-export default PurchaseHistory;
+export default PurchaseHistory; // Exporta o componente

@@ -5,7 +5,6 @@ const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
   return (
     <div className="profile-container">
       <div className="header-decoration"></div>
-      
       <div className="profile-card">
         <div className="header-profile">
           <div className="user-info">
@@ -62,7 +61,7 @@ const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
                     alt="Endereço"/>
                     <span>+55</span>
                   </div>
-                  <input type="text" placeholder={tel} />
+                  <input type="text" placeholder={tel} id="input-tel"/>
                 </div>
               </div>
 

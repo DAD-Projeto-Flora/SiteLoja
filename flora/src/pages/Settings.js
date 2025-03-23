@@ -1,18 +1,23 @@
 import React from 'react';
 import Header from '../components/home/Header';
 import Sidebar from '../components/SideBar';
+import ConfigCard from '../components/config/ConfigCard';
 
 
-const Settings = () => {
+
+const Config = () => {
     return (
         <div>
         <Header />
         <main>
             <Sidebar />
-            <h1>Settings</h1>
+            <ConfigCard 
+            image="https://www.w3schools.com/howto/img_avatar2.png"
+            name="Maria Joaquina da Silva"
+            email="maria.joaquina@gmail.com"/>
         </main>
         </div>
     );
 }
 
-export default Settings;
+export default Config;  

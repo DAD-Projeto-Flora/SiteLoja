@@ -29,7 +29,6 @@
 .product-title {
   font-size: 14px;
   color: #333;
-  
 }
 
 .product-rating {
@@ -53,4 +52,12 @@
   color: #0077b6;
   margin-top: 6px;
   margin-bottom: 6px;
+}
+
+.product-info { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
 }
