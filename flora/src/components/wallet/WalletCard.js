@@ -27,11 +27,11 @@ const WalletCard = ({ name, email, image, numbercard, namecard, cvv, mmaa}) => {
             <div>
               <div>
                 <label>Número do cartão</label>
-                <input type="text" placeholder={numbercard} />
+                <input type="text" placeholder={numbercard} className="input-wallet-card"/>
               </div>
               <div>
                 <label>Data de Validade (MMAA)</label>
-                <input type="text" placeholder={mmaa} />
+                <input type="text" placeholder={mmaa} className="input-wallet-card"/>
               </div>
             </div>
           </div>
@@ -43,11 +43,11 @@ const WalletCard = ({ name, email, image, numbercard, namecard, cvv, mmaa}) => {
             <div>
               <div>
                 <label>Nome do cartão</label>
-                <input type="text" placeholder={namecard} />
+                <input type="text" placeholder={namecard} className="input-wallet-card"/>
               </div>
               <div>
                 <label>CVV</label>
-                <input type="text" placeholder={cvv} />
+                <input type="text" placeholder={cvv} className="input-wallet-card"/>
               </div>
             </div>
             <div className="info-card">

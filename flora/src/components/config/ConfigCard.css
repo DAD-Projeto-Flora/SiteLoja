@@ -26,16 +26,16 @@ main{
     border-top-right-radius: 10px;
 }
 
-.profile-container input[type="text"]{
+.input-config-card{
     padding-left: 1vw;
     border: none;
-    height: 50px;
+    height: 7vh;
     width: 25vw;
     border-radius: 8px;
     background-color: #F9F9F9;
 }
 
-.profile-container input[type="text"]:focus {
+.input-config-card:focus {
     outline: 1.5px solid #53A58D;;
 
 }

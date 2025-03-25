@@ -38,7 +38,7 @@ const CheckoutPage = () => {
           <div className="delivery-box">
             <div className="calculate">
               <label>Calcular entrega</label>
-              <input type="text" />
+              <input type="text" className="input-checkout-page"/>
               <button className="calculate-button">Calcular</button>
             </div>
           </div>

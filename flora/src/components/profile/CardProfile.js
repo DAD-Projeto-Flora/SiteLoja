@@ -26,11 +26,11 @@ const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
             <div>
               <div>
                 <label>Nome completo</label>
-                <input type="text" placeholder={name} />
+                <input type="text" placeholder={name} className="input-card-profile" />
               </div>
               <div>
                 <label>Nome de usuário</label>
-                <input type="text" placeholder={user} />
+                <input type="text" placeholder={user} className="input-card-profile" />
               </div>
             </div>
           </div>
@@ -55,13 +55,13 @@ const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
               <div>
                 <label>Número de telefone</label>
                 <div className="phone-input">
-                  <div>
+                  <div id="input-card-profile-ddd">
                     <img className="icon-brasil"
                     src="/brasil.svg"
                     alt="Endereço"/>
                     <span>+55</span>
                   </div>
-                  <input type="text" placeholder={tel} id="input-tel"/>
+                  <input type="text" placeholder={tel} className="input-card-profile" id="tel-input"/>
                 </div>
               </div>
 

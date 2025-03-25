@@ -26,20 +26,6 @@ main{
     border-top-right-radius: 10px;
 }
 
-.profile-container input[type="text"]{
-    padding-left: 1vw;
-    border: none;
-    height: 50px;
-    width: 25vw;
-    border-radius: 8px;
-    background-color: #F9F9F9;
-}
-
-.profile-container input[type="text"]:focus {
-    outline: 1.5px solid #53A58D;;
-
-}
-
 .header-profile{
     display: flex;
     align-items: center;
@@ -47,8 +33,6 @@ main{
     margin-top: -4%;
     justify-content: space-between;
 }
-
-
 .user-info{
     align-items: center;
     display: flex;

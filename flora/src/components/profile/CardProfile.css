@@ -1,7 +1,3 @@
-*{
-    color: #333131;
-}
-
 main{
     margin: 0px;
 }
@@ -29,20 +25,28 @@ main{
     border-top-right-radius: 10px;
 }
 
-.profile-container input[type="text"]{
+.input-card-profile{
     padding-left: 1vw;
     border: none;
-    height: 50px;
+    height: 7vh;
     width: 25vw;
     border-radius: 8px;
     background-color: #F9F9F9;
 }
 
-.profile-container input[type="text"]:focus {
+.input-card-profile:focus {
     outline: 1.5px solid #53A58D;;
 
 }
 
+#tel-input{
+    width: 17.54vw;
+}
+
+
+#input-card-profile-ddd{
+    height: 7vh;
+}
 .header-profile{
     display: flex;
     align-items: center;
@@ -134,7 +138,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked {
-    border: 4px solid #53A58D;
+    border: 2px  solid #53A58D;
 }
 
 input[type="radio"]:checked::before {
@@ -163,10 +167,6 @@ input[type="radio"]:checked::before {
     align-content: center;
     border-radius: 8px;
     background-color: #F9F9F9;
-}
-
-#input-tel{
-    width: 17.6vw;
 }
 
 .icon-brasil{

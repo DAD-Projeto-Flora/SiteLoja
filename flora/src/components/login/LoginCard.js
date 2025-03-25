@@ -26,7 +26,7 @@ export default function LoginCard() {
           <label>Senha</label>
           <div className="input-wrapper">
           <img src="/password.svg" alt="key" />
-            <input required type={showPassword ? "text" : "password"} />
+            <input required type={showPassword ? "text" : "password"} placeholder="Insira sua senha"/>
             <button
               type="button"
               className="toggle-password"

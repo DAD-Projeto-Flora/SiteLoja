@@ -27,11 +27,11 @@ const ConfigCard = ({name,image, email, password}) => {
             <div>
               <div>
                 <label>Senha antiga</label>
-                <input type="text" placeholder="Insira sua senha atual" />
+                <input type="text" placeholder="Insira sua senha atual" className="input-config-card"/>
               </div>
               <div>
                 <label>Confirme a nova senha</label>
-                <input type="text" placeholder="Insira sua nova senha novamente" />
+                <input type="text" placeholder="Insira sua nova senha novamente" className="input-config-card"/>
               </div>
             </div>
           </div>
@@ -43,11 +43,11 @@ const ConfigCard = ({name,image, email, password}) => {
             <div>
               <div>
                 <label>Nova senha</label>
-                <input type="text" placeholder="Insira sua nova senha" />
+                <input type="text" placeholder="Insira sua nova senha" className="input-config-card"/>
               </div>
               <div>
                 <label>Mudar e-mail</label>
-                <input type="text" placeholder="Insira seu novo e-mail" />
+                <input type="text" placeholder="Insira seu novo e-mail" className="input-config-card"/>
               </div>
             </div>
             <div className="delete-part">
