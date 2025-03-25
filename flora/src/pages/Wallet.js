@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../components/home/Header';
 import Sidebar from '../components/SideBar';
+import WalletCard from '../components/wallet/WalletCard';
+
 
 
 const Wallet = () => {
@@ -9,7 +11,10 @@ const Wallet = () => {
         <Header />
         <main>
             <Sidebar />
-            <h1>Wallet</h1>
+            <WalletCard 
+            image="https://www.w3schools.com/howto/img_avatar2.png"
+            name="Maria Joaquina da Silva"
+            email="maria.joaquina@gmail.com"/>
         </main>
         </div>
     );

@@ -11,25 +11,25 @@
 li{
   margin: 0 35px 0 0;
 }
-
+  
 .nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
-  font-family: "Montserrat", serif;
-  font-style: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    font-family: "Montserrat", serif;
+    font-style: bold;
 }
-
+  
 .logo img {
-  height: 40px;
-  margin-right: 10px;
+    height: 40px;
+    margin-right: 10px;
 }
-
+  
 .nav-links {
-  display: flex;
-  list-style-type: none;
-  padding: 0;
+    display: flex;
+    list-style-type: none;
+    padding: 0;
 }
 
 .nav-links li {
@@ -64,6 +64,8 @@ li{
 
 .search-input:focus {
   outline: none;
+  border-color: #00557C;  /* Cor roxa para foco */
+
 }
 
 .search-input::placeholder {

@@ -1,0 +1,101 @@
+.history-container {
+    max-height: 80%; /* Limita a altura para evitar esticamento */
+    overflow-y: auto;  /* Adiciona rolagem vertical */
+    padding: 2vh;
+    margin: 4vh 3vh;
+}
+
+.purchase-group {
+    border: #eaeaea 0.5px solid;
+
+    margin-bottom: 7vh;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.title-history{
+    margin: 0px 25px;
+    color: rgb(255, 255, 255);
+}
+
+.text{
+    color: rgb(56, 56, 56);
+}
+
+.text-products{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-card{
+    font-weight: bold;
+    font-size: 1em;
+    background-color: #3582A4;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    margin-top: 8vh;
+    padding: 10px 20px;
+}
+
+.products {
+    display: flex;
+    flex-direction: column; /* Agora os produtos ficam um abaixo do outro */
+    gap: 10px; /* Dá um espacinho entre os produtos */
+}
+
+.products-container{
+    padding: 2%;
+}
+
+.infos-products-history{
+    
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.product-card-history {
+    border: #eaeaea 0.5px solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 20vh;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+}
+
+.photo-product-history{
+    
+    width: 16vh;
+    margin: 0px 1vw;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.borda{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    top: 0;
+    width: 100%;
+    height: 5.5vh;
+    background-color: #3582A4;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.bold{
+    color: rgb(56, 56, 56);
+
+    font-weight: bold;
+}
+
+.divisor{
+    background-color: black;
+    height: 1px;
+}

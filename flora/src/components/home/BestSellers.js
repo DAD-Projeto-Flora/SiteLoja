@@ -11,8 +11,10 @@ const BestSellers = () => {
 
     return (
         <div className="blueCube" style={{ backgroundImage: 'url(/blueCube.svg)' }}>
-            <h1>Mais vendidos</h1>
-            <p>Confira os produtos mais vendidos, escolhidos pelos nossos clientes por sua qualidade e resultados incríveis. Perfeitos para realçar sua beleza</p>
+            <div className="blueCube-text">
+                <h1>Mais vendidos</h1>
+                <p>Confira os produtos mais vendidos, escolhidos pelos nossos clientes por sua qualidade e resultados incríveis. Perfeitos para realçar sua beleza</p>
+            </div>
             <div className="containerCard">
                 {products.map(product => (
                     <ProductCard 
