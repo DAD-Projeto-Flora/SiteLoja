@@ -67,12 +67,13 @@ const CheckoutPage = () => {
           <div className="delivery-box">
             <div className="calculate">
               <label>Calcular entrega</label>
+              <input type="text" className="input-checkout-page"/>
+              <button className="calculate-button">Calcular</button>
               <input
                 type="text"
                 placeholder="Digite o CEP"
                 value={zipCode}
                 onChange={(e) => setZipCode(e.target.value)}
-              />
               <button className="calculate-button" onClick={calculateShipping} disabled={loading}>
                 {loading ? "Calculando..." : "Calcular"}
               </button>

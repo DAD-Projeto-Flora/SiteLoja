@@ -83,8 +83,8 @@ body {
     font-weight: bold;
   }
 
-  
-  .calculate > input {
+
+  .input-checkout-page {
     width: 70%;
     padding: 8px;
     border: 1px solid #007799;

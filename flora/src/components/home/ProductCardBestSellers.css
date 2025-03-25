@@ -1,0 +1,49 @@
+.product-card {
+  width: 13.5vw;
+  border-radius: 12px;
+  padding: 0;
+  text-align: center;
+  font-family: "Montserrat", serif;
+}
+
+.product-image {
+  border-radius: 14px;
+  background-color: #f2f2f2;
+  width: 100%;
+  height: auto;
+}
+
+.product-info {
+  justify-content: left;
+  text-align: left;
+  margin-top: 8%;
+}
+
+.product-title {
+  font-size: 16px;
+  color: #f2f2f2;
+}
+
+.product-rating {
+  display: flex;
+  justify-content: left;
+  gap: 4px;
+}
+
+.star {
+  font-size: 23px;
+  color: lightgray;
+}
+
+.star.filled {
+  color: gold;
+}
+
+.product-price {
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  color: #f2f2f2;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
