@@ -1,30 +1,50 @@
-.blueCube{
-    display: flex;
-    color: #FFFFFF;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    width: 100%;
-    height: 500px;
+
+.product-card {
+  width: 13.5vw;
+  border-radius: 12px;
+  padding: 0;
+  text-align: center;
+  font-family: "Montserrat", serif;
 }
 
-.blueCube-text{
-    color: #FFFFFF;
-    margin: 12vh 0px 0px 10vw;
+.product-image {
+  border-radius: 14px;
+  background-color: #f2f2f2;
+  width: 100%;
+  height: auto;
 }
 
-h1{
-    font-size: 48px;
-    width: 10vw;
+.product-info {
+  justify-content: left;
+  text-align: left;
+  margin-top: 8%;
 }
 
-p{
-    font-size: 18px;
-    width: 19vw;
+.product-title {
+  font-size: 16px;
+  color: #f2f2f2;
 }
 
-.containerCard{
-    display: flex; 
-    width: 47.5%;
-    justify-content: space-between;
-    margin: 12vh 0px 0px 10vw;
+.product-rating {
+  display: flex;
+  justify-content: left;
+  gap: 4px;
+}
+
+.star {
+  font-size: 23px;
+  color: lightgray;
+}
+
+.star.filled {
+  color: gold;
+}
+
+.product-price {
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  color: #f2f2f2;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
