@@ -1,111 +1,112 @@
 .cadastro-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-  }
-  
-  .cadastro-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 500px;
-    margin-top: 80px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
 
-  .form-group > label{
-    font-weight: 500;
-    color: #00557C;
-  }
+.cadastro-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 55vw;
+  margin-top: 80px;
+}
+
+.form-group > label{
+  font-weight: 500;
+  color: #313131;
+}
 
 
-  .form-group > label > span{
-    color: red;
-  }
-  
-  .cadastro-title {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .bold {
-    font-weight: bold;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .form-row {
-    display: flex;
-    gap: 3.2rem;
-  }
-  
-  .input-wrapper {
-    display: flex;
-    align-items: center;
-    background: #f9f9f9;
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    border-radius: 5px;
+.form-group > label > span{
+  color: red;
+}
 
-  }
-  
-  .input-wrapper input {
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    padding-left: 0.5rem;
-  }
-  
-  .input-wrapper .icon {
-    color: #777;
-  }
-  
-  .cadastro-button {
-    width: 100%;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 5px;
-    background: #00557C;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 15px;
-  }
-  
-  .cadastro-button:hover {
-    background: #013750;
-  }
-  
-  .terms-text, .login-text {
-    text-align: center;
-    font-size: 0.9rem;
-    margin-top: 1rem;
-  }
-  
-  .login-link {
-    color: #59B59A;
-    text-decoration: none;
-  }
-  
-  .login-link:hover {
-    text-decoration: underline;
-  }
-  
-  .terms-text > a{
-    color: #59B59A;
-  }
+.cadastro-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
 
-  .input-wrapper > button{
-    background: none;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.bold {
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 3.2rem;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 0.5rem;
+  border-radius: 5px;
+  height: 5vh;
+  width: 20vw;
+}
+
+.input-wrapper input {
   
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 0.5rem;
+}
+
+.input-wrapper .icon {
+  color: #777;
+}
+
+.cadastro-button {
+  width: 30%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  background: #00557C;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.cadastro-button:hover {
+  background: #013750;
+}
+
+.terms-text, .login-text {
+  width: 25vw;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.login-link {
+  color: #5984b5;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+.terms-text > a{
+  color: #5984b5;
+}
+
+.input-wrapper > button{
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

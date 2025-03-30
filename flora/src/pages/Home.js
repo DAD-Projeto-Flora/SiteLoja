@@ -12,7 +12,7 @@ const Home = () => {
       <Header />
       <main>
         <Banner />
-        <div className='category-cards'>
+        <div className='category-cards color-text'>
           <CardCategory
             image="/cabelo.svg"
             title="Cabelo"
@@ -32,7 +32,11 @@ const Home = () => {
         </div>
 
         <BestSellers/>
-          <h2>Popular nas lojas</h2>
+
+        <div className='catalog-home'>
+          <h2 className='color-text'>Popular nas lojas</h2>
+
+        </div>
       </main>
     </div>
   );

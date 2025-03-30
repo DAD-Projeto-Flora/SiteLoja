@@ -44,25 +44,28 @@ const RegisterCard = () => {
           </div>
         </div>
 
-        <div className="form-group">
-          <label>Senha <span>*</span></label>
-          <div className="input-wrapper">
-            <input type={showPassword ? "text" : "password"} placeholder="Escreva sua senha" />
-            <button type="button" onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? <img className="eye_fill" src="/eye_fill.svg" alt="olho aberto" />  : <img className="eye_not_fill" src="/eye_not_fill.svg" alt="olho fechado" />}
-            </button>
+        <div className="form-row">
+          <div className="form-group">
+            <label>Senha <span>*</span></label>
+            <div className="input-wrapper">
+              <input type={showPassword ? "text" : "password"} placeholder="Escreva sua senha" />
+              <button type="button" onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <img className="eye_fill" src="/eye_fill.svg" alt="olho aberto" />  : <img className="eye_not_fill" src="/eye_not_fill.svg" alt="olho fechado" />}
+              </button>
+            </div>
+          </div>
+
+          <div className="form-group">
+            <label>Confirme sua senha <span>*</span></label>
+            <div className="input-wrapper">
+              <input type={showConfirmPassword ? "text" : "password"} placeholder="Escreva sua senha novamente" />
+              <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
+                {showConfirmPassword ? <img className="eye_fill" src="/eye_fill.svg" alt="olho aberto" /> : <img className="eye_not_fill" src="/eye_not_fill.svg" alt="olho fechado" />}
+              </button>
+            </div>
           </div>
         </div>
 
-        <div className="form-group">
-          <label>Confirme sua senha <span>*</span></label>
-          <div className="input-wrapper">
-            <input type={showConfirmPassword ? "text" : "password"} placeholder="Escreva sua senha novamente" />
-            <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
-              {showConfirmPassword ? <img className="eye_fill" src="/eye_fill.svg" alt="olho aberto" /> : <img className="eye_not_fill" src="/eye_not_fill.svg" alt="olho fechado" />}
-            </button>
-          </div>
-        </div>
 
         <p className="terms-text">
           Ao se cadastrar na Flora, você concorda com nossos <a href="#">Termos</a> e <a href="#">Política de Privacidade</a>.
@@ -74,6 +77,7 @@ const RegisterCard = () => {
           Já tem uma conta? <a href="/login" className="login-link">Faça seu login</a>
         </p>
       </div>
+      
     </div>
   );
 }

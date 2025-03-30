@@ -4,3 +4,15 @@
     margin-top: 70px;
 }
 
+.catalog-home{
+    width: 100%;
+}
+
+.catalog-home > h2{
+    width: 100%;
+    text-align: center;
+}
+
+.color-text{
+    color: rgb(46, 46, 46);
+}
