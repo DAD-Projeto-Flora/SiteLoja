@@ -78,10 +78,10 @@ const PaymentPage = () => {
       <div className="containerInfo">
         <div className="shipping-address">
           <h2>Endereço</h2>
-          <input type="text" placeholder="Nome completo" />
+          <input type="text" placeholder="Nome completo" className="input-payment-page"/>
           <div className="containerAdress">
-            <input type="text" placeholder="Ex. Rua Morada de Teresina, 80" />
-            <input type="text" placeholder="Apartamento, casa etc" />
+            <input type="text" placeholder="Ex. Rua Morada de Teresina, 80" className="input-payment-page"/>
+            <input type="text" placeholder="Apartamento, casa etc" className="input-payment-page"/>
           </div>
           <div className="city-state-zip">
             <select onChange={(e) => setSelectedState(e.target.value)}>
@@ -96,7 +96,7 @@ const PaymentPage = () => {
                 <option key={city.id} value={city.nome}>{city.nome}</option>
               ))}
             </select>
-            <input type="number" placeholder="CEP" />
+            <input type="number" placeholder="CEP" className="input-payment-page"/>
           </div>
         </div>
 
@@ -120,13 +120,14 @@ const PaymentPage = () => {
 
       <div className="payment-method">
         <h2>Método de pagamento</h2>
-        <input type="text" placeholder="First & Last Name" />
+        <input type="text" placeholder="First & Last Name" className="input-payment-page" />
         <div className="payCard">
           <input 
             type="text" 
             placeholder="0000 0000 0000 0000" 
             value={cardNumber} 
-            onChange={handleCardInputChange} 
+            onChange={handleCardInputChange}
+            className="input-payment-page" 
           />
           <img src={cardImage} alt="Cartão" className="cardImage"/>
         </div>
@@ -143,7 +144,7 @@ const PaymentPage = () => {
               <option key={currentYear + i} value={currentYear + i}>{currentYear + i}</option>
             ))}
           </select>
-          <input type="text" placeholder="CVV" />
+          <input type="text" placeholder="CVV" className="input-payment-page"/>
         </div>
       </div>
     </div>
