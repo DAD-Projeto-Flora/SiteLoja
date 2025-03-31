@@ -1,9 +1,9 @@
 import React from "react";
-import Filter from "../components/catalog/Filter";
-import Order from "../components/catalog/Order";
-import ProductsList from "../components/catalog/ProductsList";
+import Filter from "../../components/catalog/Filter";
+import Order from "../../components/catalog/Order";
+import ProductsList from "../../components/catalog/ProductsList";
 import "./Catalog.css";
-import Header from "../components/home/Header";
+import Header from "../../components/home/Header";
 
 const Catalog = () => {
   return (

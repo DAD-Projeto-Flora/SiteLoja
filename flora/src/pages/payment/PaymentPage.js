@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./PaymentPage.css";
-import generatePDF from "../utils/generatePDF"; 
+import generatePDF from "../../utils/generatePDF"; 
 
 
 const PaymentPage = () => {

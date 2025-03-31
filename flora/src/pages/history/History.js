@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../components/home/Header';
-import Sidebar from '../components/SideBar';
-import PurchaseHistory from '../components/history/PurchaseHistory';
+import Header from '../../components/home/Header';
+import Sidebar from '../../components/navigation/SideBar';
+import PurchaseHistory from '../../components/history/PurchaseHistory';
 
 const History = () => {
     return (

@@ -1,15 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from 'react';
-import Home from './pages/Home';
-import Profile from './pages/Profile';
-import CheckoutPage from "./pages/CheckoutPage";
-import Wallet from "./pages/Wallet";
-import Settings from "./pages/Settings";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import History from "./pages/History";
-import PaymentPage from "./pages/PaymentPage";
-import Catalog from "./pages/Catalog";
+import Home from './pages/home/Home';
+import Profile from './pages/profile/Profile';
+import CheckoutPage from "./pages/checkout/CheckoutPage";
+import Wallet from "./pages/wallet/Wallet";
+import Settings from "./pages/settings/Settings";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+import History from "./pages/history/History";
+import PaymentPage from "./pages/payment/PaymentPage";
+import Catalog from "./pages/catalog/Catalog";
 
 
 const App = () => {

@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../components/home/Header';
-import Banner from '../components/home/Banner';
-import ProductCard from '../components/home/ProductCardBestSellers';
-import CardCategory from '../components/home/CardCategory';
+import Header from '../../components/home/Header';
+import Banner from '../../components/home/Banner';
+import ProductCard from '../../components/home/ProductCardBestSellers';
+import CardCategory from '../../components/home/CardCategory';
 import './Home.css';
-import BestSellers from '../components/home/BestSellers'
+import BestSellers from '../../components/home/BestSellers'
 
 const Home = () => {
   return (

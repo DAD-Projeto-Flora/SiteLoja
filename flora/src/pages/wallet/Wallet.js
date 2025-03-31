@@ -1,17 +1,17 @@
 import React from 'react';
-import Header from '../components/home/Header';
-import Sidebar from '../components/SideBar';
-import ConfigCard from '../components/config/ConfigCard';
+import Header from '../../components/home/Header';
+import Sidebar from '../../components/navigation/SideBar';
+import WalletCard from '../../components/wallet/WalletCard';
 
 
 
-const Config = () => {
+const Wallet = () => {
     return (
         <div>
         <Header />
         <main>
             <Sidebar />
-            <ConfigCard 
+            <WalletCard 
             image="https://www.w3schools.com/howto/img_avatar2.png"
             name="Maria Joaquina da Silva"
             email="maria.joaquina@gmail.com"/>
@@ -20,4 +20,4 @@ const Config = () => {
     );
 }
 
-export default Config;  
+export default Wallet;
