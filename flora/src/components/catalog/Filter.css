@@ -1,0 +1,68 @@
+.filter-container {
+    width: 250px;
+    padding: 20px;
+    border-radius: 10px;
+    height: 40%;
+    
+}
+
+aside{
+  position: sticky;
+  top: 100px;
+}
+  
+.filter-container hr{
+  border: 1px solid #D9D9D9;
+}
+
+  .filter-opcoes {
+    margin-top: 10px;
+  }
+
+  .filter-opcoes h4 {
+    margin: 15px 0 10px 0;
+  }
+  .filter-title{
+    display: flex;
+  }
+
+  .filter-icon{
+    margin-right: 10px;
+  }
+
+  .category-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .category-option input[type="checkbox"] {
+    width: 20px;
+    cursor: pointer;
+  }
+
+  .price-option{
+    display: flex;
+    width: 100%;
+  }
+
+  .price-option input{
+    width: 60px;
+  }
+
+  .price-button{
+    background-color: #59B59A;
+    width: 100%;
+    border-radius: 4px;
+    border: none;
+    padding: 10px;
+    color: white;
+    margin: 10px 0 0 0;
+    cursor: pointer;
+  }
+
+  .filter-price h4 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+  }

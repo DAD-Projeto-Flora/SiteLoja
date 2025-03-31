@@ -1,11 +1,12 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"; // Importe useNavigate
 import "./Header.css";
 import CartSidebar from "./CartSidebar";
-import { Link } from "react-router-dom";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const navigate = useNavigate(); // Hook para redirecionamento
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -13,13 +14,10 @@ const Header = () => {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    console.log("Searching for:", searchQuery);
+    if (searchQuery.trim()) {
+      navigate(`/catalog?search=${encodeURIComponent(searchQuery)}`);
+    }
   };
-
-  const cartItems = [
-    { image: "/Neutrox.svg", title: "Neutrox Creme", price: "12.40" },
-  ];
-
 
   return (
     <>
@@ -33,15 +31,8 @@ const Header = () => {
           </Link>
 
           <ul className="nav-links">
-            <li>
-              <a href="/about">Sobre a Flora</a>
-            </li>
-            <li>
-              <a href="/parceiros">Parceiros</a>
-            </li>
-            <li>
-              <a href="/categorias">Categorias</a>
-            </li>
+            <li><Link to="/about">Sobre a Flora</Link></li>
+            <li><Link to="/parceiros">Parceiros</Link></li>
           </ul>
 
           <form className="search-form" onSubmit={handleSearchSubmit}>
@@ -52,9 +43,7 @@ const Header = () => {
               onChange={handleSearchChange}
               className="search-input"
               onKeyDown={(event) => {
-                if (event.key === "Enter") {
-                  handleSearchSubmit(event);
-                }
+                if (event.key === "Enter") handleSearchSubmit(event);
               }}
             />
           </form>
@@ -63,7 +52,6 @@ const Header = () => {
             <button className="cart-button" onClick={() => setIsCartOpen(true)}>
               <img src="/shopCart.svg" alt="Cart Icon" />
             </button>
-
             <button className="user-button">
               <Link to="/login">
                 <img src="/profileIcon.svg" alt="User Icon" />
@@ -73,11 +61,10 @@ const Header = () => {
         </nav>
       </header>
 
-      {/* Sidebar do carrinho */}
       <CartSidebar
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
-        cartItems={cartItems}
+        cartItems={[{ image: "/Neutrox.svg", title: "Neutrox Creme", price: "12.40" }]}
       />
     </>
   );

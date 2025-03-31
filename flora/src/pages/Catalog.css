@@ -1,0 +1,12 @@
+.catalogo-container {
+    display: flex;
+    padding: 20px;
+    margin-top: 120px;
+    margin-right: 50px;
+    margin-left: 85px;
+  }
+  
+  .catalogo-conteudo {
+    flex-grow: 1;
+    margin-left: 20px;
+  }

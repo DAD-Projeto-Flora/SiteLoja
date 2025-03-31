@@ -1,0 +1,55 @@
+.ordenacao-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 17.6px 0px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    align-items: center;
+    border-radius: 10px;
+    position: sticky;
+    top: 100px;
+  }
+  
+  .ordenacao-botao {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 3.5px;
+    margin-left: 15px;
+  }
+  
+  .ordenacao-botao.ativo {
+    background-color: #59B59A;
+    color: white;
+    border: none;
+    border-radius: 3.5px;
+  }
+
+  .ordenacao-container > p{
+    font-weight: bold;
+    color: #757373;
+  }
+
+  .buttons-order{
+    margin-left: 10px;
+  }
+
+  .next-botao{
+    background-color: #00557C;
+    border: none;
+    padding: 7px;
+    width: 35px;
+    border-radius: 3px;
+    margin:  0 0 0 10px;
+  }
+
+  .back-botao{
+    background-color: #3481A4;
+    border: none;
+    padding: 7px;
+    width: 36px;
+    border-radius: 3px;
+    margin: 0 0 0 300px;
+  }
