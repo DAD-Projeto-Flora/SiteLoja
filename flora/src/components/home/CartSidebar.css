@@ -9,6 +9,7 @@
     transition: right 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
+    z-index: 1000;
   }
   
   .cart-sidebar.open {
