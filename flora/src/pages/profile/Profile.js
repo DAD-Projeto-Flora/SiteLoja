@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from '../components/home/Header';
-import Sidebar from '../components/SideBar';
-import CardProfile from '../components/profile/CardProfile';
+import Header from '../../components/home/Header';
+import Sidebar from '../../components/navigation/SideBar';
+import CardProfile from '../../components/profile/CardProfile';
 
 
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CheckoutPage.css";
-import CartList from "../components/checkoutPage/CartList";
+import CartList from "../../components/checkout/CartList";
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
