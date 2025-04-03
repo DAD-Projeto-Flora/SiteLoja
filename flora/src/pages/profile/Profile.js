@@ -3,8 +3,6 @@ import Header from '../../components/home/Header';
 import Sidebar from '../../components/navigation/SideBar';
 import CardProfile from '../../components/profile/CardProfile';
 
-
-
 const Profile = () => {
     return (
         <div>
@@ -20,6 +18,7 @@ const Profile = () => {
             gender="Feminino"
             endereco="Rio de Janeiro"/>
         </main>
+        <Footer/>
         </div>
     );
 }

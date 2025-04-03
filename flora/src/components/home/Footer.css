@@ -1,0 +1,61 @@
+footer{
+    background-color: #ebe9e9;
+    padding: 20px 0;
+    margin-top: 19vh;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    border-top: 1px solid #e9ecef;
+}
+
+.title-footer{
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.columns-footer{
+    display: flex;
+    gap: 15vw;
+    margin: 1.5vw 0vw 1.5vw 9vw;
+}
+
+.column{
+    flex-direction: column;
+    gap: 26vh;
+    display: flex;
+}
+
+#tel-whatsapp{
+    line-height: 30px;
+    color: #59B59A;
+    font-weight: bold;
+}
+
+#support-link{
+    font-size: 0.85rem;
+    color: #757575;
+}
+.text-columns{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    color: #333;
+    font-weight: 500;
+}
+
+.payment-types > img{
+    margin-right: 2vw;
+}
+
+.logo-empresa{
+    width: 20vw;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.logo-empresa > img{
+    width: 20vh;
+}
+

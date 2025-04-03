@@ -1,10 +1,11 @@
 import React from 'react';
 import Header from '../../components/home/Header';
 import Banner from '../../components/home/Banner';
-import ProductCard from '../../components/home/ProductCardBestSellers';
 import CardCategory from '../../components/home/CardCategory';
 import './Home.css';
 import BestSellers from '../../components/home/BestSellers'
+import Popular from '../../components/home/Popular';
+import Footer from '../../components/home/Footer';
 
 const Home = () => {
   return (
@@ -32,7 +33,8 @@ const Home = () => {
         </div>
 
         <BestSellers/>
-          <h2>Popular nas lojas</h2>
+        <Popular/>
+        <Footer/>
       </main>
     </div>
   );

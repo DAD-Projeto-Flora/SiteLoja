@@ -10,6 +10,8 @@ import Register from "./pages/register/Register";
 import History from "./pages/history/History";
 import PaymentPage from "./pages/payment/PaymentPage";
 import Catalog from "./pages/catalog/Catalog";
+import Product from "./pages/product/Product";
+
 
 
 const App = () => {
@@ -24,6 +26,7 @@ const App = () => {
         <Route path="/login" element={< Login />} />
         <Route path="/register" element={ < Register />} />
         <Route path="/history" element={ < History />} />
+        <Route path="/product" element={ < Product />} />
         <Route path="/payment" element={ < PaymentPage />} />
         <Route path="/catalog" element={ < Catalog />} />
       </Routes>
