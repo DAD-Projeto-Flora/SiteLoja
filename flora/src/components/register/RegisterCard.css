@@ -1,111 +1,157 @@
 .cadastro-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-  }
-  
-  .cadastro-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 500px;
-    margin-top: 80px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;  
+}
+.cadastro-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 65vw;
+  margin-top: 80px;
+  justify-content: center;
+  z-index: 1;
+}
 
-  .form-group > label{
-    font-weight: 500;
-    color: #00557C;
-  }
+.form-group > label{
+  font-weight: 500;
+}
 
+.form-group > label > span{
+  color: red;
+}
 
-  .form-group > label > span{
-    color: red;
-  }
-  
-  .cadastro-title {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .bold {
-    font-weight: bold;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .form-row {
-    display: flex;
-    gap: 3.2rem;
-  }
-  
-  .input-wrapper {
-    display: flex;
-    align-items: center;
-    background: #f9f9f9;
-    border: 1px solid #ccc;
-    padding: 0.5rem;
-    border-radius: 5px;
+.cadastro-title {
+  justify-self: center;
+  align-self: center;
+  font-weight: 400;
+  width: 40vw;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 
-  }
-  
-  .input-wrapper input {
-    flex: 1;
-    border: none;
-    outline: none;
-    background: transparent;
-    padding-left: 0.5rem;
-  }
-  
-  .input-wrapper .icon {
-    color: #777;
-  }
-  
-  .cadastro-button {
-    width: 100%;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 5px;
-    background: #00557C;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 15px;
-  }
-  
-  .cadastro-button:hover {
-    background: #013750;
-  }
-  
-  .terms-text, .login-text {
-    text-align: center;
-    font-size: 0.9rem;
-    margin-top: 1rem;
-  }
-  
-  .login-link {
-    color: #59B59A;
-    text-decoration: none;
-  }
-  
-  .login-link:hover {
-    text-decoration: underline;
-  }
-  
-  .terms-text > a{
-    color: #59B59A;
-  }
+.bold {
+  font-weight: bold;
+}
 
-  .input-wrapper > button{
-    background: none;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 6vw;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background: #ECECEC;
+  padding: 0.5rem;
+  border-radius: 10px;
+  width: 24.5vw;
+  height: 5vh;
+}
+
+.input-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding-left: 0.5rem;
+}
+
+.input-wrapper .icon {
+  color: #777;
+}
+
+.cadastro-button {
+  justify-self: center;
+  width: 35%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 5px;
+  background: #00557C;
+  color: white;
+  height: 7.5vh;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.cadastro-button:hover {
+  background: #013750;
+}
+
+.terms-text, .login-text {
+  font-weight: 500;
+  text-align: center;
+  justify-self: center;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  width: 25vw;
+}
+
+.login-link {
+  color: #59B59A;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+.terms-text > a{
+  color: #59B59A;
+}
+
+.input-wrapper > button{
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icons-input{
+  margin-left: 15px;
+}
+
+.button-register{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content-register{
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 5vh;
+}
+
+.forms-register{
+  margin: 0px 6%;
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.decoration-background{
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+}
+
+.decoration-background-bottom{
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+  left: 0;
+}

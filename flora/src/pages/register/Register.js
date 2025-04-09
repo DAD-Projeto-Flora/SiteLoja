@@ -6,7 +6,7 @@ const Register = () => {
 
     return (
         <div>
-        <HeaderWithoutInfo />
+            <HeaderWithoutInfo />
         <main>
             <RegisterCard />
         </main>

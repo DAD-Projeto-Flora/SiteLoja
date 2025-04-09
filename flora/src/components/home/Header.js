@@ -30,10 +30,6 @@ const Header = () => {
             </div>
           </Link>
 
-          <ul className="nav-links">
-            <li><Link to="/about">Sobre a Flora</Link></li>
-          </ul>
-
           <form className="search-form" onSubmit={handleSearchSubmit}>
             <input
               type="text"

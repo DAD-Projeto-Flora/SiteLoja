@@ -3,8 +3,6 @@ import Header from '../../components/home/Header';
 import Sidebar from '../../components/navigation/SideBar';
 import WalletCard from '../../components/wallet/WalletCard';
 
-
-
 const Wallet = () => {
     return (
         <div>
@@ -16,7 +14,6 @@ const Wallet = () => {
             name="Maria Joaquina da Silva"
             email="maria.joaquina@gmail.com"/>
         </main>
-        <Footer/>
         </div>
     );
 }

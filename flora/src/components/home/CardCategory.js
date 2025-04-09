@@ -7,7 +7,7 @@ const CardCategory = ({ image, title }) => {
       <div className="category-image">
         <img src={image} alt={title} />
       </div>
-      <h3 className="category-title">{title}</h3>
+      <h3 className="category-title text">{title}</h3>
     </div>
   );
 };
