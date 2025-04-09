@@ -18,7 +18,6 @@ const Profile = () => {
             gender="Feminino"
             endereco="Rio de Janeiro"/>
         </main>
-        <Footer/>
         </div>
     );
 }

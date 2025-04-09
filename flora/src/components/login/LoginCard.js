@@ -11,9 +11,9 @@ export default function LoginCard() {
         <img src="/logoCompleta.svg" alt="logo" className="login-leaf" />
       <div className="login-card">
         <h2 className="login-title">Bem-vindo <br/> à Flora!</h2>
-        <div className="input-group">
+        <div className="input-group-login">
           <label>Email</label>
-          <div className="input-wrapper">
+          <div className="input-wrapper-login">
           <img src="/email.svg" alt="email" />
             <input  type="email" placeholder="example@gmail.com" 
               pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
@@ -22,9 +22,9 @@ export default function LoginCard() {
               />
           </div>
         </div>
-        <div className="input-group">
+        <div className="input-group-login">
           <label>Senha</label>
-          <div className="input-wrapper">
+          <div className="input-wrapper-login">
           <img src="/password.svg" alt="key" />
             <input required type={showPassword ? "text" : "password"} placeholder="Insira sua senha"/>
             <button
