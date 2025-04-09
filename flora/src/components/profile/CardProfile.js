@@ -14,8 +14,8 @@ const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
               alt="Foto de Perfil"
             />
             <div>
-              <h2>{name}</h2>
-              <p>{email}</p>
+              <h2 className="text">{name}</h2>
+              <p className="text">{email}</p>
             </div>
           </div>
           <button className="save-button">Salvar</button>
@@ -25,11 +25,11 @@ const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
           <div className="name-grid">
             <div>
               <div>
-                <label>Nome completo</label>
+                <label className="text">Nome completo</label>
                 <input type="text" placeholder={name} className="input-card-profile" />
               </div>
               <div>
-                <label>Nome de usuário</label>
+                <label className="text">Nome de usuário</label>
                 <input type="text" placeholder={user} className="input-card-profile" />
               </div>
             </div>
@@ -38,28 +38,28 @@ const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
           <div className="more-info">
             <div>
               <div>
-                <label>Gênero</label>
+                <label className="text">Gênero</label>
                 <div className="gender-options">
-                  <label>
+                  <label className="text">
                     <input type="radio" name="gender" value="Feminino" defaultChecked /> Feminino
                   </label>
-                  <label>
+                  <label className="text">
                     <input type="radio" name="gender" value="Masculino" /> Masculino
                   </label>
-                  <label>
+                  <label className="text">
                     <input type="radio" name="gender" value="Outros" /> Outros
                   </label>
                 </div>
               </div>
 
               <div>
-                <label>Número de telefone</label>
+                <label className="text">Número de telefone</label>
                 <div className="phone-input">
                   <div id="input-card-profile-ddd">
                     <img className="icon-brasil"
                     src="/brasil.svg"
                     alt="Endereço"/>
-                    <span>+55</span>
+                    <span className="text">+55</span>
                   </div>
                   <input type="text" placeholder={tel} className="input-card-profile" id="tel-input"/>
                 </div>
@@ -71,7 +71,7 @@ const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
 
           <div className="info-contact">
             <div>
-              <div className="card-info">
+              <div className="card-info text">
                 <label>Contatos cadastrados</label>
                 <div className="contact-box">
                   <span>
@@ -79,20 +79,20 @@ const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
                     src="/IconEmail.svg"
                     alt="Endereço"/>
                   </span>
-                  <p>{email}</p>
+                  <p className="text">{email}</p>
                 </div>
-                <button className="add-button">+Adicionar contato</button>
+                <button className="add-button " >+Adicionar contato</button>
               </div>
 
               <div className="card-info">
-                <label>Endereços cadastrados</label>
+                <label className="text">Endereços cadastrados</label>
                 <div className="contact-box">
                   <span>
                     <img className="icon"
                     src="/Loc.svg"
                     alt="Endereço"/>
                   </span>
-                  <p>{endereco}</p>
+                  <p className="text">{endereco}</p>
                 </div>
                 <button className="add-button">+Adicionar endereço</button>
               </div>

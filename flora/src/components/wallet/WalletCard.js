@@ -15,8 +15,8 @@ const WalletCard = ({ name, email, image, numbercard, namecard, cvv, mmaa}) => {
               alt="Foto de Perfil"
             />
             <div>
-              <h2>{name}</h2>
-              <p>{email}</p>
+              <h2 className="text">{name}</h2>
+              <p className="text">{email}</p>
             </div>
           </div>
           <button className="save-button">Salvar</button>
@@ -26,11 +26,11 @@ const WalletCard = ({ name, email, image, numbercard, namecard, cvv, mmaa}) => {
           <div className="card-grid">
             <div>
               <div>
-                <label>Número do cartão</label>
+                <label className="text">Número do cartão</label>
                 <input type="text" placeholder={numbercard} className="input-wallet-card"/>
               </div>
               <div>
-                <label>Data de Validade (MMAA)</label>
+                <label className="text">Data de Validade (MMAA)</label>
                 <input type="text" placeholder={mmaa} className="input-wallet-card"/>
               </div>
             </div>
@@ -42,25 +42,25 @@ const WalletCard = ({ name, email, image, numbercard, namecard, cvv, mmaa}) => {
           <div className="name-grid">
             <div>
               <div>
-                <label>Nome do cartão</label>
+                <label className="text">Nome do cartão</label>
                 <input type="text" placeholder={namecard} className="input-wallet-card"/>
               </div>
               <div>
-                <label>CVV</label>
+                <label className="text">CVV</label>
                 <input type="text" placeholder={cvv} className="input-wallet-card"/>
               </div>
             </div>
             <div className="info-card">
             <div>
               <div className="card-info">
-                <label>Cartões cadastrados</label>
+                <label className="text">Cartões cadastrados</label>
                 <div className="card-box">
                   <span>
                     <img className="icon"
                     src="/logoCartao.svg"
                     alt="Endereço"/>
                   </span>
-                  <p>{namecard}</p>
+                  <p className="text">{namecard}</p>
                 </div>
                 <button className="add-button">+Adicionar cartão</button>
               </div>

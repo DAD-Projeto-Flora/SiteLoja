@@ -15,8 +15,8 @@ const ConfigCard = ({name,image, email, password}) => {
               alt="Foto de Perfil"
             />
             <div>
-              <h2>{name}</h2>
-              <p>{email}</p>
+              <h2 className="text">{name}</h2>
+              <p className="text">{email}</p>
             </div>
           </div>
           <button className="save-button">Salvar</button>
@@ -26,11 +26,11 @@ const ConfigCard = ({name,image, email, password}) => {
           <div className="info-grid">
             <div>
               <div>
-                <label>Senha antiga</label>
+                <label className="text">Senha antiga</label>
                 <input type="text" placeholder="Insira sua senha atual" className="input-config-card"/>
               </div>
               <div>
-                <label>Confirme a nova senha</label>
+                <label className="text">Confirme a nova senha</label>
                 <input type="text" placeholder="Insira sua nova senha novamente" className="input-config-card"/>
               </div>
             </div>
@@ -42,18 +42,18 @@ const ConfigCard = ({name,image, email, password}) => {
           <div className="info-grid">
             <div>
               <div>
-                <label>Nova senha</label>
+                <label className="text">Nova senha</label>
                 <input type="text" placeholder="Insira sua nova senha" className="input-config-card"/>
               </div>
               <div>
-                <label>Mudar e-mail</label>
+                <label className="text">Mudar e-mail</label>
                 <input type="text" placeholder="Insira seu novo e-mail" className="input-config-card"/>
               </div>
             </div>
             <div className="delete-part">
             <div>
               <div className="delete">
-                <label>Excluir conta</label>
+                <label className="text">Excluir conta</label>
                 <button className="delete-button">Deletar conta</button>
               </div>
             </div>
