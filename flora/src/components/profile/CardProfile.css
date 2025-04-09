@@ -233,3 +233,93 @@ input[type="radio"]:checked::before {
     background-color: #a4e0ceaf;
     cursor: pointer;
 }
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* fundo escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    color: #333;
+    margin-top: 10vh;
+    background: white;
+    padding: 50px;
+    border-radius: 15px;
+    width: 500px;
+    max-width: 90%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal h2 {
+    margin-bottom: 20px;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.street-number {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.cancel-button {
+    background: transparent;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.save-button {
+    background: #2c7a7b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+span{
+    color: red;
+}
+
+.input-card-profile-modal{
+
+    padding-left: 1vw;
+    border: none;
+    height: 7vh;
+    width: 97.5%;
+    border-radius: 8px;
+    background-color: #F9F9F9;
+}
+
+.num{
+    width: 30.5%;
+    margin-left: 20px;
+}
+
+.rua{
+    width: 61.5%;
+}
+
+.title-numrua{
+    margin-bottom: 10px     ;
+}

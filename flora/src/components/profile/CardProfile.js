@@ -1,10 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CardProfile.css"; // Importa o arquivo de estilos
 
 const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
+
+  const [modalType, setModalType] = useState(null); // controle do tipo de modal
+
+  const openModalEndereco = () => setModalType("endereco");
+  const openModalEmail = () => setModalType("email");
+  const closeModal = () => setModalType(null);
+
   return (
     <div className="profile-container">
       <div className="header-decoration"></div>
+
+      {modalType === "email" && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Atualizar E-mail</h2>
+
+            <div className="modal-form">
+              <label>Novo e-mail <span>*</span></label>
+              <input type="text" placeholder="novo.email@gmai.com" className="input-card-profile-modal" />
+
+            </div>
+
+            <div className="modal-buttons">
+              <button className="cancel-button" onClick={closeModal}>Cancelar</button>
+              <button className="save-button">Salvar</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      
+      {modalType === "endereco" && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <h2>Atualizar Endereço</h2>
+
+            <div className="modal-form">
+              <label>CEP <span>*</span></label>
+              <input type="text" placeholder="00028-922" className="input-card-profile-modal" />
+              <label>Estado - Cidade <span>*</span></label>
+              <input type="text" placeholder="São Paulo - Osasco" className="input-card-profile-modal" />
+              <label>Bairro <span>*</span></label>
+
+              <input type="text" placeholder="Km 18" className="input-card-profile-modal" />
+              <div className="street-number">
+                  <div className="rua">
+                    <label className="text title-numrua">Rua <span>*</span></label>
+                    <input type="text" placeholder="Rua dos bobos" className="input-card-profile-modal" />
+                  </div>
+                  <div className="num">
+                    <label className="text title-numrua">Número <span>*</span></label>
+                    <input type="text" placeholder="Número" className="input-card-profile-modal" />
+                  </div>
+              </div>
+              <label>Complemento <span>*</span></label>
+              <input type="text" placeholder="Descrição do Prédio / Bloco / Referências próximas" className="input-card-profile-modal " />
+            </div>
+
+            <div className="modal-buttons">
+              <button className="cancel-button" onClick={closeModal}>Cancelar</button>
+              <button className="save-button">Salvar</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="profile-card">
         <div className="header-profile">
           <div className="user-info">
@@ -72,20 +135,20 @@ const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
           <div className="info-contact">
             <div>
               <div className="card-info text">
-                <label>Contatos cadastrados</label>
+                <label>E-mail cadastrado</label>
                 <div className="contact-box">
                   <span>
                     <img className="icon"
                     src="/IconEmail.svg"
-                    alt="Endereço"/>
+                    alt="Icon Email"/>
                   </span>
                   <p className="text">{email}</p>
                 </div>
-                <button className="add-button " >+Adicionar contato</button>
+                <button className="add-button " onClick={openModalEmail}>+ Atualizar e-mail</button>
               </div>
 
               <div className="card-info">
-                <label className="text">Endereços cadastrados</label>
+                <label className="text">Endereço cadastrado</label>
                 <div className="contact-box">
                   <span>
                     <img className="icon"
@@ -94,7 +157,7 @@ const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
                   </span>
                   <p className="text">{endereco}</p>
                 </div>
-                <button className="add-button">+Adicionar endereço</button>
+                <button className="add-button" onClick={openModalEndereco}>+ Atualizar endereço</button>
               </div>
             </div>
           </div>

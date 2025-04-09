@@ -9,7 +9,11 @@ const Footer = () => {
                     <div>
                         <h2 className="title-footer">Canais de Venda</h2>
                         <span className="text-columns"> <img src="/LogoWhatsapp.svg" alt="Logo Whatsapp" />Compre pelo Whatsapp</span>
-                        <span id="tel-whatsapp">(11) 4020-8588</span>
+                        <a id="tel-whatsapp" 
+                            href="https://wa.me/5511986055544"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >(11) 98605-5544</a>
                         
                     </div>
 
@@ -24,7 +28,7 @@ const Footer = () => {
                     <div>
                         <h2 className="title-footer">Suporte</h2>
                         <span className="text-columns"> <img src="/emailicon.svg" alt="Logo Whatsapp" />Resolva por e-mail</span>
-                        <span id="support-link">Clique aqui</span>
+                        <a href="mailto:suporteflora.germinare@gmail.com" id="support-link">Clique aqui</a>
                     </div>
                 </div>
                 <div className="logo-empresa">
