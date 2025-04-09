@@ -1,55 +1,76 @@
 .ordenacao-container {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-    background-color: #FFFFFF;
-    box-shadow: 0px 4px 17.6px 0px rgba(0, 0, 0, 0.05);
-    padding: 20px;
-    align-items: center;
-    border-radius: 10px;
-    position: sticky;
-    top: 100px;
-  }
-  
-  .ordenacao-botao {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 3.5px;
-    margin-left: 15px;
-  }
-  
-  .ordenacao-botao.ativo {
-    background-color: #59B59A;
-    color: white;
-    border: none;
-    border-radius: 3.5px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.05);
+  align-items: center;
+  border-radius: 12px;
+  position: sticky;
+  top: 100px;
+  width: 90%;
+  z-index: 10;
+  padding: 20px;
+  justify-content: center;
+}
 
-  .ordenacao-container > p{
-    font-weight: bold;
-    color: #757373;
-  }
+.ordenacao-container > p {
+  font-weight: 600;
+  color: #555;
+  font-size: 1rem;
+}
 
-  .buttons-order{
-    margin-left: 10px;
-  }
+.ordenacao-botao {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 500;
+  color: #333;
+}
 
-  .next-botao{
-    background-color: #00557C;
-    border: none;
-    padding: 7px;
-    width: 35px;
-    border-radius: 3px;
-    margin:  0 0 0 10px;
-  }
+.ordenacao-botao:hover {
+  background-color: #f0f0f0;
+}
 
-  .back-botao{
-    background-color: #3481A4;
-    border: none;
-    padding: 7px;
-    width: 36px;
-    border-radius: 3px;
-    margin: 0 0 0 300px;
-  }
+.ordenacao-botao:active {
+  background-color: #59B59A;
+  color: #fff;
+  border: none;
+}
+
+.buttons-order {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.next-botao,
+.back-botao {
+  background-color: #00557C;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-botao:hover {
+  background-color: #0077a3;
+}
+
+.back-botao {
+  background-color: #3481A4;
+}
+
+.back-botao:hover {
+  background-color: #4d9cc0;
+}
+

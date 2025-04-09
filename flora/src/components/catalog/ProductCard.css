@@ -27,11 +27,13 @@
   .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 35px;
+    column-gap: 80px;
+    row-gap: 30px;
+    margin-top: 20px;
   }
   
   .lista-produtos {
-    width: 100%;
+    width: 70%;
     margin-right: 100px;
   }
 
@@ -41,22 +43,39 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-bottom: 20px;
+    width: 200px;
   }
 
   .estrelas {
     display: flex;
-    gap: 2px;
   }
   
   .estrela {
-    font-size: 25px;
-    color: #ccc;
-    
+    font-size: 1.2rem;
+    color: #ffd700; /* Cor dourada */
+    margin-right: 2px;
   }
   
-  .estrela.cheia {
-    color: #f5c518;
- 
+  .estrela.vazia {
+    color: #ccc; /* Cor cinza para estrelas vazias */
   }
   
+ .estrela.meia {
+  position: relative;
+  display: inline-block;
+  font-size: 1.2rem;
+  color: #ccc; /* Cor cinza para a parte vazia */
+  overflow: hidden; /* Garante que apenas metade será visível */
+}
+
+.estrela.meia::before {
+  content: "★";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%; /* Define que apenas metade será visível */
+  height: 100%; /* Garante que a altura seja consistente */
+  color: #ffd700; /* Cor dourada para a metade preenchida */
+  overflow: hidden;
+}
+
