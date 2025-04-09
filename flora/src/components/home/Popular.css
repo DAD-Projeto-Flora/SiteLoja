@@ -1,0 +1,23 @@
+.popular{
+    
+    width: 100%;
+    text-align: center;
+}
+
+.text{
+    color: #1f1e1e;
+}
+
+.popular-products{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.adcard{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 6% 0%;
+}

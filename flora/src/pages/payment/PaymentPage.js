@@ -77,7 +77,7 @@ const PaymentPage = () => {
 
       <div className="containerInfo">
         <div className="shipping-address">
-          <h2>Endereço</h2>
+          <h2 className="title-paymentpage">Endereço</h2>
           <input type="text" placeholder="Nome completo" className="input-payment-page"/>
           <div className="containerAdress">
             <input type="text" placeholder="Ex. Rua Morada de Teresina, 80" className="input-payment-page"/>
@@ -101,7 +101,7 @@ const PaymentPage = () => {
         </div>
 
         <div className="order-summary">
-          <h2>Finalizar</h2>
+          <h2 className="title-paymentpage">Finalizar</h2>
           <div className="order-item">
             <img src="Neutrox.svg" alt="Gourmet Coffee Beans" />
             <div>
@@ -119,7 +119,7 @@ const PaymentPage = () => {
       </div>
 
       <div className="payment-method">
-        <h2>Método de pagamento</h2>
+        <h2 className="title-paymentpage">Método de pagamento</h2>
         <input type="text" placeholder="First & Last Name" className="input-payment-page" />
         <div className="payCard">
           <input 

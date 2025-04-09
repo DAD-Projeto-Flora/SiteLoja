@@ -16,6 +16,7 @@ const Wallet = () => {
             name="Maria Joaquina da Silva"
             email="maria.joaquina@gmail.com"/>
         </main>
+        <Footer/>
         </div>
     );
 }

@@ -32,7 +32,6 @@ const Header = () => {
 
           <ul className="nav-links">
             <li><Link to="/about">Sobre a Flora</Link></li>
-            <li><Link to="/parceiros">Parceiros</Link></li>
           </ul>
 
           <form className="search-form" onSubmit={handleSearchSubmit}>
