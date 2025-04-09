@@ -1,12 +1,10 @@
 .catalogo-container {
     display: flex;
-    padding: 20px;
     margin-top: 120px;
-    margin-right: 50px;
-    margin-left: 85px;
-  }
+    gap: 140px; 
+}
+
+.catalogo-conteudo{
+  width: 78%;
+}
   
-  .catalogo-conteudo {
-    flex-grow: 1;
-    margin-left: 20px;
-  }
