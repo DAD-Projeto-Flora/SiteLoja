@@ -25,7 +25,7 @@ const ProductsList = () => {
     const fetchProdutos = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/product/getProducts"); // Endpoint genérico para todos os produtos
+        const response = await fetch("https://apilojaflora.onrender.com/product/getProducts"); // Endpoint genérico para todos os produtos
         if (!response.ok) {
           throw new Error("Erro ao buscar produtos");
         }
