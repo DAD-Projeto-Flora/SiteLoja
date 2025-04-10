@@ -297,10 +297,6 @@ input[type="radio"]:checked::before {
     cursor: pointer;
 }
 
-span{
-    color: red;
-}
-
 .input-card-profile-modal{
 
     padding-left: 1vw;
