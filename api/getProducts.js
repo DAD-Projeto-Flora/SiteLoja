@@ -2,8 +2,9 @@ export default async function handler(req, res) {
     try {
       const response = await fetch("https://apilojaflora.onrender.com/product/getProducts");
   
-      if (!response.ok) {
-        throw new Error("Erro ao buscar produtos da API");
+      const contentType = response.headers.get("content-type");
+      if (!response.ok || !contentType.includes("application/json")) {
+        throw new Error("Resposta inválida da API externa");
       }
   
       const data = await response.json();
