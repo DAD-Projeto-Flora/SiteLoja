@@ -1,7 +1,7 @@
 .catalogo-container {
     display: flex;
     margin-top: 120px;
-    gap: 140px; 
+    gap: 120px; 
 }
 
 .catalogo-conteudo{
