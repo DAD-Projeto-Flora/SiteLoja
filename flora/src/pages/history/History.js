@@ -9,10 +9,7 @@ const History = () => {
         <Header />
         <main>
             <Sidebar />
-            <PurchaseHistory 
-                image="https://www.w3schools.com/howto/img_avatar2.png"
-                name="Maria Joaquina da Silva"
-                email="maria.joaquina@gmail.com"/>
+            <PurchaseHistory />
         </main>
         </div>
     );

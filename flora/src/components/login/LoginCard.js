@@ -15,7 +15,7 @@ export default function LoginCard() {
           <label>Email</label>
           <div className="input-wrapper-login">
           <img src="/email.svg" alt="email" />
-            <input  type="email" placeholder="example@gmail.com" 
+            <input  type="email" placeholder="exemplo@gmail.com" 
               pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
               title="Por favor, insira um email válido."
               required 
@@ -34,9 +34,6 @@ export default function LoginCard() {
             >
               {showPassword ?  <img className="eye_fill" src="/eye_fill.svg" alt="olho aberto" /> :  <img className="eye_not_fill" src="/eye_not_fill.svg" alt="olho fechado" />}
             </button>
-          </div>
-          <div className="forgot-password">
-            <a href="#">Esqueceu a senha?</a>
           </div>
         </div>
         <Link to="/profile"><button className="login-button">Login</button></Link>

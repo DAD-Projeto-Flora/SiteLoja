@@ -6,7 +6,6 @@ const Login = () => {
     return (
         <div>
         <HeaderWithoutInfo />
-        <h1>Login</h1>
         <LoginCard />
         </div>
     );

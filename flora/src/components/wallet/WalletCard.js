@@ -67,7 +67,6 @@ const WalletCard = ({ name, email, image, numbercard, namecard, cvv, mmaa}) => {
             </div>
           </div>
           </div>
-          
         </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ const HistoryCard = ({ purchases }) => {
                     <div className='infos-products-history'>
                       <img
                       className="photo-product-history"
-                      src="https://lh4.googleusercontent.com/proxy/0BtQ5NRRYYEQd11b2fctHmozsUr8roaIouDSnJG3MVDH9JXpX87Tv-IQVqnd65N-cAv_OhE7kqCpidp9dr-ITZFVEbXHHETs90-fWWitbEYbISur"
+                      src={item.image}
                       alt="Foto do produto"
                       />
                       <div className='text-info-products'>
