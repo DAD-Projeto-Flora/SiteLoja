@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./CardProfile.css";
 
-const ProfileCard = () => {
-  const user = JSON.parse(localStorage.getItem("user")); // Pega os dados da API salvos no login
+const user = JSON.parse(localStorage.getItem("user"));
 
+const ProfileCard = () => {
   const [modalType, setModalType] = useState(null);
+
   const openModalEndereco = () => setModalType("endereco");
   const openModalEmail = () => setModalType("email");
   const closeModal = () => setModalType(null);
@@ -51,7 +52,7 @@ const ProfileCard = () => {
                 </div>
               </div>
               <label>Complemento <span>*</span></label>
-              <input type="text" placeholder="Descrição do Prédio / Bloco / Referências próximas" className="input-card-profile-modal " />
+              <input type="text" placeholder="Descrição do Prédio / Bloco / Referências próximas" className="input-card-profile-modal" />
             </div>
             <div className="modal-buttons">
               <button className="cancel-button" onClick={closeModal}>Cancelar</button>
@@ -78,11 +79,11 @@ const ProfileCard = () => {
             <div>
               <div>
                 <label className="text">Nome completo</label>
-                <input type="text" placeholder={user.nomeCompleto} className="input-card-profile" />
+                <input type="text" placeholder={user.nomeCompleto || "Nome completo"} className="input-card-profile" />
               </div>
               <div>
                 <label className="text">Nome de usuário</label>
-                <input type="text" placeholder={user.nomeUsuario} className="input-card-profile" />
+                <input type="text" placeholder={user.nomeUsuario || "Nome de usuário"} className="input-card-profile" />
               </div>
             </div>
           </div>
@@ -108,10 +109,15 @@ const ProfileCard = () => {
                 <label className="text">Número de telefone</label>
                 <div className="phone-input">
                   <div id="input-card-profile-ddd">
-                    <img className="icon-brasil" src="/brasil.svg" alt="Endereço"/>
+                    <img className="icon-brasil" src="/brasil.svg" alt="Endereço" />
                     <span className="text">+55</span>
                   </div>
-                  <input type="text" placeholder={user.telefone} className="input-card-profile" id="tel-input" />
+                  <input
+                    type="text"
+                    placeholder={user.telefone || "11999999999"}
+                    className="input-card-profile"
+                    id="tel-input"
+                  />
                 </div>
               </div>
             </div>
@@ -122,7 +128,9 @@ const ProfileCard = () => {
               <div className="card-info text">
                 <label>E-mail cadastrado</label>
                 <div className="contact-box">
-                  <span><img className="icon" src="/IconEmail.svg" alt="Icon Email" /></span>
+                  <span>
+                    <img className="icon" src="/IconEmail.svg" alt="Icon Email" />
+                  </span>
                   <p className="text">{user.email}</p>
                 </div>
                 <button className="add-button" onClick={openModalEmail}>+ Atualizar e-mail</button>
@@ -131,8 +139,10 @@ const ProfileCard = () => {
               <div className="card-info">
                 <label className="text">Endereço cadastrado</label>
                 <div className="contact-box">
-                  <span><img className="icon" src="/Loc.svg" alt="Endereço" /></span>
-                  <p className="text">Não cadastrado</p>
+                  <span>
+                    <img className="icon" src="/Loc.svg" alt="Endereço" />
+                  </span>
+                  <p className="text">Endereço não informado</p>
                 </div>
                 <button className="add-button" onClick={openModalEndereco}>+ Atualizar endereço</button>
               </div>
