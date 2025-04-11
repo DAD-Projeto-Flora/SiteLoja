@@ -17,9 +17,11 @@ export default function LoginCard() {
 
       if (resultado.tipo === "admin") {
         setTipoUsuario("admin");
+        localStorage.setItem("user", JSON.stringify(resultado));
         navigate("/profile");
       } else if (resultado.tipo === "cliente") {
         setTipoUsuario("cliente");
+        localStorage.setItem("user", JSON.stringify(resultado));
         navigate("/profile");
       } else {
         alert("Usuário não encontrado.");
