@@ -58,7 +58,7 @@ const ProductManager = ({ products }) => {
           <div key={index} className="product-card-crud">
             <div className="info-product-crud">
               <img
-                className="product-image"
+                className="product-image-admin"
                 src={product.image || "https://via.placeholder.com/150"}
                 alt="Produto"
               />

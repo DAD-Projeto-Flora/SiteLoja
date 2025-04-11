@@ -53,7 +53,7 @@ const WalletCard = ({ name, email, image, numbercard, namecard, cvv, mmaa}) => {
             <div className="info-card">
             <div>
               <div className="card-info">
-                <label className="text">Cartão cadastrados</label>
+                <label className="text">Cartão cadastrado</label>
                 <div className="card-box">
                   <span>
                     <img className="icon"
