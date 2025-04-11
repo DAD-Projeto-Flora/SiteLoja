@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { UserProvider } from "./components/login/UserContext"; // ajuste o caminho se necessário
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

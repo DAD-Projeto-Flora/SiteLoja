@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./LoginCard.css";
 import { useNavigate } from "react-router-dom";
-import { verificarUsuario } from "../api/authAPI";
+import { verificarUsuario } from "../../autenticação/authAPI";
+import { useUser } from "./UserContext"; // Caminho ajustado
 
 export default function LoginCard() {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,10 +10,11 @@ export default function LoginCard() {
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
 
+  const { setTipoUsuario } = useUser(); // Aqui está o segredo!
+
   const handleLogin = async () => {
     try {
       const resultado = await verificarUsuario(email, senha);
-    
 
       if (resultado.tipo === "admin") {
         setTipoUsuario("admin");
@@ -20,6 +22,8 @@ export default function LoginCard() {
       } else if (resultado.tipo === "cliente") {
         setTipoUsuario("cliente");
         navigate("/profile");
+      } else {
+        alert("Usuário não encontrado.");
       }
     } catch (error) {
       alert("Erro ao conectar com o servidor.");
@@ -82,6 +86,5 @@ export default function LoginCard() {
         </p>
       </div>
     </div>
-
   );
 }
