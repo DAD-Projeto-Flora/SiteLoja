@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import "./CardProfile.css";
 
-const user = JSON.parse(localStorage.getItem("user"));
-
 const ProfileCard = () => {
-  const { image, name, username, email, tel, gender, endereco } = user || {};
+  const user = JSON.parse(localStorage.getItem("user")); // Pega os dados da API salvos no login
 
   const [modalType, setModalType] = useState(null);
-
   const openModalEndereco = () => setModalType("endereco");
   const openModalEmail = () => setModalType("email");
   const closeModal = () => setModalType(null);
@@ -21,19 +18,11 @@ const ProfileCard = () => {
           <div className="modal">
             <h2>Atualizar E-mail</h2>
             <div className="modal-form">
-              <label>
-                Novo e-mail <span>*</span>
-              </label>
-              <input
-                type="text"
-                placeholder="novo.email@gmai.com"
-                className="input-card-profile-modal"
-              />
+              <label>Novo e-mail <span>*</span></label>
+              <input type="text" placeholder="novo.email@gmail.com" className="input-card-profile-modal" />
             </div>
             <div className="modal-buttons">
-              <button className="cancel-button" onClick={closeModal}>
-                Cancelar
-              </button>
+              <button className="cancel-button" onClick={closeModal}>Cancelar</button>
               <button className="save-button">Salvar</button>
             </div>
           </div>
@@ -44,68 +33,28 @@ const ProfileCard = () => {
         <div className="modal-overlay">
           <div className="modal">
             <h2>Atualizar Endereço</h2>
-
             <div className="modal-form">
-              <label>
-                CEP <span>*</span>
-              </label>
-              <input
-                type="text"
-                placeholder="00028-922"
-                className="input-card-profile-modal"
-              />
-              <label>
-                Estado - Cidade <span>*</span>
-              </label>
-              <input
-                type="text"
-                placeholder="São Paulo - Osasco"
-                className="input-card-profile-modal"
-              />
-              <label>
-                Bairro <span>*</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Km 18"
-                className="input-card-profile-modal"
-              />
+              <label>CEP <span>*</span></label>
+              <input type="text" placeholder="00028-922" className="input-card-profile-modal" />
+              <label>Estado - Cidade <span>*</span></label>
+              <input type="text" placeholder="São Paulo - Osasco" className="input-card-profile-modal" />
+              <label>Bairro <span>*</span></label>
+              <input type="text" placeholder="Km 18" className="input-card-profile-modal" />
               <div className="street-number">
                 <div className="rua">
-                  <label className="text title-numrua">
-                    Rua <span>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Rua dos bobos"
-                    className="input-card-profile-modal"
-                  />
+                  <label className="text title-numrua">Rua <span>*</span></label>
+                  <input type="text" placeholder="Rua dos bobos" className="input-card-profile-modal" />
                 </div>
                 <div className="num">
-                  <label className="text title-numrua">
-                    Número <span>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Número"
-                    className="input-card-profile-modal"
-                  />
+                  <label className="text title-numrua">Número <span>*</span></label>
+                  <input type="text" placeholder="Número" className="input-card-profile-modal" />
                 </div>
               </div>
-              <label>
-                Complemento <span>*</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Descrição do Prédio / Bloco / Referências próximas"
-                className="input-card-profile-modal"
-              />
+              <label>Complemento <span>*</span></label>
+              <input type="text" placeholder="Descrição do Prédio / Bloco / Referências próximas" className="input-card-profile-modal " />
             </div>
-
             <div className="modal-buttons">
-              <button className="cancel-button" onClick={closeModal}>
-                Cancelar
-              </button>
+              <button className="cancel-button" onClick={closeModal}>Cancelar</button>
               <button className="save-button">Salvar</button>
             </div>
           </div>
@@ -115,10 +64,10 @@ const ProfileCard = () => {
       <div className="profile-card">
         <div className="header-profile">
           <div className="user-info">
-            <img className="avatar" src={image} alt="Foto de Perfil" />
+            <img className="avatar" src={user.fotoPerfil} alt="Foto de Perfil" />
             <div>
-              <h2 className="text">{name}</h2>
-              <p className="text">{email}</p>
+              <h2 className="text">{user.nomeCompleto}</h2>
+              <p className="text">{user.email}</p>
             </div>
           </div>
           <button className="save-button">Salvar</button>
@@ -129,19 +78,11 @@ const ProfileCard = () => {
             <div>
               <div>
                 <label className="text">Nome completo</label>
-                <input
-                  type="text"
-                  placeholder={name}
-                  className="input-card-profile"
-                />
+                <input type="text" placeholder={user.nomeCompleto} className="input-card-profile" />
               </div>
               <div>
                 <label className="text">Nome de usuário</label>
-                <input
-                  type="text"
-                  placeholder={username}
-                  className="input-card-profile"
-                />
+                <input type="text" placeholder={user.nomeUsuario} className="input-card-profile" />
               </div>
             </div>
           </div>
@@ -152,31 +93,13 @@ const ProfileCard = () => {
                 <label className="text">Gênero</label>
                 <div className="gender-options">
                   <label className="text">
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="Feminino"
-                      defaultChecked={gender === "Feminino"}
-                    />{" "}
-                    Feminino
+                    <input type="radio" name="gender" value="Feminino" defaultChecked /> Feminino
                   </label>
                   <label className="text">
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="Masculino"
-                      defaultChecked={gender === "Masculino"}
-                    />{" "}
-                    Masculino
+                    <input type="radio" name="gender" value="Masculino" /> Masculino
                   </label>
                   <label className="text">
-                    <input
-                      type="radio"
-                      name="gender"
-                      value="Outros"
-                      defaultChecked={gender === "Outros"}
-                    />{" "}
-                    Outros
+                    <input type="radio" name="gender" value="Outros" /> Outros
                   </label>
                 </div>
               </div>
@@ -185,19 +108,10 @@ const ProfileCard = () => {
                 <label className="text">Número de telefone</label>
                 <div className="phone-input">
                   <div id="input-card-profile-ddd">
-                    <img
-                      className="icon-brasil"
-                      src="/brasil.svg"
-                      alt="Endereço"
-                    />
+                    <img className="icon-brasil" src="/brasil.svg" alt="Endereço"/>
                     <span className="text">+55</span>
                   </div>
-                  <input
-                    type="text"
-                    placeholder={tel}
-                    className="input-card-profile"
-                    id="tel-input"
-                  />
+                  <input type="text" placeholder={user.telefone} className="input-card-profile" id="tel-input" />
                 </div>
               </div>
             </div>
@@ -208,27 +122,19 @@ const ProfileCard = () => {
               <div className="card-info text">
                 <label>E-mail cadastrado</label>
                 <div className="contact-box">
-                  <span>
-                    <img className="icon" src="/IconEmail.svg" alt="Icon Email" />
-                  </span>
-                  <p className="text">{email}</p>
+                  <span><img className="icon" src="/IconEmail.svg" alt="Icon Email" /></span>
+                  <p className="text">{user.email}</p>
                 </div>
-                <button className="add-button" onClick={openModalEmail}>
-                  + Atualizar e-mail
-                </button>
+                <button className="add-button" onClick={openModalEmail}>+ Atualizar e-mail</button>
               </div>
 
               <div className="card-info">
                 <label className="text">Endereço cadastrado</label>
                 <div className="contact-box">
-                  <span>
-                    <img className="icon" src="/Loc.svg" alt="Endereço" />
-                  </span>
-                  <p className="text">{endereco}</p>
+                  <span><img className="icon" src="/Loc.svg" alt="Endereço" /></span>
+                  <p className="text">Não cadastrado</p>
                 </div>
-                <button className="add-button" onClick={openModalEndereco}>
-                  + Atualizar endereço
-                </button>
+                <button className="add-button" onClick={openModalEndereco}>+ Atualizar endereço</button>
               </div>
             </div>
           </div>
