@@ -1,16 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./LoginCard.css";
 import { useNavigate } from "react-router-dom";
 import { verificarUsuario } from "../../autenticação/authAPI";
-import { useUser } from "./UserContext"; // Caminho ajustado
+import { useUser } from "../login/UserContext"; // ajuste o caminho conforme estrutura do projeto
 
 export default function LoginCard() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
-
-  const { setTipoUsuario } = useUser(); // Aqui está o segredo!
+  const { tipoUsuario, setTipoUsuario } = useUser();
 
   const handleLogin = async () => {
     try {
@@ -30,12 +29,20 @@ export default function LoginCard() {
     }
   };
 
+  useEffect(() => {
+    if (tipoUsuario) {
+      navigate("/profile");
+    }
+  }, [tipoUsuario]);
+
   return (
     <div className="login-container">
       <img src="/circulos.svg" alt="círculos" className="login-circle" />
       <img src="/logoCompleta.svg" alt="logo" className="login-leaf" />
       <div className="login-card">
-        <h2 className="login-title">Bem-vindo <br /> à Flora!</h2>
+        <h2 className="login-title">
+          Bem-vindo <br /> à Flora!
+        </h2>
 
         <div className="input-group-login">
           <label>Email</label>
@@ -46,7 +53,7 @@ export default function LoginCard() {
               placeholder="example@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+              pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
               title="Por favor, insira um email válido."
               required
             />
@@ -69,9 +76,19 @@ export default function LoginCard() {
               className="toggle-password"
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword
-                ? <img className="eye_fill" src="/eye_fill.svg" alt="olho aberto" />
-                : <img className="eye_not_fill" src="/eye_not_fill.svg" alt="olho fechado" />}
+              {showPassword ? (
+                <img
+                  className="eye_fill"
+                  src="/eye_fill.svg"
+                  alt="olho aberto"
+                />
+              ) : (
+                <img
+                  className="eye_not_fill"
+                  src="/eye_not_fill.svg"
+                  alt="olho fechado"
+                />
+              )}
             </button>
           </div>
           <div className="forgot-password">
@@ -79,10 +96,15 @@ export default function LoginCard() {
           </div>
         </div>
 
-        <button className="login-button" onClick={handleLogin}>Login</button>
+        <button className="login-button" onClick={handleLogin}>
+          Login
+        </button>
 
         <p className="register-text">
-          Não tem uma conta ainda? <a href="/register" className="register-link">Registre-se</a>
+          Não tem uma conta ainda?{" "}
+          <a href="/register" className="register-link">
+            Registre-se
+          </a>
         </p>
       </div>
     </div>
