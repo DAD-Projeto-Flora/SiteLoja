@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";  // Usando NavLink
-
-
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useUser } from "../login/UserContext"; // importa o contexto
 import "./SideBar.css";
 
 const Sidebar = () => {
-  const [isAdmin, setIsAdmin] = useState(true);
+  const { tipoUsuario } = useUser(); // pega o tipo do contexto
 
+  const isAdmin = tipoUsuario === "admin";
 
   return (
     <div className="sidebar">
@@ -30,7 +30,7 @@ const Sidebar = () => {
           <img src="/history.svg" alt="History Icon" />
         </button>
       </NavLink>
-      {isAdmin &&(
+      {isAdmin && (
         <NavLink to="/admin" activeClassName="active">
           <button>
             <img src="/ferramentaadm.svg" alt="Admin Icon" />
