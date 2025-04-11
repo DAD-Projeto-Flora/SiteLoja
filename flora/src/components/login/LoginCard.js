@@ -36,17 +36,12 @@ export default function LoginCard() {
         <div className="input-group-login">
           <label>Email</label>
           <div className="input-wrapper-login">
-<<<<<<< HEAD
-          <img src="/email.svg" alt="email" />
-            <input  type="email" placeholder="exemplo@gmail.com" 
-=======
             <img src="/email.svg" alt="email" />
             <input
               type="email"
-              placeholder="example@gmail.com"
+              placeholder="exemplo@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
->>>>>>> 3e99504b19ecf6419f1cc1aff3c9146d036c69bf
               pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
               title="Por favor, insira um email válido."
               required
