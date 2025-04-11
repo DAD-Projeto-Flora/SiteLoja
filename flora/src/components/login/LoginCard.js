@@ -52,7 +52,7 @@ export default function LoginCard() {
             <img src="/email.svg" alt="email" />
             <input
               type="email"
-              placeholder="example@gmail.com"
+              placeholder="exemplo@gmail.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               pattern="^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
