@@ -1,49 +1,87 @@
 import { useState } from "react";
 import "./LoginCard.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { verificarUsuario } from "../api/authAPI";
 
 export default function LoginCard() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [senha, setSenha] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
+    try {
+      const resultado = await verificarUsuario(email, senha);
+    
+
+      if (resultado.tipo === "admin") {
+        setTipoUsuario("admin");
+        navigate("/profile");
+      } else if (resultado.tipo === "cliente") {
+        setTipoUsuario("cliente");
+        navigate("/profile");
+      }
+    } catch (error) {
+      alert("Erro ao conectar com o servidor.");
+    }
+  };
 
   return (
     <div className="login-container">
-        <img src="/circulos.svg" alt="círculos" className="login-circle" />
-        <img src="/logoCompleta.svg" alt="logo" className="login-leaf" />
+      <img src="/circulos.svg" alt="círculos" className="login-circle" />
+      <img src="/logoCompleta.svg" alt="logo" className="login-leaf" />
       <div className="login-card">
-        <h2 className="login-title">Bem-vindo <br/> à Flora!</h2>
+        <h2 className="login-title">Bem-vindo <br /> à Flora!</h2>
+
         <div className="input-group-login">
           <label>Email</label>
           <div className="input-wrapper-login">
-          <img src="/email.svg" alt="email" />
-            <input  type="email" placeholder="example@gmail.com" 
+            <img src="/email.svg" alt="email" />
+            <input
+              type="email"
+              placeholder="example@gmail.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
               title="Por favor, insira um email válido."
-              required 
-              />
+              required
+            />
           </div>
         </div>
+
         <div className="input-group-login">
           <label>Senha</label>
           <div className="input-wrapper-login">
-          <img src="/password.svg" alt="key" />
-            <input required type={showPassword ? "text" : "password"} placeholder="Insira sua senha"/>
+            <img src="/password.svg" alt="key" />
+            <input
+              required
+              type={showPassword ? "text" : "password"}
+              placeholder="Insira sua senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+            />
             <button
               type="button"
               className="toggle-password"
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ?  <img className="eye_fill" src="/eye_fill.svg" alt="olho aberto" /> :  <img className="eye_not_fill" src="/eye_not_fill.svg" alt="olho fechado" />}
+              {showPassword
+                ? <img className="eye_fill" src="/eye_fill.svg" alt="olho aberto" />
+                : <img className="eye_not_fill" src="/eye_not_fill.svg" alt="olho fechado" />}
             </button>
           </div>
           <div className="forgot-password">
             <a href="#">Esqueceu a senha?</a>
           </div>
         </div>
-        <Link to="/profile"><button className="login-button">Login</button></Link>
+
+        <button className="login-button" onClick={handleLogin}>Login</button>
+
         <p className="register-text">
           Não tem uma conta ainda? <a href="/register" className="register-link">Registre-se</a>
         </p>
       </div>
     </div>
+
   );
 }

@@ -79,3 +79,7 @@
   overflow: hidden;
 }
 
+.link-sem-estilo {
+  text-decoration: none;
+  color: inherit;
+}
