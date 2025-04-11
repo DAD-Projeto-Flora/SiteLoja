@@ -1,0 +1,104 @@
+.product-manager-container {
+  padding: 3vh;
+  max-height: 60vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.crud-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2vh;
+}
+
+.crud-header h2 {
+  color: #3481a4;
+}
+
+.add-button-admin {
+  background-color: #53a58d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-button-admin:hover {
+  background-color: #3481a4;
+}
+
+.products-scroll {
+  overflow-y: auto;
+  max-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-right: 10px;
+}
+
+.product-card-crud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eaeaea;
+}
+
+.info-product-crud {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.product-image {
+  width: 14vh;
+  height: 14vh;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.bold {
+  font-weight: bold;
+  color: #333;
+}
+
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit-button {
+  background-color: #3582a4;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #2d6e8a;
+}
+
+.delete-button {
+  background-color: #e57373;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #d45151;
+}
