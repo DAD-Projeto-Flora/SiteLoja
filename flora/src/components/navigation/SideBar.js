@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";  // Usando NavLink
 
 import "./SideBar.css";
 
 const Sidebar = () => {
+  const [isAdmin, setIsAdmin] = useState(true);
+
+
   return (
     <div className="sidebar">
       <NavLink to="/profile" activeClassName="active">
@@ -26,6 +29,13 @@ const Sidebar = () => {
           <img src="/history.svg" alt="History Icon" />
         </button>
       </NavLink>
+      {isAdmin &&(
+        <NavLink to="/admin" activeClassName="active">
+          <button>
+            <img src="/ferramentaadm.svg" alt="Admin Icon" />
+          </button>
+        </NavLink>
+      )}
     </div>
   );
 };

@@ -11,8 +11,7 @@ import History from "./pages/history/History";
 import PaymentPage from "./pages/payment/PaymentPage";
 import Catalog from "./pages/catalog/Catalog";
 import Product from "./pages/product/Product";
-
-
+import Admin from "./pages/admin/Admin";
 
 const App = () => {
   return (
@@ -29,6 +28,7 @@ const App = () => {
         <Route path="/payment" element={ < PaymentPage />} />
         <Route path="/catalog" element={ < Catalog />} />
         <Route path="/productpage" element={<Product />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>
   );

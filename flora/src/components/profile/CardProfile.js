@@ -3,7 +3,7 @@ import "./CardProfile.css"; // Importa o arquivo de estilos
 
 const ProfileCard = ({ image, name, user, email, tel, gender, endereco }) => {
 
-  const [modalType, setModalType] = useState(null); // controle do tipo de modal
+  const [modalType, setModalType] = useState(null);
 
   const openModalEndereco = () => setModalType("endereco");
   const openModalEmail = () => setModalType("email");
