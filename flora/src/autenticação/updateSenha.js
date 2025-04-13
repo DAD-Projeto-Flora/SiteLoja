@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const updateSenha = async (id, novaSenha) => {
-  const url = `https://apilojaflora.onrender.com/product/getProduct/client/partialUpdateClient/${id}`; // Ajuste a URL base conforme necessário
+  const url = `https://apilojaflora.onrender.com/product/getProduct/client/partialUpdateClient/${id}`;
   const updates = { senha: novaSenha };
 
   try {

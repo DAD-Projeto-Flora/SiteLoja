@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "../catalog/ProductCard"; // Atualiza a importação para ProductCard
+import ProductCard from "../catalog/ProductCard";
 import "./Popular.css";
 
 const Popular = () => {
@@ -7,15 +7,12 @@ const Popular = () => {
     const [randomProducts, setRandomProducts] = useState([]);
 
     useEffect(() => {
-        // Faz a requisição para a API que retorna os produtos
         fetch("https://apilojaflora.onrender.com/product/getProducts")
             .then(response => response.json())
             .then(data => {
-                // Seleciona os 4 primeiros produtos para "Popular nas lojas"
                 const popularProducts = data.slice(0, 4);
                 setProducts(popularProducts);
 
-                // Embaralha os produtos para "Baseado no seu gosto"
                 const shuffledProducts = data.sort(() => 0.5 - Math.random()).slice(0, 4);
                 setRandomProducts(shuffledProducts);
             })

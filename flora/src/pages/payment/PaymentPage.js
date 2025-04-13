@@ -6,7 +6,7 @@ import { useUser } from "../../components/login/UserContext";
 const PaymentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { cartItems, subtotal, shippingCost, total, clearCart } = location.state || {}; // Adicionado clearCart
+  const { cartItems, subtotal, shippingCost, total, clearCart } = location.state || {}; 
   const { userId } = useUser();
   const [cardNumber, setCardNumber] = useState("");
   const [cardImage, setCardImage] = useState("/default-card.png");
@@ -21,7 +21,7 @@ const PaymentPage = () => {
   });
   const [clientInfo, setClientInfo] = useState(null);
   const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // Estado para controlar a tela de carregamento
+  const [isLoading, setIsLoading] = useState(false); 
 
   useEffect(() => {
     const fetchClientInfo = async () => {
@@ -83,7 +83,7 @@ const PaymentPage = () => {
   };
 
   const handleSubmit = async () => {
-    setIsLoading(true); // Exibe a tela de carregamento
+    setIsLoading(true); 
     const updatedUserInfo = {
       ...userInfo,
       city: cities.find(city => city.nome === userInfo.city)?.nome || userInfo.city,
@@ -125,18 +125,18 @@ const PaymentPage = () => {
 
       if (response.ok) {
         setIsOrderConfirmed(true);
-        clearCart(); // Limpa o carrinho
+        clearCart(); 
         setTimeout(() => {
-          setIsLoading(false); // Remove a tela de carregamento
-          navigate("/"); // Redireciona para a home
+          setIsLoading(false); 
+          navigate("/");
         }, 5000);
       } else {
         console.error("Erro ao salvar o pedido:", response.statusText);
-        setIsLoading(false); // Remove a tela de carregamento em caso de erro
+        setIsLoading(false);
       }
     } catch (error) {
       console.error("Erro ao salvar o pedido:", error);
-      setIsLoading(false); // Remove a tela de carregamento em caso de erro
+      setIsLoading(false);
     }
   };
 
@@ -144,7 +144,7 @@ const PaymentPage = () => {
 
   return (
     <div className="containerAll">
-      {isLoading ? ( // Exibe a tela de carregamento se isLoading for true
+      {isLoading ? ( 
         <div className="loading-screen">
           <img src="/truck-animation.gif" alt="Carregando..." className="loading-truck" />
           <p>Confirmando pedido...</p>

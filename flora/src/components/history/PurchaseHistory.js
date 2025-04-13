@@ -40,4 +40,4 @@ const PurchaseHistory = ({ name, email, image }) => {
   );
 };
 
-export default PurchaseHistory; // Exporta o componente
+export default PurchaseHistory;

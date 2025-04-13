@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios"; // Adicionado axios para chamadas HTTP
+import axios from "axios"; 
 import "./CardProfile.css";
 import { getClientById } from "../../autenticação/getClientById";
 import LoadingSpinner from "../catalog/LoadingSpinner";
-import { useUser } from "../login/UserContext"; // ajuste o caminho conforme estrutura do projeto
+import { useUser } from "../login/UserContext"; 
 
 const ProfileCard = () => {
   const [client, setClient] = useState(null);
@@ -11,7 +11,7 @@ const ProfileCard = () => {
   const [loading, setLoading] = useState(true);
   const { userId } = useUser();
 
-  const API_BASE_URL = "https://apilojaflora.onrender.com/client"; // URL base da API
+  const API_BASE_URL = "https://apilojaflora.onrender.com/client"; 
 
   useEffect(() => {
     const fetchClient = async () => {
@@ -29,19 +29,18 @@ const ProfileCard = () => {
     if (userId) fetchClient();
   }, [userId]);
 
-  // Função para atualizar cliente
   const updateClient = async (updatedClient) => {
     try {
       await axios.put(`${API_BASE_URL}/updateClient/${userId}`, updatedClient);
       alert("Dados atualizados com sucesso!");
-      setClient(updatedClient); // Atualiza o estado local com os novos dados
+      setClient(updatedClient); 
     } catch (error) {
       console.error("Erro ao atualizar cliente:", error);
       alert("Erro ao atualizar os dados.");
     }
   };
 
-  // Função para salvar alterações dos inputs fora dos modais
+
   const handleSave = () => {
     const updatedClient = {
       ...client,
@@ -53,19 +52,18 @@ const ProfileCard = () => {
     updateClient(updatedClient);
   };
 
-  // Função para salvar o novo e-mail
   const handleSaveEmail = () => {
     const newEmail = document.querySelector('input[placeholder="novo.email@gmail.com"]').value;
     if (newEmail) {
       const updatedClient = { ...client, email: newEmail };
       updateClient(updatedClient);
-      setModalType(null); // Fecha o modal
+      setModalType(null); 
     } else {
       alert("Por favor, insira um e-mail válido.");
     }
   };
 
-  // Função para salvar o novo endereço
+
   const handleSaveEndereco = () => {
     const newEndereco = {
       cep: document.querySelector('input[placeholder="00028-922"]').value,
@@ -79,7 +77,7 @@ const ProfileCard = () => {
     if (newEndereco.cep && newEndereco.rua && newEndereco.numero) {
       const updatedClient = { ...client, endereco: newEndereco };
       updateClient(updatedClient);
-      setModalType(null); // Fecha o modal
+      setModalType(null);
     } else {
       alert("Por favor, preencha todos os campos obrigatórios do endereço.");
     }

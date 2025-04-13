@@ -3,8 +3,6 @@ import "./CartSidebar.css";
 import { Link } from "react-router-dom";
 import { useUser } from "../login/UserContext";
 
-
-
 const CartSidebar = ({ isOpen, onClose, cartItems }) => {
   const { removeFromCart } = useUser();
   return (
@@ -18,16 +16,17 @@ const CartSidebar = ({ isOpen, onClose, cartItems }) => {
 
       <div className="cart-items">
         {cartItems.length > 0 ? (
-          cartItems.map((item, index) => (
-            <div className="cart-item" key={index}>
+          cartItems.map((item) => (
+            <div className="cart-item" key={item.id}>
               <div className="cart-item-image">
                 <img src={item.image} alt={item.title} className="cart-item-img" />
               </div>
               <div className="cart-item-details">
                 <h4>{item.title}</h4>
                 <span className="cart-price">R$ {item.price}</span>
+                <span className="cart-id">ID: {item.id}</span> 
               </div>
-              <button className="remove-btn" onClick={() => removeFromCart(index)}>✖</button>
+              <button className="remove-btn" onClick={() => removeFromCart(item.id)}>✖</button> 
             </div>
           ))
         ) : (
@@ -38,11 +37,11 @@ const CartSidebar = ({ isOpen, onClose, cartItems }) => {
       <div className="cart-footer">
         <p className="subtotal">Subtotal: <strong>R$ {cartItems.reduce((acc, item) => acc + parseFloat(item.price), 0).toFixed(2)}</strong></p>
         <Link
-  to="/checkoutPage"
-  state={{ cartItems }}
->
-  <button className="checkout-btn">Finalizar compra</button>
-</Link>
+          to="/checkoutPage"
+          state={{ cartItems }}
+        >
+          <button className="checkout-btn">Finalizar compra</button>
+        </Link>
 
         <button className="continue-btn" onClick={onClose}>Continuar compra</button>
       </div>

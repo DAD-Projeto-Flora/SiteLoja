@@ -1,4 +1,4 @@
-import "./WalletCard.css"; // Importa o arquivo de estilos
+import "./WalletCard.css"; 
 import React, { useEffect, useState } from "react";
 import { useUser } from "../login/UserContext";
 import { getCardByClientId } from "../../autenticação/getCardByClientId";
