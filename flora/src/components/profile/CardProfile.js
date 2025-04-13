@@ -35,21 +35,41 @@ const ProfileCard = () => {
       await axios.put(`${API_BASE_URL}/updateClient/${userId}`, updatedClient);
       alert("Dados atualizados com sucesso!");
       setClient(updatedClient); // Atualiza o estado local com os novos dados
+      setModalType(null); // Fecha o modal após salvar
     } catch (error) {
       console.error("Erro ao atualizar cliente:", error);
       alert("Erro ao atualizar os dados.");
     }
   };
 
-  // Função para salvar alterações do formulário
-  const handleSave = () => {
-    const updatedClient = {
-      ...client,
-      nomeCompleto: document.querySelector('input[placeholder="' + client.nomeCompleto + '"]').value || client.nomeCompleto,
-      nomeUsuario: document.querySelector('input[placeholder="' + client.nomeUsuario + '"]').value || client.nomeUsuario,
-      telefone: document.querySelector('input[placeholder="' + client.telefone + '"]').value || client.telefone,
+  // Função para salvar o novo e-mail
+  const handleSaveEmail = () => {
+    const newEmail = document.querySelector('input[placeholder="novo.email@gmail.com"]').value;
+    if (newEmail) {
+      const updatedClient = { ...client, email: newEmail };
+      updateClient(updatedClient);
+    } else {
+      alert("Por favor, insira um e-mail válido.");
+    }
+  };
+
+  // Função para salvar o novo endereço
+  const handleSaveEndereco = () => {
+    const newEndereco = {
+      cep: document.querySelector('input[placeholder="00028-922"]').value,
+      estadoCidade: document.querySelector('input[placeholder="São Paulo - Osasco"]').value,
+      bairro: document.querySelector('input[placeholder="Km 18"]').value,
+      rua: document.querySelector('input[placeholder="Rua dos bobos"]').value,
+      numero: document.querySelector('input[placeholder="Número"]').value,
+      complemento: document.querySelector('input[placeholder="Descrição do Prédio / Bloco / Referências próximas"]').value,
     };
-    updateClient(updatedClient);
+
+    if (newEndereco.cep && newEndereco.rua && newEndereco.numero) {
+      const updatedClient = { ...client, endereco: newEndereco };
+      updateClient(updatedClient);
+    } else {
+      alert("Por favor, preencha todos os campos obrigatórios do endereço.");
+    }
   };
 
   const openModalEndereco = () => setModalType("endereco");
@@ -72,7 +92,7 @@ const ProfileCard = () => {
             </div>
             <div className="modal-buttons">
               <button className="cancel-button" onClick={closeModal}>Cancelar</button>
-              <button className="save-button">Salvar</button>
+              <button className="save-button" onClick={handleSaveEmail}>Salvar</button>
             </div>
           </div>
         </div>
@@ -104,7 +124,7 @@ const ProfileCard = () => {
             </div>
             <div className="modal-buttons">
               <button className="cancel-button" onClick={closeModal}>Cancelar</button>
-              <button className="save-button">Salvar</button>
+              <button className="save-button" onClick={handleSaveEndereco}>Salvar</button>
             </div>
           </div>
         </div>
@@ -119,7 +139,7 @@ const ProfileCard = () => {
               <p className="text">{client.email}</p>
             </div>
           </div>
-          <button className="save-button" onClick={handleSave}>Salvar</button>
+          <button className="save-button" onClick={() => alert("Use os botões de modal para atualizar informações.")}>Salvar</button>
         </div>
 
         <div className="form-grid">
@@ -188,7 +208,7 @@ const ProfileCard = () => {
                   <span>
                     <img className="icon" src="/Loc.svg" alt="Endereço" />
                   </span>
-                  <p className="text">Endereço não informado</p>
+                  <p className="text">{client.endereco ? `${client.endereco.rua}, ${client.endereco.numero}` : "Endereço não informado"}</p>
                 </div>
                 <button className="add-button" onClick={openModalEndereco}>+ Atualizar endereço</button>
               </div>
