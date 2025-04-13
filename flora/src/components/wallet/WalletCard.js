@@ -18,8 +18,8 @@ const WalletCard = () => {
       }
     };
 
-    if (userId) fetchClient();
-  }, [userId]);
+    if (1) fetchClient();
+  }, [1]);
 
   if (!card) {
     return <p>Carregando cartão...</p>;
