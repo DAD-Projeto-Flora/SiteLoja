@@ -7,15 +7,12 @@ const Popular = () => {
     const [randomProducts, setRandomProducts] = useState([]);
 
     useEffect(() => {
-        // Faz a requisição para a API que retorna os produtos
         fetch("https://apilojaflora.onrender.com/product/getProducts")
             .then(response => response.json())
             .then(data => {
-                // Seleciona os 4 primeiros produtos para "Popular nas lojas"
                 const popularProducts = data.slice(0, 4);
                 setProducts(popularProducts);
 
-                // Embaralha os produtos para "Baseado no seu gosto"
                 const shuffledProducts = data.sort(() => 0.5 - Math.random()).slice(0, 4);
                 setRandomProducts(shuffledProducts);
             })
@@ -42,10 +39,10 @@ const Popular = () => {
             ))}
           </div>
           <div className="adcard">
-            <img src="/marimaria.png" alt="ad" />
-            <img src="/marimaria2.png" alt="ad" />
-            <img src="/ox.png" alt="ad" />
-            <img src="/medina.png" alt="ad" />
+            <img src="/Marimaria.png" alt="ad" />
+            <img src="/Marimariaprodutos.png" alt="ad" />
+            <img src="/Ox.png" alt="ad" />
+            <img src="/Medina.png" alt="ad" />
           </div>
           <h2 className="text">Baseado no seu gosto</h2>
           <div className="popular-products">
