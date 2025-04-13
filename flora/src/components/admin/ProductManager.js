@@ -29,19 +29,16 @@ const ProductManager = ({ products }) => {
             <h2>Editar Produto</h2>
             <div className="modal-form">
               <label>Nome <span>*</span></label>
-              <input type="text" placeholder={selectedProduct.name} className="input-card-profile-modal" />
-
-              <label>Marca <span>*</span></label>
-              <input type="text" placeholder={selectedProduct.brand} className="input-card-profile-modal" />
+              <input type="text" placeholder={selectedProduct.nome} className="input-card-profile-modal" />
 
               <label>Quantidade <span>*</span></label>
               <input type="number" placeholder={selectedProduct.qnt} className="input-card-profile-modal" />
 
               <label>Preço <span>*</span></label>
-              <input type="number" placeholder={selectedProduct.price.toFixed(2)} className="input-card-profile-modal" />
+              <input type="number" placeholder={selectedProduct.precoUnid} className="input-card-profile-modal" />
 
               <label>URL da Imagem <span>*</span></label>
-              <input type="text" placeholder={selectedProduct.image || "https://via.placeholder.com/150"} className="input-card-profile-modal" />
+              <input type="text" placeholder={selectedProduct.urlImagem || "https://via.placeholder.com/150"} className="input-card-profile-modal" />
             </div>
 
             <div className="modal-buttons">
@@ -59,15 +56,16 @@ const ProductManager = ({ products }) => {
             <div className="info-product-crud">
               <img
                 className="product-image-admin"
-                src={product.image || "https://via.placeholder.com/150"}
+                src={product.urlImagem || "https://via.placeholder.com/150"}
                 alt="Produto"
               />
               <div>
                 <p><span className="bold">ID:</span> {product.id}</p>
-                <p><span className="bold">Nome:</span> {product.name}</p>
-                <p><span className="bold">Marca:</span> {product.brand}</p>
+                <p><span className="bold">Nome:</span> {product.nome}</p>
+                <p><span className="bold">Categoria:</span> {product.categoria.nome}</p>
+                <p><span className="bold">Nota Avaliação:</span> {product.notaAvaliacao}</p>
                 <p><span className="bold">Quantidade:</span> {product.qnt}</p>
-                <p><span className="bold">Preço:</span> R${product.price.toFixed(2)}</p>
+                <p><span className="bold">Preço:</span> R${product.precoUnid.toFixed(2)}</p>
               </div>
             </div>
             <div className="product-actions">
