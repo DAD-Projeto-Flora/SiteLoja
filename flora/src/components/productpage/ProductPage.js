@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // Importa o useParams
 import "./ProductPage.css";
 
+
 const ProductPage = () => {
   const { id } = useParams(); // Obtém o ID do produto da URL
   const [produto, setProduto] = useState(null);
@@ -9,25 +10,21 @@ const ProductPage = () => {
   const [error, setError] = useState(null); // Adiciona estado para erros
 
   useEffect(() => {
-    // Busca o produto pelo ID
-    const fetchProduct = async () => {
+    const fetchProduct = async (id) => {
       try {
-        setLoading(true);
-        const response = await fetch(`https://apilojaflora.onrender.com/product/getProduct/${id}`);
-        if (!response.ok) {
-          throw new Error("Erro ao buscar o produto: " + response.statusText);
-        }
-        const data = await response.json(); // Converte a resposta para JSON
-        setProduto(data);
+        const data = await fetch("/api/getProductsById"+id); // Usa o ID correto
+        console.log(data);
+        setProduto(data); // Corrige para setProduto
+        setLoading(false); // Define carregamento como concluído
       } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false); // Finaliza o carregamento
+        console.error("Erro ao carregar produto:", error);
+        setError("Não foi possível carregar o produto."); // Define mensagem de erro
+        setLoading(false); // Define carregamento como concluído
       }
     };
 
-    fetchProduct();
-  }, [id]);
+    if (id) fetchProduct(id); // Chama a função com o ID correto
+  }, [id]); // Adiciona o ID como dependência
 
   if (loading) {
     return <p>Carregando...</p>; // Exibe mensagem enquanto carrega
