@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getOrderByClientId } from '../../autenticação/getOrderByClientId';
 import './HistoryCard.css';
+import { useUser } from "../login/UserContext";
+
 
 const HistoryCard = () => {
     const [purchases, setPurchases] = useState([]);
