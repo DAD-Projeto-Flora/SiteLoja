@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./PaymentPage.css";
-import generatePDF from "../../utils/generatePDF"; 
 import { useLocation, useNavigate } from "react-router-dom";
+import { useUser } from "../../components/login/UserContext";
 
 const PaymentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { cartItems, subtotal, shippingCost, total } = location.state || {};
+  const { userId } = useUser(); // Obtém o userId do UserContext
   const [cardNumber, setCardNumber] = useState("");
   const [cardImage, setCardImage] = useState("/default-card.png");
   const [states, setStates] = useState([]);
@@ -18,7 +19,34 @@ const PaymentPage = () => {
     state: "",
     zip: "",
   });
+  const [clientInfo, setClientInfo] = useState(null); // Estado para armazenar os dados do cliente
   const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
+
+  // Busca os dados do cliente ao carregar a página
+  useEffect(() => {
+    const fetchClientInfo = async () => {
+      if (!userId) return; // Verifica se o userId está disponível
+      try {
+        const response = await fetch(`https://apilojaflora.onrender.com/order/getOrderByClientId/${userId}`);
+        if (response.ok) {
+          const data = await response.json();
+          setClientInfo(data.cliente); // Armazena os dados do cliente
+          setUserInfo({
+            address: data.cliente.address || "",
+            city: data.cliente.city || "",
+            state: data.cliente.state || "",
+            zip: data.cliente.zip || "",
+          });
+        } else {
+          console.error("Erro ao buscar informações do cliente:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar informações do cliente:", error);
+      }
+    };
+
+    fetchClientInfo();
+  }, [userId]);
 
   useEffect(() => {
     fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
@@ -62,14 +90,27 @@ const PaymentPage = () => {
     };
 
     const updatedOrderSummary = cartItems.map(item => ({
-      name: item.title || item.nome,
-      price: parseFloat(item.price || item.precoUnid || 0),
+      produto: {
+        id: item.id,
+        nome: item.title || item.nome,
+        precoUnid: parseFloat(item.price || item.precoUnid || 0),
+        categoria: item.categoria || null,
+        urlImagem: item.urlImagem || null,
+      },
+      qntProduto: item.quantity || 1, // Quantidade do produto
     }));
 
     const orderData = {
-      userInfo: updatedUserInfo,
-      items: updatedOrderSummary,
-      total,
+      cliente: {
+        id: clientInfo?.id || userId, // Usa os dados do cliente obtidos da API ou do contexto
+        nomeCompleto: clientInfo?.nomeCompleto || "Cliente",
+        email: clientInfo?.email || "email@example.com",
+      },
+      dataPedido: new Date().toISOString().split("T")[0], // Data do pedido no formato YYYY-MM-DD
+      formaPgto: "Cartão de Crédito", // Forma de pagamento
+      dataPgto: new Date().toISOString().split("T")[0], // Data do pagamento
+      precoTotal: total,
+      itens: updatedOrderSummary,
     };
 
     try {
