@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Importe useNavigate
 import "./Header.css";
 import CartSidebar from "./CartSidebar";
+import { useUser } from "../login/UserContext";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isCartOpen, setIsCartOpen] = useState(false);
   const navigate = useNavigate(); // Hook para redirecionamento
+  const { cartItems } = useUser(); // pega o carrinho real
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -59,7 +61,7 @@ const Header = () => {
       <CartSidebar
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
-        cartItems={[{ image: "/Neutrox.svg", title: "Neutrox Creme", price: "12.40" }]}
+        cartItems={cartItems}
       />
     </>
   );
