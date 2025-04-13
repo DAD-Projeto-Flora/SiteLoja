@@ -109,7 +109,7 @@ const CheckoutPage = () => {
           </div>
           <div className="summary-box">
             <p>Subtotal <span className="total">R$ {subtotal.toFixed(2)}</span></p>
-            <p className="green">Entrega <span className="total">R$ {(simulatedCost ?? 10.8).toFixed(2)}</span></p>
+            <p className="green">Entrega <span className="total">R$ {(shippingCost ?? 10.8).toFixed(2)}</span></p>
             <p>Total <span className="price">R$ {total.toFixed(2)}</span></p>
             <button className="checkout-btn" onClick={handleCheckout}>
               Finalizar compra
