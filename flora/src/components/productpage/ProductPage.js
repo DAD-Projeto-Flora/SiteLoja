@@ -16,6 +16,7 @@ const ProductPage = () => {
 
   const handleAddToCart = () => {
     const item = {
+      id: produto.id,
       image: produto.urlImagem,
       title: produto.nome,
       price: produto.precoUnid.toFixed(2),
