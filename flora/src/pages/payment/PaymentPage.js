@@ -84,37 +84,47 @@ const PaymentPage = () => {
 
   const handleSubmit = async () => {
     setIsLoading(true); 
-    const updatedUserInfo = {
-      ...userInfo,
-      city: cities.find(city => city.nome === userInfo.city)?.nome || userInfo.city,
-      state: states.find(state => state.sigla === selectedState)?.nome || selectedState,
-    };
-
-    const updatedOrderSummary = cartItems.map(item => ({
-      produto: {
-        id: item.id,
-        nome: item.title || item.nome,
-        precoUnid: parseFloat(item.price || item.precoUnid || 0),
-        categoria: item.categoria || null,
-        urlImagem: item.urlImagem || null,
-      },
-      qntProduto: item.quantity || 1,
-    }));
-
-    const orderData = {
-      cliente: {
-        id: clientInfo?.id || userId,
-        nomeCompleto: clientInfo?.nomeCompleto || "Cliente",
-        email: clientInfo?.email || "email@example.com",
-      },
-      dataPedido: new Date().toISOString().split("T")[0],
-      formaPgto: "Cartão de Crédito",
-      dataPgto: new Date().toISOString().split("T")[0],
-      precoTotal: total,
-      itens: updatedOrderSummary,
-    };
-
     try {
+      // Verifique se cartItems é um array válido
+      if (!Array.isArray(cartItems) || cartItems.length === 0) {
+        throw new Error("Carrinho vazio ou inválido.");
+      }
+  
+      const updatedUserInfo = {
+        ...userInfo,
+        city: cities.find(city => city.nome === userInfo.city)?.nome || userInfo.city,
+        state: states.find(state => state.sigla === selectedState)?.nome || selectedState,
+      };
+  
+      const updatedOrderSummary = cartItems.map(item => {
+        if (!item || typeof item !== "object") {
+          throw new Error("Item inválido no carrinho.");
+        }
+        return {
+          produto: {
+            id: item.id,
+            nome: item.title || item.nome || "Produto desconhecido",
+            precoUnid: parseFloat(item.price || item.precoUnid || 0),
+            categoria: item.categoria || null,
+            urlImagem: item.urlImagem || null,
+          },
+          qntProduto: item.quantity || 1,
+        };
+      });
+  
+      const orderData = {
+        cliente: {
+          id: clientInfo?.id || userId,
+          nomeCompleto: clientInfo?.nomeCompleto || "Cliente",
+          email: clientInfo?.email || "email@example.com",
+        },
+        dataPedido: new Date().toISOString().split("T")[0],
+        formaPgto: "Cartão de Crédito",
+        dataPgto: new Date().toISOString().split("T")[0],
+        precoTotal: total,
+        itens: updatedOrderSummary,
+      };
+  
       const response = await fetch("https://apilojaflora.onrender.com/order/saveOrder", {
         method: "POST",
         headers: {
@@ -122,7 +132,7 @@ const PaymentPage = () => {
         },
         body: JSON.stringify(orderData),
       });
-
+  
       if (response.ok) {
         setIsOrderConfirmed(true);
         clearCart(); 
@@ -135,7 +145,7 @@ const PaymentPage = () => {
         setIsLoading(false);
       }
     } catch (error) {
-      console.error("Erro ao salvar o pedido:", error);
+      console.error("Erro ao salvar o pedido:", error.message);
       setIsLoading(false);
     }
   };
