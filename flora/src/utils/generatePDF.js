@@ -42,24 +42,27 @@ const generatePDF = async (userInfo, orderSummary) => {
   doc.setFont("helvetica", "normal");
   doc.text(`Nome: ${userInfo.name}`, 20, 55);
   doc.text(`Endereço: ${userInfo.address}`, 20, 65);
-  doc.text(`Cidade: ${userInfo.city}`, 20, 75);
-  doc.text(`Estado: ${userInfo.state}`, 20, 85);
-  doc.text(`CEP: ${userInfo.zip}`, 20, 95);
+  doc.text(`Bairro: ${userInfo.neighborhood || ''}`, 20, 75);
+  doc.text(`Complemento: ${userInfo.complement || ''}`, 20, 85);
+  doc.text(`Número: ${userInfo.number || ''}`, 20, 95);
+  doc.text(`Cidade: ${userInfo.city}`, 20, 105);
+  doc.text(`Estado: ${userInfo.state}`, 20, 115);
+  doc.text(`CEP: ${userInfo.zip}`, 20, 125);
 
   // Linha divisória
-  doc.line(20, 105, 190, 105);
+  doc.line(20, 135, 190, 135);
 
   // Resumo do pedido
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
-  doc.text("Resumo do Pedido", 20, 115);
+  doc.text("Resumo do Pedido", 20, 145);
 
-  let startY = 125;
+  let startY = 155;
   doc.setFontSize(12);
   doc.setFont("helvetica", "normal");
 
   orderSummary.forEach((item, index) => {
-    doc.text(`${index + 1}. ${item.name}: $${item.price.toFixed(2)}`, 20, startY);
+    doc.text(`${index + 1}. ${item.name}: R$ ${item.price.toFixed(2)}`, 20, startY);
     startY += 10;
   });
 
@@ -70,7 +73,7 @@ const generatePDF = async (userInfo, orderSummary) => {
   const total = orderSummary.reduce((acc, item) => acc + item.price, 0);
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
-  doc.text(`Total: $${total.toFixed(2)}`, 20, startY + 15);
+  doc.text(`Total: R$ ${total.toFixed(2)}`, 20, startY + 15);
 
   // Salvando o PDF
   doc.save("comprovante_pagamento.pdf");
