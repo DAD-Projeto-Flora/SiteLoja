@@ -32,12 +32,18 @@ export const UserProvider = ({ children }) => {
   };
 
   const addToCart = (product) => {
-    setCartItems((prev) => [...prev, product]);
+    const withId = {
+      ...product,
+      id: product.id || crypto.randomUUID(), // gera um id único se não tiver
+    };
+    setCartItems((prev) => [...prev, withId]);
   };
+  
 
-  const removeFromCart = (index) => {
-    setCartItems((prev) => prev.filter((_, i) => i !== index));
+  const removeFromCart = (id) => {
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
+  
 
   return (
     <UserContext.Provider
