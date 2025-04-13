@@ -89,9 +89,10 @@ const PaymentPage = () => {
       state: states.find(state => state.sigla === selectedState)?.nome || selectedState,
     };
 
+    // Certifique-se de que o ID dos produtos está sendo incluído corretamente
     const updatedOrderSummary = cartItems.map(item => ({
       produto: {
-        id: item.id,
+        id: item.id, // Inclui o ID do produto
         nome: item.title || item.nome,
         precoUnid: parseFloat(item.price || item.precoUnid || 0),
         categoria: item.categoria || null,
@@ -110,7 +111,7 @@ const PaymentPage = () => {
       formaPgto: "Cartão de Crédito", // Forma de pagamento
       dataPgto: new Date().toISOString().split("T")[0], // Data do pagamento
       precoTotal: total,
-      itens: updatedOrderSummary,
+      itens: updatedOrderSummary, // Inclui os produtos com seus IDs
     };
 
     try {
