@@ -8,7 +8,7 @@ const CartList = ({ products }) => {
         <thead>
           <tr>
             <th>Produto</th>
-            <th>Entrega</th>
+            <th>ID</th>
             <th>Preço</th>
             <th>Quantidade</th>
           </tr>
@@ -25,7 +25,7 @@ const CartList = ({ products }) => {
                   <span>{product.title}</span>
                 </div>
               </td>
-              <td>{product.deliveryPrice ? `R$ ${parseFloat(product.deliveryPrice).toFixed(2)}` : '—'}</td>
+              <td>{product.deliveryPrice ? `R$ ${parseFloat(product.id).toFixed(2)}` : '—'}</td>
               <td>R$ {parseFloat(product.price).toFixed(2)}</td>
               <td>{product.quantity || 1}</td>
             </tr>
