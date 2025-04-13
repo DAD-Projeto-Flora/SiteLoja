@@ -34,8 +34,8 @@ const WalletCard = () => {
           <div className="user-info">
             <img className="avatar" src={"/perfil.svg"} alt="Foto de Perfil" />
             <div>
-              <h2 className="text">{card.nomeCartao}</h2>
-              <p className="text">•••• •••• •••• {card.numero?.slice(-4)}</p>
+              <h2 className="text"></h2>
+              <p className="text"></p>
             </div>
           </div>
           <button className="save-button">Salvar</button>
