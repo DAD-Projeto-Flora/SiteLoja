@@ -12,7 +12,6 @@ const PaymentPage = () => {
   const [cities, setCities] = useState([]);
   const [selectedState, setSelectedState] = useState("");
   const [userInfo, setUserInfo] = useState({
-    name: "",
     address: "",
     city: "",
     state: "",
@@ -61,7 +60,7 @@ const PaymentPage = () => {
     };
 
     const updatedOrderSummary = cartItems.map(item => ({
-      name: item.name || item.nome,
+      name: item.title || item.nome,
       price: parseFloat(item.price || item.precoUnid || 0),
     }));
 
