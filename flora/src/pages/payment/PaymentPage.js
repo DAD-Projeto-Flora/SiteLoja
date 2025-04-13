@@ -6,8 +6,8 @@ import { useUser } from "../../components/login/UserContext";
 const PaymentPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { cartItems, subtotal, shippingCost, total } = location.state || {};
-  const { userId } = useUser(); // Obtém o userId do UserContext
+  const { cartItems, subtotal, shippingCost, total, clearCart } = location.state || {}; // Adicionado clearCart
+  const { userId } = useUser();
   const [cardNumber, setCardNumber] = useState("");
   const [cardImage, setCardImage] = useState("/default-card.png");
   const [states, setStates] = useState([]);
@@ -19,18 +19,18 @@ const PaymentPage = () => {
     state: "",
     zip: "",
   });
-  const [clientInfo, setClientInfo] = useState(null); // Estado para armazenar os dados do cliente
+  const [clientInfo, setClientInfo] = useState(null);
   const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Estado para controlar a tela de carregamento
 
-  // Busca os dados do cliente ao carregar a página
   useEffect(() => {
     const fetchClientInfo = async () => {
-      if (!userId) return; // Verifica se o userId está disponível
+      if (!userId) return;
       try {
         const response = await fetch(`https://apilojaflora.onrender.com/order/getOrderByClientId/${userId}`);
         if (response.ok) {
           const data = await response.json();
-          setClientInfo(data.cliente); // Armazena os dados do cliente
+          setClientInfo(data.cliente);
           setUserInfo({
             address: data.cliente.address || "",
             city: data.cliente.city || "",
@@ -83,35 +83,35 @@ const PaymentPage = () => {
   };
 
   const handleSubmit = async () => {
+    setIsLoading(true); // Exibe a tela de carregamento
     const updatedUserInfo = {
       ...userInfo,
       city: cities.find(city => city.nome === userInfo.city)?.nome || userInfo.city,
       state: states.find(state => state.sigla === selectedState)?.nome || selectedState,
     };
 
-    // Certifique-se de que o ID dos produtos está sendo incluído corretamente
     const updatedOrderSummary = cartItems.map(item => ({
       produto: {
-        id: item.id, // Inclui o ID do produto
+        id: item.id,
         nome: item.title || item.nome,
         precoUnid: parseFloat(item.price || item.precoUnid || 0),
         categoria: item.categoria || null,
         urlImagem: item.urlImagem || null,
       },
-      qntProduto: item.quantity || 1, // Quantidade do produto
+      qntProduto: item.quantity || 1,
     }));
 
     const orderData = {
       cliente: {
-        id: clientInfo?.id || userId, // Usa os dados do cliente obtidos da API ou do contexto
+        id: clientInfo?.id || userId,
         nomeCompleto: clientInfo?.nomeCompleto || "Cliente",
         email: clientInfo?.email || "email@example.com",
       },
-      dataPedido: new Date().toISOString().split("T")[0], // Data do pedido no formato YYYY-MM-DD
-      formaPgto: "Cartão de Crédito", // Forma de pagamento
-      dataPgto: new Date().toISOString().split("T")[0], // Data do pagamento
+      dataPedido: new Date().toISOString().split("T")[0],
+      formaPgto: "Cartão de Crédito",
+      dataPgto: new Date().toISOString().split("T")[0],
       precoTotal: total,
-      itens: updatedOrderSummary, // Inclui os produtos com seus IDs
+      itens: updatedOrderSummary,
     };
 
     try {
@@ -124,15 +124,19 @@ const PaymentPage = () => {
       });
 
       if (response.ok) {
-        setIsOrderConfirmed(true); // Exibe mensagem de confirmação
+        setIsOrderConfirmed(true);
+        clearCart(); // Limpa o carrinho
         setTimeout(() => {
+          setIsLoading(false); // Remove a tela de carregamento
           navigate("/"); // Redireciona para a home
-        }, 3000); // Aguarda 3 segundos antes de redirecionar
+        }, 3000);
       } else {
         console.error("Erro ao salvar o pedido:", response.statusText);
+        setIsLoading(false); // Remove a tela de carregamento em caso de erro
       }
     } catch (error) {
       console.error("Erro ao salvar o pedido:", error);
+      setIsLoading(false); // Remove a tela de carregamento em caso de erro
     }
   };
 
@@ -140,118 +144,127 @@ const PaymentPage = () => {
 
   return (
     <div className="containerAll">
-      <header className="headerPayment">
-        <div className="logo">
-          <img src="/logoCheckout.svg" alt="Flora" />
+      {isLoading ? ( // Exibe a tela de carregamento se isLoading for true
+        <div className="loading-screen">
+          <img src="/truck-animation.gif" alt="Carregando..." className="loading-truck" />
+          <p>Confirmando pedido...</p>
         </div>
-        <nav className="progress">
-          <span>1. Carrinho</span>
-          <span className="active">2. Pagamento</span>
-        </nav>
-      </header>
+      ) : (
+        <>
+          <header className="headerPayment">
+            <div className="logo">
+              <img src="/logoCheckout.svg" alt="Flora" />
+            </div>
+            <nav className="progress">
+              <span>1. Carrinho</span>
+              <span className="active">2. Pagamento</span>
+            </nav>
+          </header>
 
-      <div className="containerInfo">
-        <div className="shipping-address">
-          <h2 className="title-paymentpage">Endereço</h2>
-          <input
-            type="text"
-            placeholder="Ex. Rua Morada de Teresina"
-            className="input-payment-page"
-            value={userInfo.address}
-            onChange={(e) => setUserInfo({ ...userInfo, address: e.target.value })}
-          />
-          <div className="containerAdress">
-            <input
-              type="text"
-              placeholder="Bairro"
-              className="input-payment-page"
-              value={userInfo.neighborhood}
-              onChange={(e) => setUserInfo({ ...userInfo, neighborhood: e.target.value })}
-            />
-            <input
-              type="text"
-              placeholder="Apartamento, casa etc"
-              className="input-payment-page"
-              value={userInfo.complement}
-              onChange={(e) => setUserInfo({ ...userInfo, complement: e.target.value })}
-            />
-            <input
-              type="number"
-              placeholder="Número"
-              className="input-payment-page"
-              value={userInfo.number}
-              onChange={(e) => setUserInfo({ ...userInfo, number: e.target.value })}
-            />
+          <div className="containerInfo">
+            <div className="shipping-address">
+              <h2 className="title-paymentpage">Endereço</h2>
+              <input
+                type="text"
+                placeholder="Ex. Rua Morada de Teresina"
+                className="input-payment-page"
+                value={userInfo.address}
+                onChange={(e) => setUserInfo({ ...userInfo, address: e.target.value })}
+              />
+              <div className="containerAdress">
+                <input
+                  type="text"
+                  placeholder="Bairro"
+                  className="input-payment-page"
+                  value={userInfo.neighborhood}
+                  onChange={(e) => setUserInfo({ ...userInfo, neighborhood: e.target.value })}
+                />
+                <input
+                  type="text"
+                  placeholder="Apartamento, casa etc"
+                  className="input-payment-page"
+                  value={userInfo.complement}
+                  onChange={(e) => setUserInfo({ ...userInfo, complement: e.target.value })}
+                />
+                <input
+                  type="number"
+                  placeholder="Número"
+                  className="input-payment-page"
+                  value={userInfo.number}
+                  onChange={(e) => setUserInfo({ ...userInfo, number: e.target.value })}
+                />
+              </div>
+              <div className="city-state-zip">
+                <select
+                  onChange={(e) => {
+                    setSelectedState(e.target.value);
+                    setUserInfo({ ...userInfo, state: e.target.value });
+                  }}
+                >
+                  <option value="">Estado</option>
+                  {states.map((state) => (
+                    <option key={state.id} value={state.sigla}>{state.nome}</option>
+                  ))}
+                </select>
+                <select
+                  onChange={(e) => setUserInfo({ ...userInfo, city: e.target.value })}
+                >
+                  <option>Cidade</option>
+                  {cities.map((city) => (
+                    <option key={city.id} value={city.nome}>{city.nome}</option>
+                  ))}
+                </select>
+                <input
+                  type="number"
+                  placeholder="CEP"
+                  className="input-payment-page"
+                  value={userInfo.zip}
+                  onChange={(e) => setUserInfo({ ...userInfo, zip: e.target.value })}
+                />
+              </div>
+            </div>
+
+            <div className="order-summary">
+              <h2 className="title-paymentpage">Resumo do Pedido</h2>
+              <p>Subtotal: <span>R$ {subtotal?.toFixed(2)}</span></p>
+              <p>Frete: <span>R$ {shippingCost?.toFixed(2)}</span></p>
+              <p className="total">Total: <span>R$ {total?.toFixed(2)}</span></p>
+              <button className="place-order" onClick={handleSubmit}>Finalizar Compra</button>
+              {isOrderConfirmed && <p className="confirmation-message">Pedido confirmado! Redirecionando para a home...</p>}
+            </div>
           </div>
-          <div className="city-state-zip">
-            <select
-              onChange={(e) => {
-                setSelectedState(e.target.value);
-                setUserInfo({ ...userInfo, state: e.target.value });
-              }}
-            >
-              <option value="">Estado</option>
-              {states.map((state) => (
-                <option key={state.id} value={state.sigla}>{state.nome}</option>
-              ))}
-            </select>
-            <select
-              onChange={(e) => setUserInfo({ ...userInfo, city: e.target.value })}
-            >
-              <option>Cidade</option>
-              {cities.map((city) => (
-                <option key={city.id} value={city.nome}>{city.nome}</option>
-              ))}
-            </select>
-            <input
-              type="number"
-              placeholder="CEP"
-              className="input-payment-page"
-              value={userInfo.zip}
-              onChange={(e) => setUserInfo({ ...userInfo, zip: e.target.value })}
-            />
+
+          <div className="payment-method">
+            <h2 className="title-paymentpage">Método de pagamento</h2>
+            <input type="text" placeholder="First & Last Name" className="input-payment-page" />
+            <div className="payCard">
+              <input 
+                type="text" 
+                placeholder="0000 0000 0000 0000" 
+                value={cardNumber} 
+                onChange={handleCardInputChange}
+                className="input-payment-page" 
+              />
+              <img src={cardImage} alt="Cartão" className="cardImage"/>
+            </div>
+            <div className="expiry-cvv">
+              <select>
+                <option>MM</option>
+                {Array.from({ length: 12 }, (_, i) => (
+                  <option key={i + 1} value={String(i + 1).padStart(2, "0")}>{String(i + 1).padStart(2, "0")}</option>
+                ))}
+              </select>
+              <select>
+                <option>YYYY</option>
+                {Array.from({ length: 10 }, (_, i) => (
+                  <option key={currentYear + i} value={currentYear + i}>{currentYear + i}</option>
+                ))}
+              </select>
+              <input type="text" placeholder="CVV" className="input-payment-page"/>
+            </div>
           </div>
-        </div>
-
-        <div className="order-summary">
-          <h2 className="title-paymentpage">Resumo do Pedido</h2>
-          <p>Subtotal: <span>R$ {subtotal?.toFixed(2)}</span></p>
-          <p>Frete: <span>R$ {shippingCost?.toFixed(2)}</span></p>
-          <p className="total">Total: <span>R$ {total?.toFixed(2)}</span></p>
-          <button className="place-order" onClick={handleSubmit}>Finalizar Compra</button>
-          {isOrderConfirmed && <p className="confirmation-message">Pedido confirmado! Redirecionando para a home...</p>}
-        </div>
-      </div>
-
-      <div className="payment-method">
-        <h2 className="title-paymentpage">Método de pagamento</h2>
-        <input type="text" placeholder="First & Last Name" className="input-payment-page" />
-        <div className="payCard">
-          <input 
-            type="text" 
-            placeholder="0000 0000 0000 0000" 
-            value={cardNumber} 
-            onChange={handleCardInputChange}
-            className="input-payment-page" 
-          />
-          <img src={cardImage} alt="Cartão" className="cardImage"/>
-        </div>
-        <div className="expiry-cvv">
-          <select>
-            <option>MM</option>
-            {Array.from({ length: 12 }, (_, i) => (
-              <option key={i + 1} value={String(i + 1).padStart(2, "0")}>{String(i + 1).padStart(2, "0")}</option>
-            ))}
-          </select>
-          <select>
-            <option>YYYY</option>
-            {Array.from({ length: 10 }, (_, i) => (
-              <option key={currentYear + i} value={currentYear + i}>{currentYear + i}</option>
-            ))}
-          </select>
-          <input type="text" placeholder="CVV" className="input-payment-page"/>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };
