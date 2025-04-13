@@ -1,5 +1,3 @@
-// src/api/clientApi.js
-
 export const getClientById = async (id) => {
     try {
       const response = await fetch('https://apilojaflora.onrender.com/client/getClient/' + id);

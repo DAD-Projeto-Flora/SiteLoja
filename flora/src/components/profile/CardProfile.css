@@ -108,12 +108,15 @@ main{
 
 .form-grid > .name-grid > div {
     width: 68vw;
+    display: flex;
+    
     justify-content: space-between;
 }
 
 .gender-options{
+    flex-direction: column;
     height: 80%;
-    display: flex;
+    margin-top: 10px;
     align-items: center;
 }
 
@@ -145,7 +148,7 @@ input[type="radio"]:checked::before {
     content: "";
     width: 10px;
     height: 10px;
-    background-color: white; /* Bolinha branca no centro */
+    background-color: white;
     border-radius: 50%;
     position: absolute;
     top: 50%;
@@ -240,7 +243,7 @@ input[type="radio"]:checked::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* fundo escuro */
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -317,5 +320,5 @@ input[type="radio"]:checked::before {
 }
 
 .title-numrua{
-    margin-bottom: 10px     ;
+    margin-bottom: 10px;
 }

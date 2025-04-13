@@ -1,4 +1,3 @@
-
 export const getProductById = async (id) => {
   try {
     const response = await fetch('https://apilojaflora.onrender.com/product/getProduct/' + id);

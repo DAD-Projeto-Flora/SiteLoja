@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ConfigCard.css";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../login/UserContext"; // ajuste o caminho conforme necessário
+import { useUser } from "../login/UserContext";
 import { getClientById } from "../../autenticação/getClientById";
 import updateSenha from "../../autenticação/updateSenha";
 
@@ -84,16 +84,6 @@ const ConfigCard = () => {
           <div className="info-grid">
             <div>
               <div>
-                <label className="text">Senha antiga</label>
-                <input
-                  type="password"
-                  placeholder="Insira sua senha atual"
-                  className="input-config-card"
-                  value={currentPassword}
-                  onChange={(e) => setCurrentPassword(e.target.value)}
-                />
-              </div>
-              <div>
                 <label className="text">Nova senha</label>
                 <input
                   type="password"
@@ -116,6 +106,16 @@ const ConfigCard = () => {
               {errorMessage && <p className="error-message">{errorMessage}</p>}
             </div>
           </div>
+          <div>
+                <label className="text">Senha antiga</label>
+                <input
+                  type="password"
+                  placeholder="Insira sua senha atual"
+                  className="input-config-card"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                />
+              </div>
         </div>
 
         <div className="form-grid">
@@ -130,7 +130,7 @@ const ConfigCard = () => {
                 <button className="logout-button" onClick={handleLogout}>
                   Deslogar
                 </button>
-              </div>
+            </div>
             </div>
           </div>
         </div>

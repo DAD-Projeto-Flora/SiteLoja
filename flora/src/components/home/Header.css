@@ -1,4 +1,3 @@
-/* Header.css */
 .header {
   z-index: 2;
   background-color: #FFFFFF;
@@ -37,7 +36,7 @@ li{
   padding: 10px;
   font-size: 16px;
   border: 2px solid #F1F1F1;
-  border-radius: 7px;  /* Bordas arredondadas */
+  border-radius: 7px;
   width: 30vw;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   font-family: "Montserrat", serif;
@@ -45,7 +44,7 @@ li{
 
 .search-input:focus {
   outline: none;
-  border-color: #00557C;  /* Cor roxa para foco */
+  border-color: #00557C;
 
 }
 
@@ -54,7 +53,6 @@ li{
   font-style: italic;
 }
 
-/* Remover o botão de search, já que não é mais necessário */
 .search-button {
   display: none;
 }

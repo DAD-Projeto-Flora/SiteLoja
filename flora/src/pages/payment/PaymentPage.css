@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   padding-top: 20px;
-  
 }
 
 .shipping-address, .payment-method {
@@ -10,8 +9,16 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 45%;
+  width: 590px;
   height: 70%;
+}
+
+.payment-method{
+  margin-top: 50px;
+}
+
+.infos-shipping{
+  width: 100%;
 }
 
 .order-summary{
@@ -24,6 +31,7 @@
 
 .order-summary p{
   padding-top: 10px;
+  color: #333;
 }
 
 .order-summary p span{
@@ -32,12 +40,12 @@
   color: #001d27;
 }
 
-
 .title-paymentpage {
+  color: #333;
   margin-bottom: 15px;
 }
 
-.input-payment-page, select {
+select {
   display: block;
   width: 100%;
   padding: 10px;
@@ -45,6 +53,16 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 500px;
+  margin: 10px 15px;
+}
+
+.input-payment-page{
+  display: block;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 91%;
   margin: 10px 15px;
 }
 
@@ -115,7 +133,7 @@
   display: block;
   width: 100%; 
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 30px;
   background-color: #004d66;
   color: white;
   padding: 10px 15px;
@@ -123,7 +141,6 @@
   cursor: pointer;
   border: none;
   font-weight: bold;
-  
 }
 
 .headerPayment {

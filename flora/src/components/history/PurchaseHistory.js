@@ -1,5 +1,5 @@
 import React from "react";
-import "./PurchaseHistory.css"; // Importa o arquivo de estilos
+import "./PurchaseHistory.css";
 import HistoryCard from "./HistoryCard";
 
 const PurchaseHistory = ({ name, email, image }) => {

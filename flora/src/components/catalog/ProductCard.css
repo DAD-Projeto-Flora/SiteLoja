@@ -1,71 +1,71 @@
 .img-produto {
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 170px;
-    height: 210px;
-  }
-  
-  .produto-card img {
-    width: 170px;
-    height: auto;
-  }
-  
-  .produto-card h3 {
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  
-  .produto-card p {
-    font-weight: bold;
-    color: #007bff;
-    margin-top: 6px;
-  }
-  
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 80px;
-    row-gap: 30px;
-    margin-top: 20px;
-  }
-  
-  .lista-produtos {
-    width: 70%;
-    margin-right: 100px;
-  }
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 170px;
+  height: 210px;
+}
 
-  .produto-card{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: 200px;
-  }
+.produto-card img {
+  width: 170px;
+  height: auto;
+}
 
-  .estrelas {
-    display: flex;
-  }
-  
-  .estrela {
-    font-size: 1.2rem;
-    color: #ffd700; /* Cor dourada */
-    margin-right: 2px;
-  }
-  
-  .estrela.vazia {
-    color: #ccc; /* Cor cinza para estrelas vazias */
-  }
-  
- .estrela.meia {
+.produto-card h3 {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.produto-card p {
+  font-weight: bold;
+  color: #007bff;
+  margin-top: 6px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 80px;
+  row-gap: 30px;
+  margin-top: 20px;
+}
+
+.lista-produtos {
+  width: 70%;
+  margin-right: 100px;
+}
+
+.produto-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 200px;
+}
+
+.estrelas {
+  display: flex;
+}
+
+.estrela {
+  font-size: 1.2rem;
+  color: #ffd700;
+  margin-right: 2px;
+}
+
+.estrela.vazia {
+  color: #ccc;
+}
+
+.estrela.meia {
   position: relative;
   display: inline-block;
   font-size: 1.2rem;
-  color: #ccc; /* Cor cinza para a parte vazia */
-  overflow: hidden; /* Garante que apenas metade será visível */
+  color: #ccc;
+  overflow: hidden;
 }
 
 .estrela.meia::before {

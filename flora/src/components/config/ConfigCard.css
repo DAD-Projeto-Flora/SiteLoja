@@ -30,7 +30,7 @@ main{
     padding-left: 1vw;
     border: none;
     height: 7vh;
-    width: 25vw;
+    width: 20vw;
     border-radius: 8px;
     background-color: #F9F9F9;
 }
@@ -89,6 +89,10 @@ main{
     flex-direction: row;
 }
 
+.info-grid > div > div{
+    margin-right: 10vw;
+
+}
 .form-grid > div{
     flex-direction: column;
     display: flex;
@@ -102,7 +106,6 @@ main{
 
 .form-grid > .info-grid > div {
     width: 68vw;
-    justify-content: space-between;
 }
 
 .delete-part {
@@ -120,7 +123,7 @@ main{
     display: flex;
     flex-direction: column;
 }
-.delete > label{
+.delete, .logout > label{
     font-weight: bold;
 }
 
@@ -139,11 +142,36 @@ main{
 .delete-button:hover{
     font-weight: bold;
     transition: 0.3s;
-    color: #b10000;
-    background-color: rgba(253, 127, 125, 0.686);
+    color: #ffff;
+
+    background-color: rgba(253, 44, 40, 0.686);
     cursor: pointer;
 }
 
 .text{
     color: #333;
+}
+
+.logout{
+    display: flex;
+    justify-content: start;
+}
+.logout-button{
+    font-weight: bold;
+    margin-top: 1.5vh;
+    transition: 0.3s;
+    font-size: 16px;
+    color: #ffffff;
+    width: 12vw;
+    height: 5vh;
+    border: none;
+    border-radius: 8px;
+    background-color: #048191f1;
+}
+
+.logout-button:hover{
+    transition: 0.3s;
+    color: #ffffff;
+    background-color: #53A58D;
+    cursor: pointer;
 }

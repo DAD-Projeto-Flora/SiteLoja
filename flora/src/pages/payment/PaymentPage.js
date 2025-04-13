@@ -84,35 +84,34 @@ const PaymentPage = () => {
 
       <div className="containerInfo">
         <div className="shipping-address">
-          <h2 className="title-paymentpage">Endereço</h2>
-          <input type="text" placeholder="Ex. Rua Morada de Teresina" className="input-payment-page"/>
-          <div className="containerAdress">
-            <input type="text" placeholder="Sol Nascente" className="input-payment-page"/>
-            <input type="text" placeholder="Apartamento, casa etc" className="input-payment-page"/>
-            <input type="number" placeholder="Número" className="input-payment-page"/>
-          </div>
-          <div className="city-state-zip">
-            <select onChange={(e) => setSelectedState(e.target.value)}>
-              <option value="">Estado</option>
-              {states.map((state) => (
-                <option key={state.id} value={state.sigla}>{state.nome}</option>
-              ))}
-            </select>
-            <select>
-              <option>Cidade</option>
-              {cities.map((city) => (
-                <option key={city.id} value={city.nome}>{city.nome}</option>
-              ))}
-            </select>
-            <input type="number" placeholder="CEP" className="input-payment-page"/>
+          <div className="infos-shipping">
+            <h2 className="title-paymentpage">Endereço</h2>
+            <input type="text" placeholder="Ex. Rua Morada de Teresina" className="input-payment-page"/>
+            <div className="containerAdress">
+              <input type="text" placeholder="Sol Nascente" className="input-payment-page"/>
+              <input type="text" placeholder="Apartamento, casa etc" className="input-payment-page"/>
+              <input type="number" placeholder="Número" className="input-payment-page"/>
+            </div>
+            <div className="city-state-zip">
+              <select onChange={(e) => setSelectedState(e.target.value)}>
+                <option value="">Estado</option>
+                {states.map((state) => (
+                  <option key={state.id} value={state.sigla}>{state.nome}</option>
+                ))}
+              </select>
+              <select>
+                <option>Cidade</option>
+                {cities.map((city) => (
+                  <option key={city.id} value={city.nome}>{city.nome}</option>
+                ))}
+              </select>
+              <input type="number" placeholder="CEP" className="input-payment-page"/>
+            </div>
           </div>
         </div>
 
         <div className="order-summary">
         <h2 className="title-paymentpage">Resumo do Pedido</h2>
-        
-       
-    
         <p>Subtotal: <span>R$ {subtotal?.toFixed(2)}</span></p>
         <p>Frete: <span>R$ {shippingCost?.toFixed(2)}</span></p>
         <p className="total">Total: <span>R$ {total?.toFixed(2)}</span></p>
@@ -121,32 +120,34 @@ const PaymentPage = () => {
       </div>
 
       <div className="payment-method">
-        <h2 className="title-paymentpage">Método de pagamento</h2>
-        <input type="text" placeholder="First & Last Name" className="input-payment-page" />
-        <div className="payCard">
-          <input 
-            type="text" 
-            placeholder="0000 0000 0000 0000" 
-            value={cardNumber} 
-            onChange={handleCardInputChange}
-            className="input-payment-page" 
-          />
-          <img src={cardImage} alt="Cartão" className="cardImage"/>
-        </div>
-        <div className="expiry-cvv">
-        <select>
-            <option>MM</option>
-            {Array.from({ length: 12 }, (_, i) => (
-              <option key={i + 1} value={String(i + 1).padStart(2, "0")}>{String(i + 1).padStart(2, "0")}</option>
-            ))}
-          </select>
+          <div className="infos-shipping">
+          <h2 className="title-paymentpage">Método de pagamento</h2>
+          <input type="text" placeholder="First & Last Name" className="input-payment-page" />
+          <div className="payCard">
+            <input 
+              type="text" 
+              placeholder="0000 0000 0000 0000" 
+              value={cardNumber} 
+              onChange={handleCardInputChange}
+              className="input-payment-page" 
+            />
+            <img src={cardImage} alt="Cartão" className="cardImage"/>
+          </div>
+          <div className="expiry-cvv">
           <select>
-            <option>YYYY</option>
-            {Array.from({ length: 10 }, (_, i) => (
-              <option key={currentYear + i} value={currentYear + i}>{currentYear + i}</option>
-            ))}
-          </select>
-          <input type="text" placeholder="CVV" className="input-payment-page"/>
+              <option>MM</option>
+              {Array.from({ length: 12 }, (_, i) => (
+                <option key={i + 1} value={String(i + 1).padStart(2, "0")}>{String(i + 1).padStart(2, "0")}</option>
+              ))}
+            </select>
+            <select>
+              <option>YYYY</option>
+              {Array.from({ length: 10 }, (_, i) => (
+                <option key={currentYear + i} value={currentYear + i}>{currentYear + i}</option>
+              ))}
+            </select>
+            <input type="text" placeholder="CVV" className="input-payment-page"/>
+          </div>
         </div>
       </div>
     </div>
