@@ -10,7 +10,7 @@ const WalletCard = () => {
   useEffect(() => {
     const fetchClient = async () => {
       try {
-        const data = await getCardByClientId(userId);
+        const data = await getCardByClientId(1);
         console.log(data);
         setCard(data);
       } catch (error) {
