@@ -35,11 +35,22 @@ const ProfileCard = () => {
       await axios.put(`${API_BASE_URL}/updateClient/${userId}`, updatedClient);
       alert("Dados atualizados com sucesso!");
       setClient(updatedClient); // Atualiza o estado local com os novos dados
-      setModalType(null); // Fecha o modal após salvar
     } catch (error) {
       console.error("Erro ao atualizar cliente:", error);
       alert("Erro ao atualizar os dados.");
     }
+  };
+
+  // Função para salvar alterações dos inputs fora dos modais
+  const handleSave = () => {
+    const updatedClient = {
+      ...client,
+      nomeCompleto: document.querySelector('input[placeholder="' + client.nomeCompleto + '"]').value || client.nomeCompleto,
+      nomeUsuario: document.querySelector('input[placeholder="' + client.nomeUsuario + '"]').value || client.nomeUsuario,
+      telefone: document.querySelector('input[placeholder="' + client.telefone + '"]').value || client.telefone,
+    };
+
+    updateClient(updatedClient);
   };
 
   // Função para salvar o novo e-mail
@@ -48,6 +59,7 @@ const ProfileCard = () => {
     if (newEmail) {
       const updatedClient = { ...client, email: newEmail };
       updateClient(updatedClient);
+      setModalType(null); // Fecha o modal
     } else {
       alert("Por favor, insira um e-mail válido.");
     }
@@ -67,6 +79,7 @@ const ProfileCard = () => {
     if (newEndereco.cep && newEndereco.rua && newEndereco.numero) {
       const updatedClient = { ...client, endereco: newEndereco };
       updateClient(updatedClient);
+      setModalType(null); // Fecha o modal
     } else {
       alert("Por favor, preencha todos os campos obrigatórios do endereço.");
     }
@@ -139,7 +152,7 @@ const ProfileCard = () => {
               <p className="text">{client.email}</p>
             </div>
           </div>
-          <button className="save-button" onClick={() => alert("Use os botões de modal para atualizar informações.")}>Salvar</button>
+          <button className="save-button" onClick={handleSave}>Salvar</button>
         </div>
 
         <div className="form-grid">
