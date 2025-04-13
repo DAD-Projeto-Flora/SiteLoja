@@ -13,7 +13,7 @@ export default function LoginCard() {
 
   const handleLogin = async () => {
     try {
-      const resultado = await verificarUsuario("ana.souza@email.com", "senha123");
+      const resultado = await verificarUsuario(email, senha);
 
       if (resultado.tipo === "admin") {
         setTipoUsuario("admin");
