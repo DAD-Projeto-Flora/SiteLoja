@@ -90,9 +90,9 @@ const ProfileCard = () => {
       <div className="profile-card">
         <div className="header-profile">
           <div className="user-info">
-            <img className="avatar" src={client.foto_perfil} alt="Foto de Perfil" />
+            <img className="avatar" src={client.fotoPerfil} alt="Foto de Perfil" />
             <div>
-              <h2 className="text">{client.nome_completo}</h2>
+              <h2 className="text">{client.nomeCompleto}</h2>
               <p className="text">{client.email}</p>
             </div>
           </div>
@@ -103,9 +103,9 @@ const ProfileCard = () => {
           <div className="name-grid">
             <div>
               <label className="text">Nome completo</label>
-              <input type="text" placeholder={client.nome_completo} className="input-card-profile" />
+              <input type="text" placeholder={client.nomeCompleto} className="input-card-profile" />
               <label className="text">Nome de usuário</label>
-              <input type="text" placeholder={client.nome_usuario} className="input-card-profile" />
+              <input type="text" placeholder={client.nomeCompleto} className="input-card-profile" />
             </div>
           </div>
 
