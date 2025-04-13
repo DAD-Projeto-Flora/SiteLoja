@@ -40,7 +40,6 @@ const generatePDF = async (userInfo, orderSummary) => {
   // Informações do usuário
   doc.setFontSize(12);
   doc.setFont("helvetica", "normal");
-  doc.text(`Nome: ${userInfo.name}`, 20, 55);
   doc.text(`Endereço: ${userInfo.address}`, 20, 65);
   doc.text(`Bairro: ${userInfo.neighborhood || ''}`, 20, 75);
   doc.text(`Complemento: ${userInfo.complement || ''}`, 20, 85);
