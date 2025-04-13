@@ -3,9 +3,10 @@ import "./CartSidebar.css";
 import { Link } from "react-router-dom";
 import { useUser } from "../login/UserContext";
 
-const CartSidebar = ({ isOpen, onClose }) => {
-  const { cartItems, removeFromCart } = useUser();
 
+
+const CartSidebar = ({ isOpen, onClose, cartItems }) => {
+  const { removeFromCart } = useUser();
   return (
     <div className={`cart-sidebar ${isOpen ? "open" : ""}`}>
       <div className="cart-header">
@@ -20,11 +21,11 @@ const CartSidebar = ({ isOpen, onClose }) => {
           cartItems.map((item, index) => (
             <div className="cart-item" key={index}>
               <div className="cart-item-image">
-                <img src={item.urlImagem} alt={item.nome} className="cart-item-img" />
+                <img src={item.image} alt={item.title} className="cart-item-img" />
               </div>
               <div className="cart-item-details">
-                <h4>{item.nome}</h4>
-                <span className="cart-price">R$ {item.precoUnid.toFixed(2)}</span>
+                <h4>{item.title}</h4>
+                <span className="cart-price">R$ {item.price}</span>
               </div>
               <button className="remove-btn" onClick={() => removeFromCart(index)}>✖</button>
             </div>
@@ -35,12 +36,8 @@ const CartSidebar = ({ isOpen, onClose }) => {
       </div>
 
       <div className="cart-footer">
-        <p className="subtotal">
-          Subtotal: <strong>R$ {cartItems.reduce((acc, item) => acc + item.precoUnid, 0).toFixed(2)}</strong>
-        </p>
-        <Link to="/checkoutPage">
-          <button className="checkout-btn">Finalizar compra</button>
-        </Link>
+        <p className="subtotal">Subtotal: <strong>R$ {cartItems.reduce((acc, item) => acc + parseFloat(item.price), 0).toFixed(2)}</strong></p>
+        <Link to="/checkoutPage" ><button className="checkout-btn">Finalizar compra</button></Link>
         <button className="continue-btn" onClick={onClose}>Continuar compra</button>
       </div>
     </div>

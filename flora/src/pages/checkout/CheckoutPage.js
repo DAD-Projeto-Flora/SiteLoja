@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CheckoutPage.css";
 import CartList from "../../components/checkout/CartList";
-import { useUser } from "../../components/login/UserContext";
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
-  const { cartItems } = useUser();
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simula autenticação
   const [zipCode, setZipCode] = useState("");
   const [shippingCost, setShippingCost] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -31,24 +29,21 @@ const CheckoutPage = () => {
     setError("");
 
     try {
-      // Exemplo fictício de API (ajuste conforme sua real)
+      // Substitua '01000-000' com o CEP de origem (da sua loja ou armazém)
       const response = await fetch(`https://api.correios.com.br/calculo?origem=01000-000&destino=${zipCode}&peso=1.2`);
+      
       if (!response.ok) {
         throw new Error("Erro ao calcular frete.");
       }
 
       const data = await response.json();
-      setShippingCost(parseFloat(data.valor));
+      setShippingCost(data.valor); // Ajuste conforme a resposta da API
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
-
-  const subtotal = cartItems.reduce((acc, item) => acc + item.precoUnid, 0);
-  const frete = shippingCost ?? 10.8;
-  const total = (subtotal + frete).toFixed(2);
 
   return (
     <div className="container">
@@ -62,7 +57,7 @@ const CheckoutPage = () => {
         </nav>
       </header>
 
-      <CartList products={cartItems} />
+      <CartList products={[ /* Produtos */ ]} />
 
       <div className="final">
         <section className="delivery">
@@ -72,19 +67,12 @@ const CheckoutPage = () => {
           <div className="delivery-box">
             <div className="calculate">
               <label>Calcular entrega</label>
-              <input
-                type="text"
-                className="input-checkout-page"
-                value={zipCode}
-                onChange={(e) => setZipCode(e.target.value)}
-              />
-              <button className="calculate-button" onClick={calculateShipping} disabled={loading}>
-                {loading ? "Calculando..." : "Calcular"}
-              </button>
+              <input type="text" className="input-checkout-page"/>
+              <button className="calculate-button">Calcular</button>
             </div>
             {error && <p className="error">{error}</p>}
             {shippingCost !== null && (
-              <p className="shipping-result">Frete: R$ {frete.toFixed(2)}</p>
+              <p className="shipping-result">Frete: R$ {shippingCost}</p>
             )}
           </div>
         </section>
@@ -94,9 +82,9 @@ const CheckoutPage = () => {
             <h3>Nota fiscal</h3>
           </div>
           <div className="summary-box">
-            <p>Subtotal <span className="total">R$ {subtotal.toFixed(2)}</span></p>
-            <p className="green">Entrega <span className="total">R$ {frete.toFixed(2)}</span></p>
-            <p>Total <span className="price">R$ {total}</span></p>
+            <p>Subtotal <span className="total">R$ 12,40</span></p>
+            <p className="green">Entrega <span className="total">R$ {shippingCost ?? "10,80"}</span></p>
+            <p>Total <span className="price">R$ {(12.40 + (shippingCost ?? 10.80)).toFixed(2)}</span></p>
             <button className="checkout-btn" onClick={handleCheckout}>
               Finalizar compra
             </button>
@@ -106,5 +94,6 @@ const CheckoutPage = () => {
     </div>
   );
 };
+
 
 export default CheckoutPage;
