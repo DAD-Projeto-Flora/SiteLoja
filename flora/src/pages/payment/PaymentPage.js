@@ -129,7 +129,7 @@ const PaymentPage = () => {
         setTimeout(() => {
           setIsLoading(false); // Remove a tela de carregamento
           navigate("/"); // Redireciona para a home
-        }, 3000);
+        }, 7000);
       } else {
         console.error("Erro ao salvar o pedido:", response.statusText);
         setIsLoading(false); // Remove a tela de carregamento em caso de erro
