@@ -8,8 +8,8 @@ const ProfileCard = () => {
   const [modalType, setModalType] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const user = localStorage.getItem("userId");
-  const clientId = user?.id;
+  const clientId = localStorage.getItem("userId");
+  
 
   useEffect(() => {
     const fetchClient = async () => {
