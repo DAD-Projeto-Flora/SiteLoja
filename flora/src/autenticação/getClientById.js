@@ -2,7 +2,7 @@
 
 export const getClientById = async (id) => {
     try {
-      const response = await fetch("https://apilojaflora.onrender.com/client/getClient/${id}");
+      const response = await fetch('https://apilojaflora.onrender.com/client/getClient/' + id);
       if (!response.ok) {
         throw new Error("Erro ao buscar cliente");
       }
