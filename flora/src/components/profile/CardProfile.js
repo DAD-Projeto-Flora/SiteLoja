@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios"; // Adicionado axios para chamadas HTTP
 import "./CardProfile.css";
 import { getClientById } from "../../autenticação/getClientById";
 import LoadingSpinner from "../catalog/LoadingSpinner";
@@ -10,11 +11,13 @@ const ProfileCard = () => {
   const [loading, setLoading] = useState(true);
   const { userId } = useUser();
 
+  const API_BASE_URL = "https://apilojaflora.onrender.com/client"; // URL base da API
+
   useEffect(() => {
     const fetchClient = async () => {
       try {
         const data = await getClientById(userId);
-        console.log(data)
+        console.log(data);
         setClient(data);
       } catch (error) {
         console.error("Erro ao carregar cliente:", error);
@@ -25,6 +28,29 @@ const ProfileCard = () => {
 
     if (userId) fetchClient();
   }, [userId]);
+
+  // Função para atualizar cliente
+  const updateClient = async (updatedClient) => {
+    try {
+      await axios.put(`${API_BASE_URL}/updateClient/${userId}`, updatedClient);
+      alert("Dados atualizados com sucesso!");
+      setClient(updatedClient); // Atualiza o estado local com os novos dados
+    } catch (error) {
+      console.error("Erro ao atualizar cliente:", error);
+      alert("Erro ao atualizar os dados.");
+    }
+  };
+
+  // Função para salvar alterações do formulário
+  const handleSave = () => {
+    const updatedClient = {
+      ...client,
+      nomeCompleto: document.querySelector('input[placeholder="' + client.nomeCompleto + '"]').value || client.nomeCompleto,
+      nomeUsuario: document.querySelector('input[placeholder="' + client.nomeUsuario + '"]').value || client.nomeUsuario,
+      telefone: document.querySelector('input[placeholder="' + client.telefone + '"]').value || client.telefone,
+    };
+    updateClient(updatedClient);
+  };
 
   const openModalEndereco = () => setModalType("endereco");
   const openModalEmail = () => setModalType("email");
@@ -93,7 +119,7 @@ const ProfileCard = () => {
               <p className="text">{client.email}</p>
             </div>
           </div>
-          <button className="save-button">Salvar</button>
+          <button className="save-button" onClick={handleSave}>Salvar</button>
         </div>
 
         <div className="form-grid">
