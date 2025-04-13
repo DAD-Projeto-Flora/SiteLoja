@@ -15,10 +15,10 @@ const AdminPage = () => {
       .then((data) => setProducts(data))
       .catch((err) => console.error("Erro ao carregar produtos:", err));
   
-    // fetch("/api/clients")//nao sei colocar o coisa da API
-    //   .then((res) => res.json())
-    //   .then((data) => setClients(data))
-    //   .catch((err) => console.error("Erro ao carregar clientes:", err));
+    fetch("/api/getAllClients")
+      .then((res) => res.json())
+      .then((data) => setClients(data))
+      .catch((err) => console.error("Erro ao carregar clientes:", err));
   }, []);
   
   return (

@@ -24,56 +24,52 @@ const ClientManager = ({ clients }) => {
 
       {modalType === "edit" && selectedClient && (
         <div className="modal-overlay">
-        <div className="modal modal-scrollable">
-        <h2>Editar Cliente</h2>
+          <div className="modal modal-scrollable">
+            <h2>Editar Cliente</h2>
 
-        <div className="modal-form-scroll">
-            <label>Nome completo <span>*</span></label>
-            <input type="text" placeholder={selectedClient.name} className="input-card-profile-modal" />
+            <div className="modal-form-scroll">
+              <label>Nome completo <span>*</span></label>
+              <input type="text" placeholder={selectedClient.nomeCompleto} className="input-card-profile-modal" />
 
-            <label>Usuário <span>*</span></label>
-            <input type="text" placeholder={selectedClient.username} className="input-card-profile-modal" />
+              <label>Usuário <span>*</span></label>
+              <input type="text" placeholder={selectedClient.nomeUsuario} className="input-card-profile-modal" />
 
-            <label>E-mail <span>*</span></label>
-            <input type="text" placeholder={selectedClient.email} className="input-card-profile-modal" />
+              <label>E-mail <span>*</span></label>
+              <input type="text" placeholder={selectedClient.email} className="input-card-profile-modal" />
 
-            <label>Telefone <span>*</span></label>
-            <input type="text" placeholder={selectedClient.tel} className="input-card-profile-modal" />
+              <label>Telefone <span>*</span></label>
+              <input type="text" placeholder={selectedClient.telefone} className="input-card-profile-modal" />
 
-            <label>Gênero <span>*</span></label>
-            <input type="text" placeholder={selectedClient.gender} className="input-card-profile-modal" />
+              <label>Gênero <span>*</span></label>
+              <input type="text" placeholder={selectedClient.genero || "Não informado"} className="input-card-profile-modal" />
 
-            <label>Endereço <span>*</span></label>
-            <input type="text" placeholder={selectedClient.endereco} className="input-card-profile-modal" />
+              <label>Imagem (URL) <span>*</span></label>
+              <input type="text" placeholder={selectedClient.fotoPerfil || "https://via.placeholder.com/150"} className="input-card-profile-modal" />
+            </div>
 
-            <label>Imagem (URL) <span>*</span></label>
-            <input type="text" placeholder={selectedClient.image || "https://via.placeholder.com/150"} className="input-card-profile-modal" />
+            <div className="modal-buttons">
+              <button className="cancel-button" onClick={closeModal}>Cancelar</button>
+              <button className="save-button">Salvar</button>
+            </div>
+          </div>
         </div>
+      )}
 
-        <div className="modal-buttons">
-            <button className="cancel-button" onClick={closeModal}>Cancelar</button>
-            <button className="save-button">Salvar</button>
-        </div>
-        </div>
-    </div>
-    )}
-
-    
       <div className="products-scroll">
         {clients.map((client, index) => (
           <div key={index} className="product-card-crud">
             <div className="info-product-crud">
               <img
                 className="product-image"
-                src={client.image || "https://via.placeholder.com/150"}
+                src={client.fotoPerfil || "https://via.placeholder.com/150"}
                 alt="Cliente"
               />
               <div>
                 <p className="text-client"><span className="bold">ID:</span> {client.id}</p>
-                <p className="text-client"><span className="bold">Nome:</span> {client.name}</p>
-                <p className="text-client"><span className="bold">Usuário:</span> {client.username}</p>
+                <p className="text-client"><span className="bold">Nome:</span> {client.nomeCompleto}</p>
+                <p className="text-client"><span className="bold">Usuário:</span> {client.nomeUsuario}</p>
                 <p className="text-client"><span className="bold">E-mail:</span> {client.email}</p>
-                <p><span className="bold">Telefone:</span> {client.tel}</p>
+                <p><span className="bold">Telefone:</span> {client.telefone}</p>
               </div>
             </div>
             <div className="product-actions">
