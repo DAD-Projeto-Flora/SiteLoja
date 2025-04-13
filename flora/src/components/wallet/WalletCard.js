@@ -31,12 +31,12 @@ const WalletCard = () => {
           <div className="user-info">
             <img
               className="avatar"
-              src={image}
+              src={"/perfil.svg"}
               alt="Foto de Perfil"
             />
             <div>
-              <h2 className="text">{name}</h2>
-              <p className="text">{email}</p>
+              <h2 className="text">{}</h2>
+              <p className="text">{}</p>
             </div>
           </div>
           <button className="save-button">Salvar</button>
@@ -51,7 +51,7 @@ const WalletCard = () => {
               </div>
               <div>
                 <label className="text">Data de Validade (MMAA)</label>
-                <input type="text" placeholder={mmaa} className="input-wallet-card"/>
+                <input type="text" placeholder={card.validade} className="input-wallet-card"/>
               </div>
             </div>
           </div>
@@ -63,7 +63,7 @@ const WalletCard = () => {
             <div>
               <div>
                 <label className="text">Nome do cartão</label>
-                <input type="text" placeholder={namecard} className="input-wallet-card"/>
+                <input type="text" placeholder={card.nomeCartao} className="input-wallet-card"/>
               </div>
               <div>
                 <label className="text">CVV</label>
@@ -80,7 +80,7 @@ const WalletCard = () => {
                     src="/logoCartao.svg"
                     alt="Endereço"/>
                   </span>
-                  <p className="text">{namecard}</p>
+                  <p className="text">{card.nomeCartao}</p>
                 </div>
                 <button className="add-button">Atualizar cartão</button>
               </div>
