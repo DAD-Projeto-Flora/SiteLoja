@@ -1,8 +1,12 @@
 import React from "react";
 import "./CartSidebar.css";
 import { Link } from "react-router-dom";
+import { useUser } from "../login/UserContext";
+
+
 
 const CartSidebar = ({ isOpen, onClose, cartItems }) => {
+  const { removeFromCart } = useUser();
   return (
     <div className={`cart-sidebar ${isOpen ? "open" : ""}`}>
       <div className="cart-header">
@@ -23,7 +27,7 @@ const CartSidebar = ({ isOpen, onClose, cartItems }) => {
                 <h4>{item.title}</h4>
                 <span className="cart-price">R$ {item.price}</span>
               </div>
-              <button className="remove-btn">✖</button>
+              <button className="remove-btn" onClick={() => removeFromCart(index)}>✖</button>
             </div>
           ))
         ) : (
