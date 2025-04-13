@@ -19,7 +19,7 @@ export default function LoginCard() {
         setTipoUsuario("admin");
         navigate("/profile");
       } else if (resultado.tipo === "cliente") {
-        setUserId(resultado.id)
+        setUserId(resultado.dados.id)
         setTipoUsuario("cliente");
         navigate("/profile");
       } else {
