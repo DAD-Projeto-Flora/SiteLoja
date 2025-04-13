@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "./ProductCardBestSellers";
+import ProductCard from "../catalog/ProductCard"; // Atualiza o caminho para o ProductCard
 import "./BestSellers.css";
 
 const BestSellers = () => {
@@ -32,10 +32,13 @@ const BestSellers = () => {
                 {products.map(product => (
                     <ProductCard 
                         key={product.id} 
-                        title={product.nome} 
-                        price={product.precoUnid} 
-                        image={product.urlImagem} 
-                        rating={product.notaAvaliacao}
+                        produto={{
+                            id: product.id,
+                            nome: product.nome,
+                            preco: product.precoUnid,
+                            imagem: product.urlImagem,
+                            avaliacao: product.notaAvaliacao
+                        }}
                     />
                 ))}
             </div>
