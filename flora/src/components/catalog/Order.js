@@ -20,12 +20,6 @@ const Order = ({ setOrderBy }) => {
         </button>
         <button className="ordenacao-botao" onClick={() => setOrderBy("menorPreco")}>Menor preço</button>
         <button className="ordenacao-botao" onClick={() => setOrderBy("maiorPreco")}>Maior preço</button>
-        <button className="back-botao">
-          <img src="/back-arrow.svg" alt="seta" />
-        </button>
-        <button className="next-botao">
-          <img src="/arrow.svg" alt="seta" />
-        </button>
       </div>
     </div>
   );
