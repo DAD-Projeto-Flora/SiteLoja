@@ -22,6 +22,14 @@ const PaymentPage = () => {
   const [clientInfo, setClientInfo] = useState(null);
   const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
   const [isLoading, setIsLoading] = useState(false); 
+  const [currentYear] = useState(new Date().getFullYear());
+
+  // Redirecionar para a home se dados estiverem ausentes
+  useEffect(() => {
+    if (!cartItems || !subtotal || !shippingCost || !total) {
+      navigate("/");
+    }
+  }, [cartItems, subtotal, shippingCost, total, navigate]);
 
   useEffect(() => {
     const fetchClientInfo = async () => {
@@ -85,17 +93,16 @@ const PaymentPage = () => {
   const handleSubmit = async () => {
     setIsLoading(true); 
     try {
-      // Verifique se cartItems é um array válido
       if (!Array.isArray(cartItems) || cartItems.length === 0) {
         throw new Error("Carrinho vazio ou inválido.");
       }
-  
+
       const updatedUserInfo = {
         ...userInfo,
         city: cities.find(city => city.nome === userInfo.city)?.nome || userInfo.city,
         state: states.find(state => state.sigla === selectedState)?.nome || selectedState,
       };
-  
+
       const updatedOrderSummary = cartItems.map(item => {
         if (!item || typeof item !== "object") {
           throw new Error("Item inválido no carrinho.");
@@ -111,7 +118,7 @@ const PaymentPage = () => {
           qntProduto: item.quantity || 1,
         };
       });
-  
+
       const orderData = {
         cliente: {
           id: clientInfo?.id || userId,
@@ -124,7 +131,7 @@ const PaymentPage = () => {
         precoTotal: total,
         itens: updatedOrderSummary,
       };
-  
+
       const response = await fetch("https://apilojaflora.onrender.com/order/saveOrder", {
         method: "POST",
         headers: {
@@ -132,7 +139,7 @@ const PaymentPage = () => {
         },
         body: JSON.stringify(orderData),
       });
-  
+
       if (response.ok) {
         setIsOrderConfirmed(true);
         clearCart(); 
@@ -149,8 +156,6 @@ const PaymentPage = () => {
       setIsLoading(false);
     }
   };
-
-  const [currentYear] = useState(new Date().getFullYear());
 
   return (
     <div className="containerAll">
