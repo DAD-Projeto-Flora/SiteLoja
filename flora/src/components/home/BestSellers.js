@@ -11,6 +11,7 @@ const BestSellers = () => {
             .then(response => response.json())
             .then(data => {
                 // Ordena os produtos por rating (decrescente) e pega os 3 primeiros
+                console.log(data);
                 const topRatedProducts = data
                     .sort((a, b) => b.rating - a.rating)
                     .slice(0, 3);
@@ -31,10 +32,10 @@ const BestSellers = () => {
                 {products.map(product => (
                     <ProductCard 
                         key={product.id} 
-                        title={product.title} 
-                        price={product.price} 
-                        image={product.image} 
-                        rating={product.rating}
+                        title={product.nome} 
+                        price={product.precoUnid} 
+                        image={product.urlImagem} 
+                        rating={product.notaAvaliacao}
                     />
                 ))}
             </div>
