@@ -20,18 +20,26 @@ const ProductsList = () => {
   const [orderBy, setOrderBy] = useState("relevancia");
   const query = useQuery();
   const searchTerm = query.get("search")?.toLowerCase() || "";
+  const categoryId = query.get("categoryId"); 
 
   useEffect(() => {
     const fetchProdutos = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/api/getProducts");
+        let response;
+
+        if (categoryId) {
+          response = await fetch(`https://apilojaflora.onrender.com/product/getProductByCategory/${categoryId}`);
+        } else {
+          response = await fetch("/api/getProducts");
+        }
+
         if (!response.ok) {
           throw new Error("Erro ao buscar produtos");
         }
+
         const data = await response.json();
-  
-        
+
         const produtosOrdenados = (() => {
           if (orderBy === "destaque") {
             return data.sort((a, b) => b.notaAvaliacao - a.notaAvaliacao);
@@ -42,14 +50,13 @@ const ProductsList = () => {
           }
           return data;
         })();
-        
-  
+
         const produtosFormatados = produtosOrdenados.map((produto) => ({
           id: produto.id,
           nome: truncateText(produto.nome, 30),
           imagem: produto.urlImagem,
           preco: produto.precoUnid.toFixed(2).replace(".", ","),
-          avaliacao: produto.notaAvaliacao, 
+          avaliacao: produto.notaAvaliacao,
         }));
         setProdutos(produtosFormatados);
       } catch (error) {
@@ -58,9 +65,9 @@ const ProductsList = () => {
         setLoading(false);
       }
     };
-  
+
     fetchProdutos();
-  }, [orderBy]); 
+  }, [categoryId, orderBy]); // Reexecutar quando categoryId ou orderBy mudar
 
   const produtosFiltrados = produtos.filter((produto) =>
     produto.nome.toLowerCase().includes(searchTerm)
