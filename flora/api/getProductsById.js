@@ -1,7 +1,7 @@
 
-export const getProductById = async (id) => {
+export default async function getProductById(id) {
     try {
-      const response = await fetch('https://apilojaflora.onrender.com/product/getProduct/{id}' + id);
+      const response = await fetch(`https://apilojaflora.onrender.com/product/getProduct/${id}`);
       if (!response.ok) {
         throw new Error("Erro ao buscar produto");
       }
@@ -11,4 +11,6 @@ export const getProductById = async (id) => {
       console.error("Erro na API:", error);
       throw error;
     }
-  };
+  }
+   // Exemplo de uso
+// getProductById("12345")

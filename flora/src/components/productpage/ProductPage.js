@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // Importa o useParams
 import "./ProductPage.css";
-import { getProductById } from "../../autenticação/getProductsById"; // Importe a função de busca
 
 const ProductPage = () => {
   const { id } = useParams(); // Obtém o ID do produto da URL
@@ -11,7 +10,7 @@ const ProductPage = () => {
     // Busca o produto pelo ID
     const fetchProduct = async () => {
       try {
-        const produtoEncontrado = await getProductById(id);
+        const produtoEncontrado = await ("https://apilojaflora.onrender.com/product/getProduct/" + id);
         setProduto(produtoEncontrado);
       } catch (error) {
         console.error("Erro ao buscar o produto:", error);
