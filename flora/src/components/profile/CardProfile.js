@@ -104,7 +104,7 @@ const ProfileCard = () => {
               <label className="text">Nome completo</label>
               <input type="text" placeholder={client.nomeCompleto} className="input-card-profile" />
               <label className="text">Nome de usuário</label>
-              <input type="text" placeholder={client.nomeCompleto} className="input-card-profile" />
+              <input type="text" placeholder={client.nomeUsuario} className="input-card-profile" />
             </div>
           </div>
 

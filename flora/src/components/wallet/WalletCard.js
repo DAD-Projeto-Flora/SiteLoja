@@ -1,7 +1,27 @@
-import React from "react";
 import "./WalletCard.css"; // Importa o arquivo de estilos
+import React, { useEffect, useState } from "react";
+import { useUser } from "../login/UserContext";
+import { getCardByClientId } from "../../autenticação/getCardByClientId";
 
-const WalletCard = ({ name, email, image, numbercard, namecard, cvv, mmaa}) => {
+const WalletCard = () => {
+   const [card, setCard] = useState(null);
+    const { userId } = useUser();
+  
+    useEffect(() => {
+      const fetchClient = async () => {
+        try {
+          const data = await getCardByClientId(userId);
+          console.log(data)
+          setCard(data);
+        } catch (error) {
+          console.error("Erro ao carregar cliente:", error);
+        }
+      };
+  
+      if (userId) fetchClient();
+    }, [userId]);
+  
+
   return (
     <div className="profile-container">
       <div className="header-decoration"></div>
@@ -27,7 +47,7 @@ const WalletCard = ({ name, email, image, numbercard, namecard, cvv, mmaa}) => {
             <div>
               <div>
                 <label className="text">Número do cartão</label>
-                <input type="text" placeholder={numbercard} className="input-wallet-card"/>
+                <input type="text" placeholder={card.numero} className="input-wallet-card"/>
               </div>
               <div>
                 <label className="text">Data de Validade (MMAA)</label>
@@ -47,7 +67,7 @@ const WalletCard = ({ name, email, image, numbercard, namecard, cvv, mmaa}) => {
               </div>
               <div>
                 <label className="text">CVV</label>
-                <input type="text" placeholder={cvv} className="input-wallet-card"/>
+                <input type="text" placeholder={card.cvv} className="input-wallet-card"/>
               </div>
             </div>
             <div className="info-card">
