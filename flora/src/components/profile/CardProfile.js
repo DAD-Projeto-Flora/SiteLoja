@@ -8,7 +8,7 @@ const ProfileCard = () => {
   const [modalType, setModalType] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("userId"));
   const clientId = user?.id;
 
   useEffect(() => {
