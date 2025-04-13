@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Importa o Link
+import { Link } from "react-router-dom";
 import "./ProductCard.css";
 
 const ProductCard = ({ produto }) => {
@@ -28,7 +28,7 @@ const ProductCard = ({ produto }) => {
     <Link 
       to={{
         pathname: `/productpage/${produto.id}`,
-        state: { produto }, // Passa o produto como estado
+        state: { produto },
       }} 
       className="link-sem-estilo"
     > 

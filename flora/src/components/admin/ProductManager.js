@@ -26,7 +26,6 @@ const ProductManager = ({ products }) => {
       }
 
       alert("Produto deletado com sucesso!");
-      // Atualize a lista de produtos ou recarregue a página
       window.location.reload();
     } catch (error) {
       console.error("Erro ao deletar produto:", error);
@@ -41,7 +40,6 @@ const ProductManager = ({ products }) => {
         <button className="add-button-admin">+ Adicionar Produto</button>
       </div>
 
-      {/* Modal de edição */}
       {modalType === "edit" && selectedProduct && (
         <div className="modal-overlay">
           <div className="modal">
@@ -68,7 +66,6 @@ const ProductManager = ({ products }) => {
         </div>
       )}
 
-      {/* Lista de produtos */}
       <div className="products-scroll">
         {products.map((product, index) => (
           <div key={index} className="product-card-crud">

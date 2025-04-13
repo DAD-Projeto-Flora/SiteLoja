@@ -1,158 +1,157 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    width: 80%;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  .headerCheckout {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #00557C;
-    color: white;
-    padding: 15px;
-    border-radius: 10px 10px 0 0;
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .progress {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .progress span {
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #00334d;
-  }
-  
-  .progress .active {
-    background-color: #007799;
-  }
-  
-  .delivery {
-    margin-top: 20px;
-  }
-  
-  .delivery-box {
-    background: white;
-    padding: 15px;
-    border-radius: 0 5px 5px 5px;
-    width: 500px;
-    height: 160px;
-  }
-  
-  .delivery-btn {
-    background-color: #004d66;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    
-  }
-  
-  .calculate-button{
-    background-color: #004d66;
-    color: white;
-    border: none;
-    padding: 8px 25px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    margin-left: 10px;
-    font-weight: bold;
-  }
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
 
-  .calculate {
-    margin-top: 10px;
-  }
+.container {
+  width: 80%;
+  margin: auto;
+  padding: 20px;
+}
 
-  .calculate label{
-    font-weight: bold;
-  }
+.headerCheckout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #00557C;
+  color: white;
+  padding: 15px;
+  border-radius: 10px 10px 0 0;
+}
 
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
 
-  .input-checkout-page {
-    width: 70%;
-    padding: 8px;
-    border: 1px solid #007799;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-  
-  
-  .summary-box {
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    width: 350px;
-    height: 160px;
-    margin-left: 280px;
+.progress {
+  display: flex;
+  gap: 15px;
+}
 
-  }
+.progress span {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #00334d;
+}
+
+.progress .active {
+  background-color: #007799;
+}
+
+.delivery {
+  margin-top: 20px;
+}
+
+.delivery-box {
+  background: white;
+  padding: 15px;
+  border-radius: 0 5px 5px 5px;
+  width: 500px;
+  height: auto;
+}
+
+.delivery-btn {
+  background-color: #004d66;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.calculate-button{
+  background-color: #004d66;
+  color: white;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.calculate {
+  margin-top: 10px;
+}
+
+.calculate label{
+  font-weight: bold;
+}
 
 
-  
-  .green {
-    color: #59B59A;
-  }
-  
+.input-checkout-page {
+  width: 70%;
+  padding: 8px;
+  border: 1px solid #007799;
+  border-radius: 5px;
+  margin-top: 10px;
+}
 
 
-  .final{
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border-radius: 5px;
-    margin-top: 5%;
-  }
-  
-  .delivery-box2{
-    background-color: #00557C;
-    padding: 7px;
-    width: 120px;
-    display: flex;
-    justify-content: center;
-    border-radius: 10px 10px 0 0;
-  }
+.summary-box {
+  background: white;
+  padding: 15px;
+  border-radius: 5px;
+  width: 350px;
+  height: auto;
+  margin-left: 280px;
 
-  .delivery-box2 h3{
-    color: white;
-    font-size: 16px;
-  }
+}
 
-  .price{
-    margin-left: 225px;
-  }
 
-  .total{
-    margin-left: 200px;
-  }
 
-  .summary-box P{
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-  
-  .summary-box2{
-    margin-left: 280px;
-    height: 70px;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
+.green {
+  color: #59B59A;
+}
+
+
+
+.final{
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 5%;
+}
+
+.delivery-box2{
+  background-color: #00557C;
+  padding: 7px;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.delivery-box2 h3{
+  color: white;
+  font-size: 16px;
+}
+
+.price{
+  margin-left: 225px;
+}
+
+.total{
+  margin-left: 200px;
+}
+
+.summary-box P{
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.summary-box2{
+  margin-left: 280px;
+  height: 70px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}

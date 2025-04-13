@@ -41,8 +41,8 @@
 
 .products {
     display: flex;
-    flex-direction: column; /* Agora os produtos ficam um abaixo do outro */
-    gap: 10px; /* Dá um espacinho entre os produtos */
+    flex-direction: column;
+    gap: 10px;
 }
 
 .products-container{

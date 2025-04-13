@@ -1,122 +1,122 @@
 .cart-sidebar {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 370px;
-    height: 100vh;
-    background: white;
-    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
-    transition: right 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    z-index: 1000;
-  }
-  
-  .cart-sidebar.open {
-    right: 0;
-  }
-  
-  .cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px;
-    background: #00557C;
-    color: white;
-  }
-  
-  .close-btn {
-    background-color: #026796;
-    padding: 5px;
-    border: none;
-    font-size: 14px;
-    color: white;
-    cursor: pointer;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    width: 25px;
-    margin-right: 10px;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 370px;
+  height: 100vh;
+  background: white;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
 
-  }
-  
-  .cart-items {
-    flex: 1;
-    padding: 16px;
-    overflow-y: auto;
-  }
-  
-  .cart-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .cart-item-img {
-    width: 90px;
-    height: 90px;
-  }
-  
-  .cart-item-details {
-    flex-grow: 1;
-    margin: 0 0 0 20px;
-  }
+.cart-sidebar.open {
+  right: 0;
+}
 
-  .cart-price {
-    font-weight: bold;
-    color: #59B59A;
-  }
-  
-  .remove-btn {
-    background: none;
-    border: none;
-    color: red;
-    cursor: pointer;
-  }
-  
-  .cart-footer {
-    padding: 16px;
-    border-top: 1px solid #ddd;
-  }
-  
-  .subtotal {
-    font-size: 16px;
-    margin-bottom: 12px;
-  }
-  
-  .checkout-btn, .continue-btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-top-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    font-family: "Montserrat", serif;
-    font-weight: bold;
-  }
-  
-  .checkout-btn {
-    background: #00557C;
-    color: white;
-    margin-bottom: 8px;
-  }
-  
-  .continue-btn {
-    background: none;
-    border: 1px solid #00557C;
-    color: #00557C;
-  }
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #00557C;
+  color: white;
+}
 
-  .cart-item-image{
-    background: white;  
-    border-top-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    height: 100px;
-  }
+.close-btn {
+  background-color: #026796;
+  padding: 5px;
+  border: none;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 25px;
+  margin-right: 10px;
+
+}
+
+.cart-items {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.cart-item-img {
+  width: 90px;
+  height: 90px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+  margin: 0 0 0 20px;
+}
+
+.cart-price {
+  font-weight: bold;
+  color: #59B59A;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+.cart-footer {
+  padding: 16px;
+  border-top: 1px solid #ddd;
+}
+
+.subtotal {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.checkout-btn, .continue-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-family: "Montserrat", serif;
+  font-weight: bold;
+}
+
+.checkout-btn {
+  background: #00557C;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.continue-btn {
+  background: none;
+  border: 1px solid #00557C;
+  color: #00557C;
+}
+
+.cart-item-image{
+  background: white;  
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+}
   
 #shopCart{
     width: 35px;

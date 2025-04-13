@@ -13,7 +13,6 @@ const Catalog = () => {
       
         <Filter />
         <div className="catalogo-conteudo">
-          {/* <Order /> */}
           <ProductsList />
         </div>
       </div>
