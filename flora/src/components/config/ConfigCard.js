@@ -3,7 +3,6 @@ import "./ConfigCard.css";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../login/UserContext"; // ajuste o caminho conforme necessário
 import { getClientById } from "../../autenticação/getClientById";
-import updateSenha from "../../autenticação/updateSenha";
 
 const ConfigCard = () => {
   const { setTipoUsuario } = useUser();
@@ -22,6 +21,28 @@ const ConfigCard = () => {
     navigate("/login");
   };
 
+  const updateSenha = async (id, novaSenha) => {
+    try {
+      const response = await fetch(`https://apilojaflora.onrender.com/client/partialUpdateClient/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ senha: novaSenha }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao atualizar a senha");
+      }
+
+      alert("Senha alterada com sucesso!");
+      window.location.reload();
+    } catch (error) {
+      console.error("Erro ao alterar senha:", error);
+      alert("Erro ao alterar senha. Tente novamente.");
+    }
+  };
+
   const handleChangePassword = async () => {
     if (currentPassword !== client.senha) {
       setErrorMessage("Senha atual está incorreta.");
@@ -36,7 +57,6 @@ const ConfigCard = () => {
     try {
       await updateSenha(client.id, newPassword);
       setErrorMessage("");
-      alert("Senha alterada com sucesso!");
     } catch (error) {
       setErrorMessage("Erro ao atualizar a senha. Tente novamente.");
     }
@@ -46,7 +66,6 @@ const ConfigCard = () => {
     const fetchClient = async () => {
       try {
         const data = await getClientById(userId);
-        console.log(data)
         setClient(data);
       } catch (error) {
         console.error("Erro ao carregar cliente:", error);
