@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"; // Importa o useParams
 import "./ProductPage.css";
 
 const ProductPage = () => {
-  const { id } = useParams(); // Obtém o ID do produto da URL
+  const { id } = 1; // Obtém o ID do produto da URL
   const [produto, setProduto] = useState(null);
   const [loading, setLoading] = useState(true); // Adiciona estado de carregamento
   const [error, setError] = useState(null); // Adiciona estado para erros
