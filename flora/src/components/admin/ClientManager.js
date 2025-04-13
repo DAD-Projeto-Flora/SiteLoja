@@ -15,6 +15,25 @@ const ClientManager = ({ clients }) => {
     setSelectedClient(null);
   };
 
+  const deleteClient = async (id) => {
+    try {
+      const response = await fetch(`https://apilojaflora.onrender.com/client/deleteClient/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao deletar cliente");
+      }
+
+      alert("Cliente deletado com sucesso!");
+      // Aqui você pode atualizar a lista de clientes, se necessário
+      window.location.reload(); // Atualiza a página para refletir as mudanças
+    } catch (error) {
+      console.error("Erro ao deletar cliente:", error);
+      alert("Erro ao deletar cliente. Tente novamente.");
+    }
+  };
+
   return (
     <div className="product-manager-container">
       <div className="crud-header">
@@ -74,7 +93,7 @@ const ClientManager = ({ clients }) => {
             </div>
             <div className="product-actions">
               <button className="edit-button" onClick={() => openEditModal(client)}>Editar</button>
-              <button className="delete-button">Excluir</button>
+              <button className="delete-button" onClick={() => deleteClient(client.id)}>Excluir</button>
             </div>
           </div>
         ))}
