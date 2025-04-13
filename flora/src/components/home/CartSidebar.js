@@ -37,7 +37,13 @@ const CartSidebar = ({ isOpen, onClose, cartItems }) => {
 
       <div className="cart-footer">
         <p className="subtotal">Subtotal: <strong>R$ {cartItems.reduce((acc, item) => acc + parseFloat(item.price), 0).toFixed(2)}</strong></p>
-        <Link to="/checkoutPage" ><button className="checkout-btn">Finalizar compra</button></Link>
+        <Link
+  to="/checkoutPage"
+  state={{ cartItems }}
+>
+  <button className="checkout-btn">Finalizar compra</button>
+</Link>
+
         <button className="continue-btn" onClick={onClose}>Continuar compra</button>
       </div>
     </div>
