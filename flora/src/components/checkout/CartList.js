@@ -19,14 +19,14 @@ const CartList = ({ products }) => {
               <td>
                 <div className="product">
                   <img
-                    src={product.urlImagem?.startsWith("http") ? product.urlImagem : `https:${product.urlImagem}`}
-                    alt={product.nome}
+                    src={product.image?.startsWith("http") ? product.image : `https:${product.image}`}
+                    alt={product.title}
                   />
-                  <span>{product.nome}</span>
+                  <span>{product.title}</span>
                 </div>
               </td>
               <td>{product.deliveryPrice ? `R$ ${parseFloat(product.deliveryPrice).toFixed(2)}` : '—'}</td>
-              <td>R$ {parseFloat(product.precoUnid).toFixed(2)}</td>
+              <td>R$ {parseFloat(product.price).toFixed(2)}</td>
               <td>{product.quantity || 1}</td>
             </tr>
           ))}
