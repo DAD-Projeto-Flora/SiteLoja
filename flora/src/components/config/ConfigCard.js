@@ -46,6 +46,7 @@ const ConfigCard = () => {
     const fetchClient = async () => {
       try {
         const data = await getClientById(userId);
+        console.log(data)
         setClient(data);
       } catch (error) {
         console.error("Erro ao carregar cliente:", error);
