@@ -12,6 +12,7 @@ const ProductPage = () => {
     const fetchProduct = async () => {
       try {
         const response = await fetch("https://apilojaflora.onrender.com/product/getProduct/" + id);
+        console.log(response)
         if (!response.ok) {
           throw new Error("Erro ao buscar o produto: " + response.statusText);
         }
