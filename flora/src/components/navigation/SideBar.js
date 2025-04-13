@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useUser } from "../login/UserContext"; // importa o contexto
+import { useUser } from "../login/UserContext";
 import "./SideBar.css";
 
 const Sidebar = () => {
-  const { tipoUsuario } = useUser(); // pega o tipo do contexto
+  const { tipoUsuario } = useUser();
 
   const isAdmin = tipoUsuario === "admin";
 

@@ -7,9 +7,9 @@ const CheckoutPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const cartItems = location.state?.cartItems || [];
-  console.log(cartItems); // Verifica os itens do carrinho
+  console.log(cartItems);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // Simula autenticação
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [zipCode, setZipCode] = useState("");
   const [shippingCost, setShippingCost] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -40,18 +40,17 @@ const CheckoutPage = () => {
     setError("");
 
     try {
-      // Simulação de cálculo de frete com base no CEP
       let simulatedCost;
       const firstDigit = parseInt(zipCode[0]);
 
       if (firstDigit >= 0 && firstDigit <= 3) {
-        simulatedCost = 15.0; // Região Sul e Sudeste
+        simulatedCost = 15.0;
       } else if (firstDigit >= 4 && firstDigit <= 6) {
-        simulatedCost = 25.0; // Região Centro-Oeste
+        simulatedCost = 25.0;
       } else if (firstDigit >= 7 && firstDigit <= 9) {
-        simulatedCost = 35.0; // Região Norte e Nordeste
+        simulatedCost = 35.0;
       } else {
-        simulatedCost = 50.0; // CEP inválido ou fora do padrão
+        simulatedCost = 50.0;
       }
 
       setShippingCost(simulatedCost);
@@ -115,9 +114,9 @@ const CheckoutPage = () => {
             <h3>Nota fiscal</h3>
           </div>
           <div className="summary-box">
-            <p>Subtotal <span className="total">R$ {subtotal.toFixed(2)}</span></p>
-            <p className="green">Entrega <span className="total">R$ {(shippingCost ?? 10.8).toFixed(2)}</span></p>
-            <p>Total <span className="price">R$ {total.toFixed(2)}</span></p>
+            <p>Subtotal: <span className="total">R$ {subtotal.toFixed(2)}</span></p>
+            <p className="green">Entrega: <span className="total">R$ {(shippingCost ?? 10.8).toFixed(2)}</span></p>
+            <p>Total: <span className="price">R$ {total.toFixed(2)}</span></p>
             <button className="checkout-btn" onClick={handleCheckout}>
               Finalizar compra
             </button>

@@ -6,11 +6,11 @@
 }
 
 .table-container {
-  max-height: 100px; /* Define uma altura máxima para ativar o scroll vertical */
-  overflow-y: auto; /* Permite rolagem vertical */
-  overflow-x: auto; /* Permite rolagem horizontal */
+  max-height: 100px;
+  overflow-y: auto;
+  overflow-x: auto;
   border-radius: 5px;
-  border: 1px solid #ddd; /* Opcional, para melhorar a visualização */
+  border: 1px solid #ddd; 
 }
 
 table {
@@ -22,7 +22,7 @@ th, td {
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ddd;
-  white-space: nowrap; /* Evita que o texto quebre para novas linhas */
+  white-space: nowrap;
 }
 
 .product {

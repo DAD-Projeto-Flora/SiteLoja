@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./LoginCard.css";
 import { useNavigate } from "react-router-dom";
 import { verificarUsuario } from "../../autenticação/getClient";
-import { useUser } from "../login/UserContext"; // ajuste o caminho conforme estrutura do projeto
+import { useUser } from "../login/UserContext";
 
 export default function LoginCard() {
   const [showPassword, setShowPassword] = useState(false);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './ProductManager.css'; // usa o mesmo CSS do ProductManager
+import './ProductManager.css';
 
 const ClientManager = ({ clients }) => {
   const [modalType, setModalType] = useState(null);
@@ -26,8 +26,7 @@ const ClientManager = ({ clients }) => {
       }
 
       alert("Cliente deletado com sucesso!");
-      // Aqui você pode atualizar a lista de clientes, se necessário
-      window.location.reload(); // Atualiza a página para refletir as mudanças
+      window.location.reload();
     } catch (error) {
       console.error("Erro ao deletar cliente:", error);
       alert("Erro ao deletar cliente. Tente novamente.");

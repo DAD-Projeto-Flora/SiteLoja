@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // Importa o useParams
+import { useParams } from "react-router-dom";
 import "./ProductPage.css";
 import { getProductById } from "../../autenticação/getProductsById";
-import LoadingSpinner from "../catalog/LoadingSpinner"; // Importa o componente LoadingSpinner
-import Header from "../home/Header"; // Importa o componente Header
-import { useUser } from "../login/UserContext"; // import do contexto com carrinho
+import LoadingSpinner from "../catalog/LoadingSpinner";
+import Header from "../home/Header";
+import { useUser } from "../login/UserContext";
 
 
 const ProductPage = () => {
-  const { id } = useParams(); // Obtém o ID do produto da URL
+  const { id } = useParams();
   const [produto, setProduto] = useState(null);
-  const [loading, setLoading] = useState(true); // Adiciona estado de carregamento
-  const [error, setError] = useState(null); // Adiciona estado para erros
-  const { addToCart } = useUser(); // hook do contexto
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { addToCart } = useUser();
 
   const handleAddToCart = () => {
     const item = {
@@ -26,35 +26,35 @@ const ProductPage = () => {
   useEffect(() => {
     const fetchProduct = async (id) => {
       try {
-        const data = await getProductById(id); // Usa o ID correto
+        const data = await getProductById(id);
         console.log(data);
-        setProduto(data); // Corrige para setProduto
-        setLoading(false); // Define carregamento como concluído
+        setProduto(data);
+        setLoading(false);
       } catch (error) {
         console.error("Erro ao carregar produto:", error);
-        setError("Não foi possível carregar o produto."); // Define mensagem de erro
-        setLoading(false); // Define carregamento como concluído
+        setError("Não foi possível carregar o produto.");
+        setLoading(false);
       }
     };
 
-    if (id) fetchProduct(id); // Chama a função com o ID correto
-  }, [id]); // Adiciona o ID como dependência
+    if (id) fetchProduct(id);
+  }, [id]);
 
   if (loading) {
-    return <LoadingSpinner />; // Exibe o spinner enquanto carrega
+    return <LoadingSpinner />;
   }
 
   if (error) {
-    return <p>Erro: {error}</p>; // Exibe mensagem de erro
+    return <p>Erro: {error}</p>;
   }
 
   if (!produto) {
-    return <p>Produto não encontrado!</p>; // Exibe mensagem se o produto não for encontrado
+    return <p>Produto não encontrado!</p>;
   }
 
   return (
     <>
-      <Header /> {/* Adiciona o componente Header */}
+      <Header />
       <div className="product-page">
         <div className="product-content">
           <img src={produto.urlImagem} alt={produto.nome} className="product-image-page" />

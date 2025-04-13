@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ProductCard from "./ProductCard";
-import LoadingSpinner from "./LoadingSpinner"; // Importação do spinner
+import LoadingSpinner from "./LoadingSpinner";
 import "./ProductCard.css";
-import Order from "./Order"; // Importar o componente Order
+import Order from "./Order";
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
@@ -25,13 +25,13 @@ const ProductsList = () => {
     const fetchProdutos = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/api/getProducts"); // Endpoint genérico para todos os produtos
+        const response = await fetch("/api/getProducts");
         if (!response.ok) {
           throw new Error("Erro ao buscar produtos");
         }
         const data = await response.json();
   
-        // Ordenar os produtos com base no campo notaAvaliacao se orderBy for "destaque"
+        
         const produtosOrdenados = (() => {
           if (orderBy === "destaque") {
             return data.sort((a, b) => b.notaAvaliacao - a.notaAvaliacao);
@@ -40,7 +40,7 @@ const ProductsList = () => {
           } else if (orderBy === "menorPreco") {
             return data.sort((a, b) => a.precoUnid - b.precoUnid);
           }
-          return data; // Padrão: sem ordenação específica
+          return data;
         })();
         
   
@@ -76,7 +76,7 @@ const ProductsList = () => {
 
   return (
     <div>
-      <Order setOrderBy={setOrderBy} /> {/* Adicionar o componente Order */}
+      <Order setOrderBy={setOrderBy} />
       <div className="lista-produtos">
         {produtosFiltrados.length > 0 ? (
           <div className="grid-container">

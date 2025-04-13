@@ -175,15 +175,21 @@ const PaymentPage = () => {
             ))}
           </select>
           <select>
-            <option>YYYY</option>
-            {Array.from({ length: 10 }, (_, i) => (
-              <option key={currentYear + i} value={currentYear + i}>{currentYear + i}</option>
-            ))}
-          </select>
-          <input type="text" placeholder="CVV" className="input-payment-page"/>
+              <option>MM</option>
+              {Array.from({ length: 12 }, (_, i) => (
+                <option key={i + 1} value={String(i + 1).padStart(2, "0")}>{String(i + 1).padStart(2, "0")}</option>
+              ))}
+            </select>
+            <select>
+              <option>YYYY</option>
+              {Array.from({ length: 10 }, (_, i) => (
+                <option key={currentYear + i} value={currentYear + i}>{currentYear + i}</option>
+              ))}
+            </select>
+            <input type="text" placeholder="CVV" className="input-payment-page"/>
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Importe useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import CartSidebar from "./CartSidebar";
 import { useUser } from "../login/UserContext";
@@ -7,8 +7,8 @@ import { useUser } from "../login/UserContext";
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const navigate = useNavigate(); // Hook para redirecionamento
-  const { cartItems } = useUser(); // pega o carrinho real
+  const navigate = useNavigate();
+  const { cartItems } = useUser();
 
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);

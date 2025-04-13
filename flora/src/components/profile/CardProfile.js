@@ -36,7 +36,6 @@ const ProfileCard = () => {
     <div className="profile-container">
       <div className="header-decoration"></div>
 
-      {/* Modais de e-mail e endereço */}
       {modalType === "email" && (
         <div className="modal-overlay">
           <div className="modal">
@@ -85,7 +84,6 @@ const ProfileCard = () => {
         </div>
       )}
 
-      {/* Card principal */}
       <div className="profile-card">
         <div className="header-profile">
           <div className="user-info">
@@ -101,38 +99,47 @@ const ProfileCard = () => {
         <div className="form-grid">
           <div className="name-grid">
             <div>
-              <label className="text">Nome completo</label>
-              <input type="text" placeholder={client.nomeCompleto} className="input-card-profile" />
-              <label className="text">Nome de usuário</label>
-              <input type="text" placeholder={client.nomeUsuario} className="input-card-profile" />
+              <div className="input-name-profile">
+                <label className="text">Nome completo</label>
+                <input type="text" placeholder={client.nomeCompleto} className="input-card-profile" />
+              </div>
+              <div className="input-name-profile">
+                <label className="text">Nome de usuário</label>
+                <input type="text" placeholder={client.nomeUsuario} className="input-card-profile" />
+              </div>
             </div>
           </div>
 
           <div className="more-info">
             <div>
-              <label className="text">Gênero</label>
-              <div className="gender-options">
-                <label className="text">
-                  <input type="radio" name="gender" value="Feminino" defaultChecked={client.genero === "Feminino"} /> Feminino
-                </label>
-                <label className="text">
-                  <input type="radio" name="gender" value="Masculino" defaultChecked={client.genero === "Masculino"} /> Masculino
-                </label>
+              <div>
+                <label className="text">Gênero</label>
+                <div className="gender-options">
+                  <label className="text">
+                    <input type="radio" name="gender" value="Feminino" defaultChecked={client.genero === "Feminino"} /> Feminino
+                  </label>
+                  <label className="text">
+                    <input type="radio" name="gender" value="Masculino" defaultChecked={client.genero === "Masculino"} /> Masculino
+                  </label>
+              </div>
               </div>
 
-              <label className="text">Número de telefone</label>
-              <div className="phone-input">
-                <div id="input-card-profile-ddd">
-                  <img className="icon-brasil" src="/brasil.svg" alt="Endereço" />
-                  <span className="text">+55</span>
+              <div>
+                <label className="text">Número de telefone</label>
+                <div className="phone-input">
+                  <div id="input-card-profile-ddd">
+                    <img className="icon-brasil" src="/brasil.svg" alt="Endereço" />
+                    <span className="text">+55</span>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder={client.telefone}
+                    className="input-card-profile"
+                    id="tel-input"
+                  />
                 </div>
-                <input
-                  type="text"
-                  placeholder={client.telefone}
-                  className="input-card-profile"
-                  id="tel-input"
-                />
               </div>
+
             </div>
           </div>
 
