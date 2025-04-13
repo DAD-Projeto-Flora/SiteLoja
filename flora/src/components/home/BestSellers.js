@@ -6,11 +6,9 @@ const BestSellers = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        // Faz a requisição para a API que retorna todos os produtos
         fetch("https://apilojaflora.onrender.com/product/getProducts")
             .then(response => response.json())
             .then(data => {
-                // Ordena os produtos por rating (decrescente) e pega os 3 primeiros
                 console.log(data);
                 const topRatedProducts = data
                     .sort((a, b) => b.rating - a.rating)
@@ -39,6 +37,7 @@ const BestSellers = () => {
                             imagem: product.urlImagem,
                             avaliacao: product.notaAvaliacao
                         }}
+                        customStyle={{ color: "#ffff" }}
                     />
                 ))}
             </div>

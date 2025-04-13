@@ -15,6 +15,7 @@
 
 .produto-card h3 {
   font-size: 16px;
+  color: #333;
   margin-top: 10px;
 }
 
@@ -22,6 +23,7 @@
   font-weight: bold;
   color: #007bff;
   margin-top: 6px;
+  width: 100%;
 }
 
 .grid-container {
@@ -40,9 +42,9 @@
 .produto-card{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: center;
-  text-align: center;
+  text-align: start;
   width: 200px;
 }
 
@@ -73,9 +75,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 50%; /* Define que apenas metade será visível */
-  height: 100%; /* Garante que a altura seja consistente */
-  color: #ffd700; /* Cor dourada para a metade preenchida */
+  width: 50%;
+  height: 100%;
+  color: #ffd700;
   overflow: hidden;
 }
 
