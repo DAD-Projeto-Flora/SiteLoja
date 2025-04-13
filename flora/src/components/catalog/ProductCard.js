@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./ProductCard.css";
 
-const ProductCard = ({ produto }) => {
+const ProductCard = ({ produto, customStyle }) => {
   const renderStars = (avaliacao) => {
     const totalEstrelas = 5;
     const estrelasCheias = Math.floor(avaliacao);
@@ -36,9 +36,9 @@ const ProductCard = ({ produto }) => {
         <div className="img-produto">
           <img src={produto.imagem} alt={produto.nome} />
         </div>
-        <h3>{produto.nome}</h3>
+        <h3 style={customStyle}>{produto.nome}</h3>
         {renderStars(produto.avaliacao)}
-        <p>R$ {produto.preco}</p>
+        <p style={customStyle}>R$ {produto.preco}</p>
       </div>
     </Link>
   );

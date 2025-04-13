@@ -32,7 +32,7 @@ const Footer = () => {
                     </div>
                 </div>
                 <div className="logo-empresa">
-                    <img className="logo-flora" src="/FLORA_-_Sólido_Azul_sombreado 2.svg" alt="Logo Flora" />
+                    <img className="logo-flora" src="/FLORAFooter.svg" alt="Logo Flora" />
                 </div>
             </div>
         </footer>
