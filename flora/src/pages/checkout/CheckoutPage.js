@@ -7,6 +7,7 @@ const CheckoutPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const cartItems = location.state?.cartItems || [];
+  console.log(cartItems); // Verifica os itens do carrinho
 
   const [isLoggedIn, setIsLoggedIn] = useState(true); // Simula autenticação
   const [zipCode, setZipCode] = useState("");
