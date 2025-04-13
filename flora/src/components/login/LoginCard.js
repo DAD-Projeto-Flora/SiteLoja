@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./LoginCard.css";
 import { useNavigate } from "react-router-dom";
-import { verificarUsuario } from "../../autenticação/authAPI";
+import { verificarUsuario } from "../../autenticação/getClient";
 import { useUser } from "../login/UserContext"; // ajuste o caminho conforme estrutura do projeto
 
 export default function LoginCard() {
@@ -17,11 +17,10 @@ export default function LoginCard() {
 
       if (resultado.tipo === "admin") {
         setTipoUsuario("admin");
-        localStorage.setItem("user", JSON.stringify(resultado));
         navigate("/profile");
       } else if (resultado.tipo === "cliente") {
+        localStorage.setItem("userId", resultado.id);
         setTipoUsuario("cliente");
-        localStorage.setItem("user", JSON.stringify(resultado));
         navigate("/profile");
       } else {
         alert("Usuário não encontrado.");

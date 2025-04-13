@@ -1,19 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getClientById } from "../../autenticação/getClientById";
 import "./CardProfile.css";
-
-const user = JSON.parse(localStorage.getItem("user"));
 
 const ProfileCard = () => {
   const [modalType, setModalType] = useState(null);
+  const [userData, setUserData] = useState(null);
 
   const openModalEndereco = () => setModalType("endereco");
   const openModalEmail = () => setModalType("email");
   const closeModal = () => setModalType(null);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+      const userId = storedUser?.id;
+
+      if (!userId) return;
+
+      try {
+        const data = await getClientById(userId);
+        setUserData(data);
+      } catch (error) {
+        console.error("Erro ao carregar dados do usuário:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (!userData) return <p>Carregando...</p>;
+
   return (
     <div className="profile-container">
       <div className="header-decoration"></div>
 
+      {/* Modal de Email */}
       {modalType === "email" && (
         <div className="modal-overlay">
           <div className="modal">
@@ -30,6 +51,7 @@ const ProfileCard = () => {
         </div>
       )}
 
+      {/* Modal de Endereço */}
       {modalType === "endereco" && (
         <div className="modal-overlay">
           <div className="modal">
@@ -65,10 +87,10 @@ const ProfileCard = () => {
       <div className="profile-card">
         <div className="header-profile">
           <div className="user-info">
-            <img className="avatar" src={user.fotoPerfil} alt="Foto de Perfil" />
+            <img className="avatar" src={userData.fotoPerfil} alt="Foto de Perfil" />
             <div>
-              <h2 className="text">{user.nomeCompleto}</h2>
-              <p className="text">{user.email}</p>
+              <h2 className="text">{userData.nomeCompleto}</h2>
+              <p className="text">{userData.email}</p>
             </div>
           </div>
           <button className="save-button">Salvar</button>
@@ -77,75 +99,72 @@ const ProfileCard = () => {
         <div className="form-grid">
           <div className="name-grid">
             <div>
-              <div>
-                <label className="text">Nome completo</label>
-                <input type="text" placeholder={user.nomeCompleto || "Nome completo"} className="input-card-profile" />
-              </div>
-              <div>
-                <label className="text">Nome de usuário</label>
-                <input type="text" placeholder={user.nomeUsuario || "Nome de usuário"} className="input-card-profile" />
-              </div>
+              <label className="text">Nome completo</label>
+              <input
+                type="text"
+                defaultValue={userData.nomeCompleto}
+                className="input-card-profile"
+              />
+
+              <label className="text">Nome de usuário</label>
+              <input
+                type="text"
+                defaultValue={userData.nomeUsuario}
+                className="input-card-profile"
+              />
             </div>
           </div>
 
           <div className="more-info">
             <div>
-              <div>
-                <label className="text">Gênero</label>
-                <div className="gender-options">
-                  <label className="text">
-                    <input type="radio" name="gender" value="Feminino" defaultChecked /> Feminino
-                  </label>
-                  <label className="text">
-                    <input type="radio" name="gender" value="Masculino" /> Masculino
-                  </label>
-                  <label className="text">
-                    <input type="radio" name="gender" value="Outros" /> Outros
-                  </label>
-                </div>
+              <label className="text">Gênero</label>
+              <div className="gender-options">
+                <label className="text">
+                  <input type="radio" name="gender" value="Feminino" defaultChecked={userData.genero === "Feminino"} /> Feminino
+                </label>
+                <label className="text">
+                  <input type="radio" name="gender" value="Masculino" defaultChecked={userData.genero === "Masculino"} /> Masculino
+                </label>
+                <label className="text">
+                  <input type="radio" name="gender" value="Outros" defaultChecked={userData.genero === "Outros"} /> Outros
+                </label>
               </div>
 
-              <div>
-                <label className="text">Número de telefone</label>
-                <div className="phone-input">
-                  <div id="input-card-profile-ddd">
-                    <img className="icon-brasil" src="/brasil.svg" alt="Endereço" />
-                    <span className="text">+55</span>
-                  </div>
-                  <input
-                    type="text"
-                    placeholder={user.telefone || "11999999999"}
-                    className="input-card-profile"
-                    id="tel-input"
-                  />
+              <label className="text">Número de telefone</label>
+              <div className="phone-input">
+                <div id="input-card-profile-ddd">
+                  <img className="icon-brasil" src="/brasil.svg" alt="Endereço" />
+                  <span className="text">+55</span>
                 </div>
+                <input
+                  type="text"
+                  defaultValue={userData.telefone}
+                  className="input-card-profile"
+                  id="tel-input"
+                />
               </div>
             </div>
           </div>
 
           <div className="info-contact">
-            <div>
-              <div className="card-info text">
-                <label>E-mail cadastrado</label>
-                <div className="contact-box">
-                  <span>
-                    <img className="icon" src="/IconEmail.svg" alt="Icon Email" />
-                  </span>
-                  <p className="text">{user.email}</p>
-                </div>
-                <button className="add-button" onClick={openModalEmail}>+ Atualizar e-mail</button>
+            <div className="card-info text">
+              <label>E-mail cadastrado</label>
+              <div className="contact-box">
+                <span>
+                  <img className="icon" src="/IconEmail.svg" alt="Icon Email" />
+                </span>
+                <p className="text">{userData.email}</p>
               </div>
+              <button className="add-button" onClick={openModalEmail}>+ Atualizar e-mail</button>
 
-              <div className="card-info">
-                <label className="text">Endereço cadastrado</label>
-                <div className="contact-box">
-                  <span>
-                    <img className="icon" src="/Loc.svg" alt="Endereço" />
-                  </span>
-                  <p className="text">Endereço não informado</p>
-                </div>
-                <button className="add-button" onClick={openModalEndereco}>+ Atualizar endereço</button>
+              <label className="text">Endereço cadastrado</label>
+              <div className="contact-box">
+                <span>
+                  <img className="icon" src="/Loc.svg" alt="Endereço" />
+                </span>
+                <p className="text">Endereço não informado</p>
               </div>
+              <button className="add-button" onClick={openModalEndereco}>+ Atualizar endereço</button>
             </div>
           </div>
         </div>
