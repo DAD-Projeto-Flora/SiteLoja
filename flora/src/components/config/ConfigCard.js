@@ -1,17 +1,65 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ConfigCard.css";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../login/UserContext"; // ajuste o caminho conforme necessário
+import { getClientById } from "../../autenticação/getClientById";
+import updateSenha from "../../autenticação/updateSenha";
 
-const ConfigCard = ({ name, image, email, password }) => {
+const ConfigCard = () => {
   const { setTipoUsuario } = useUser();
   const navigate = useNavigate();
+  const { userId } = useUser();
+  const [loading, setLoading] = useState(true);
+  const [client, setClient] = useState(null);
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogout = () => {
     setTipoUsuario(null);
     localStorage.removeItem("tipoUsuario");
     navigate("/login");
   };
+
+  const handleChangePassword = async () => {
+    if (currentPassword !== client.senha) {
+      setErrorMessage("Senha atual está incorreta.");
+      return;
+    }
+
+    if (newPassword !== confirmNewPassword) {
+      setErrorMessage("As senhas novas não coincidem.");
+      return;
+    }
+
+    try {
+      await updateSenha(client.id, newPassword);
+      setErrorMessage("");
+      alert("Senha alterada com sucesso!");
+    } catch (error) {
+      setErrorMessage("Erro ao atualizar a senha. Tente novamente.");
+    }
+  };
+
+  useEffect(() => {
+    const fetchClient = async () => {
+      try {
+        const data = await getClientById(userId);
+        setClient(data);
+      } catch (error) {
+        console.error("Erro ao carregar cliente:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (userId) fetchClient();
+  }, [userId]);
+
+  if (loading) {
+    return <p>Carregando...</p>;
+  }
 
   return (
     <div className="profile-container">
@@ -20,13 +68,15 @@ const ConfigCard = ({ name, image, email, password }) => {
       <div className="profile-card">
         <div className="header-profile">
           <div className="user-info">
-            <img className="avatar" src={image} alt="Foto de Perfil" />
+            <img className="avatar" src={client?.fotoPerfil} alt="Foto de Perfil" />
             <div>
-              <h2 className="text">{name}</h2>
-              <p className="text">{email}</p>
+              <h2 className="text">{client?.nome}</h2>
+              <p className="text">{client?.email}</p>
             </div>
           </div>
-          <button className="save-button">Salvar</button>
+          <button className="save-button" onClick={handleChangePassword}>
+            Salvar
+          </button>
         </div>
 
         <div className="form-grid">
@@ -34,28 +84,41 @@ const ConfigCard = ({ name, image, email, password }) => {
             <div>
               <div>
                 <label className="text">Senha antiga</label>
-                <input type="text" placeholder="Insira sua senha atual" className="input-config-card" />
+                <input
+                  type="password"
+                  placeholder="Insira sua senha atual"
+                  className="input-config-card"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                />
+              </div>
+              <div>
+                <label className="text">Nova senha</label>
+                <input
+                  type="password"
+                  placeholder="Insira sua nova senha"
+                  className="input-config-card"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
               </div>
               <div>
                 <label className="text">Confirme a nova senha</label>
-                <input type="text" placeholder="Insira sua nova senha novamente" className="input-config-card" />
+                <input
+                  type="password"
+                  placeholder="Insira sua nova senha novamente"
+                  className="input-config-card"
+                  value={confirmNewPassword}
+                  onChange={(e) => setConfirmNewPassword(e.target.value)}
+                />
               </div>
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
             </div>
           </div>
         </div>
 
         <div className="form-grid">
           <div className="info-grid">
-            <div>
-              <div>
-                <label className="text">Nova senha</label>
-                <input type="text" placeholder="Insira sua nova senha" className="input-config-card" />
-              </div>
-              <div>
-                <label className="text">Mudar e-mail</label>
-                <input type="text" placeholder="Insira seu novo e-mail" className="input-config-card" />
-              </div>
-            </div>
             <div className="delete-part">
               <div className="delete">
                 <label className="text">Excluir conta</label>
@@ -63,7 +126,9 @@ const ConfigCard = ({ name, image, email, password }) => {
               </div>
               <div className="logout">
                 <label className="text">Sair da conta</label>
-                <button className="logout-button" onClick={handleLogout}>Deslogar</button>
+                <button className="logout-button" onClick={handleLogout}>
+                  Deslogar
+                </button>
               </div>
             </div>
           </div>

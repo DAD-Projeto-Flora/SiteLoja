@@ -85,10 +85,11 @@ const PaymentPage = () => {
       <div className="containerInfo">
         <div className="shipping-address">
           <h2 className="title-paymentpage">Endereço</h2>
-          <input type="text" placeholder="Nome completo" className="input-payment-page"/>
+          <input type="text" placeholder="Ex. Rua Morada de Teresina" className="input-payment-page"/>
           <div className="containerAdress">
-            <input type="text" placeholder="Ex. Rua Morada de Teresina, 80" className="input-payment-page"/>
+            <input type="text" placeholder="Sol Nascente" className="input-payment-page"/>
             <input type="text" placeholder="Apartamento, casa etc" className="input-payment-page"/>
+            <input type="number" placeholder="Número" className="input-payment-page"/>
           </div>
           <div className="city-state-zip">
             <select onChange={(e) => setSelectedState(e.target.value)}>
