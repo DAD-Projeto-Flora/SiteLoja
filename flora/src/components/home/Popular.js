@@ -39,10 +39,10 @@ const Popular = () => {
             ))}
           </div>
           <div className="adcard">
-            <img src="/marimaria.png" alt="ad" />
-            <img src="/marimaria2.png" alt="ad" />
-            <img src="/ox.png" alt="ad" />
-            <img src="/medina.png" alt="ad" />
+            <img src="/Marimaria.png" alt="ad" />
+            <img src="/Marimariaprodutos.png" alt="ad" />
+            <img src="/Ox.png" alt="ad" />
+            <img src="/Medina.png" alt="ad" />
           </div>
           <h2 className="text">Baseado no seu gosto</h2>
           <div className="popular-products">
