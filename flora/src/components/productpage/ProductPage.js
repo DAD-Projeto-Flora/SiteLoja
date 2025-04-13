@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // Importa o useParams
 import "./ProductPage.css";
-
+import { getProductById } from "../../autenticação/getProductsById";
 
 const ProductPage = () => {
   const { id } = useParams(); // Obtém o ID do produto da URL
@@ -12,7 +12,7 @@ const ProductPage = () => {
   useEffect(() => {
     const fetchProduct = async (id) => {
       try {
-        const data = await fetch("/api/getProductsById"+id); // Usa o ID correto
+        const data = await getProductById(id); // Usa o ID correto
         console.log(data);
         setProduto(data); // Corrige para setProduto
         setLoading(false); // Define carregamento como concluído
