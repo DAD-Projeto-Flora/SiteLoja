@@ -1,6 +1,6 @@
 import { jsPDF } from "jspdf";
 
-// Função para carregar a imagem da logo e convertê-la para base64
+
 const loadLogo = (url) => {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -22,22 +22,17 @@ const loadLogo = (url) => {
 const generatePDF = async (userInfo, orderSummary) => {
   const doc = new jsPDF();
 
-  // Carregar a logo
   const logoDataURL = await loadLogo('/floraLogo.svg');
 
-  // Adicionar a logo ao PDF
   doc.addImage(logoDataURL, 'SVG', 20, 10, 30, 15); 
 
-  // Definindo estilos
   doc.setFont("helvetica", "bold");
   doc.setFontSize(18);
   doc.text("Comprovante de Pagamento", 105, 40, { align: "center" });
 
-  // Linha divisória
   doc.setLineWidth(0.5);
   doc.line(20, 45, 190, 45);
 
-  // Informações do usuário
   doc.setFontSize(12);
   doc.setFont("helvetica", "normal");
   doc.text(`Endereço: ${userInfo.address}`, 20, 65);
@@ -48,10 +43,9 @@ const generatePDF = async (userInfo, orderSummary) => {
   doc.text(`Estado: ${userInfo.state}`, 20, 115);
   doc.text(`CEP: ${userInfo.zip}`, 20, 125);
 
-  // Linha divisória
   doc.line(20, 135, 190, 135);
 
-  // Resumo do pedido
+
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
   doc.text("Resumo do Pedido", 20, 145);
@@ -65,16 +59,15 @@ const generatePDF = async (userInfo, orderSummary) => {
     startY += 10;
   });
 
-  // Linha divisória antes do total
   doc.line(20, startY + 5, 190, startY + 5);
 
-  // Total
+
   const total = orderSummary.reduce((acc, item) => acc + item.price, 0);
   doc.setFontSize(14);
   doc.setFont("helvetica", "bold");
   doc.text(`Total: R$ ${total.toFixed(2)}`, 20, startY + 15);
 
-  // Salvando o PDF
+
   doc.save("comprovante_pagamento.pdf");
 };
 
