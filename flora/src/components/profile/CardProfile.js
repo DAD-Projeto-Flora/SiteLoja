@@ -15,6 +15,7 @@ const ProfileCard = () => {
     const fetchClient = async () => {
       try {
         const data = await getClientById(clientId);
+        console.log(data)
         setClient(data);
       } catch (error) {
         console.error("Erro ao carregar cliente:", error);
