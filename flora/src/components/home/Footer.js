@@ -20,8 +20,8 @@ const Footer = () => {
                     <div className="payment-types">
                         <h2 className="title-footer">Formas de pagamento</h2>
                         <img src="/PicPay.svg" alt="Logo PicPay" />
-                        <img src="/Mastercard.svg" alt="Logo MasterCard" />
-                        <img src="/Visa.svg" alt="Logo Visa" />
+                        <img src="/MasterCard.svg" alt="Logo MasterCard" />
+                        <img src="/visa.svg" alt="Logo Visa" />
                     </div>
                 </div>
                 <div className="column">
