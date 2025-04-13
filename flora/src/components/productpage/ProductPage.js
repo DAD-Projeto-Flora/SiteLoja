@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom"; // Importa o useParams
 import "./ProductPage.css";
 import { getProductById } from "../../autenticação/getProductsById";
+import LoadingSpinner from "../catalog/LoadingSpinner"; // Importa o componente LoadingSpinner
 
 const ProductPage = () => {
   const { id } = useParams(); // Obtém o ID do produto da URL
@@ -27,7 +28,7 @@ const ProductPage = () => {
   }, [id]); // Adiciona o ID como dependência
 
   if (loading) {
-    return <p>Carregando...</p>; // Exibe mensagem enquanto carrega
+    return <LoadingSpinner />; // Exibe o spinner enquanto carrega
   }
 
   if (error) {
