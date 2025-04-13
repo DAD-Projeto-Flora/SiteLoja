@@ -3,22 +3,22 @@ import { useParams } from "react-router-dom"; // Importa o useParams
 import "./ProductPage.css";
 
 const ProductPage = () => {
-  const id  = 1; // Obtém o ID do produto da URL
+  const { id } = useParams(); // Obtém o ID do produto da URL
   const [produto, setProduto] = useState(null);
   const [loading, setLoading] = useState(true); // Adiciona estado de carregamento
   const [error, setError] = useState(null); // Adiciona estado para erros
 
   useEffect(() => {
     // Busca o produto pelo ID
-    const fetchProduct = async (id) => {
+    const fetchProduct = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`https://apilojaflora.onrender.com/product/getProduct/`+id);
-        console.log(response);
+        const response = await fetch(`https://apilojaflora.onrender.com/product/getProduct/${id}`);
         if (!response.ok) {
           throw new Error("Erro ao buscar o produto: " + response.statusText);
         }
-        setProduto(response);
+        const data = await response.json(); // Converte a resposta para JSON
+        setProduto(data);
       } catch (error) {
         setError(error.message);
       } finally {
