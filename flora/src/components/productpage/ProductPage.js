@@ -10,7 +10,7 @@ const ProductPage = () => {
     // Busca o produto pelo ID
     const fetchProduct = async () => {
       try {
-        const produtoEncontrado = await ("https://apilojaflora.onrender.com/product/getProduct/" + id);
+        const produtoEncontrado = await ("https://apilojaflora.onrender.com/product/getProductById/" + id);
         setProduto(produtoEncontrado);
       } catch (error) {
         console.error("Erro ao buscar o produto:", error);
