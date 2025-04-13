@@ -5,6 +5,7 @@ import "./ProductPage.css";
 const ProductPage = () => {
   const { id } = useParams(); // Obtém o ID do produto da URL
   const [produto, setProduto] = useState(null);
+  const [loading, setLoading] = useState(true); // Adiciona estado de carregamento
 
   useEffect(() => {
     // Busca o produto pelo ID
@@ -18,14 +19,20 @@ const ProductPage = () => {
         setProduto(produtoEncontrado);
       } catch (error) {
         console.error("Erro ao buscar o produto:", error);
+      } finally {
+        setLoading(false); // Finaliza o carregamento
       }
     };
 
     fetchProduct();
   }, [id]);
 
+  if (loading) {
+    return <p>Carregando...</p>; // Exibe mensagem enquanto carrega
+  }
+
   if (!produto) {
-    return <p>Produto não encontrado!</p>; // Exibe mensagem enquanto o produto não é carregado
+    return <p>Produto não encontrado!</p>; // Exibe mensagem se o produto não for encontrado
   }
 
   return (
