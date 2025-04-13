@@ -15,6 +15,7 @@ const HistoryCard = () => {
         const fetchPurchases = async () => {
             try {
                 const data = await getOrderByClientId(userId);
+                console.log(data);
                 setPurchases(data);
             } catch (err) {
                 setError('Erro ao carregar as compras.');
