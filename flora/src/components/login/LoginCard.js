@@ -9,7 +9,7 @@ export default function LoginCard() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
-  const { tipoUsuario, setTipoUsuario } = useUser();
+  const { tipoUsuario, setTipoUsuario, setUserId } = useUser();
 
   const handleLogin = async () => {
     try {
@@ -19,7 +19,7 @@ export default function LoginCard() {
         setTipoUsuario("admin");
         navigate("/profile");
       } else if (resultado.tipo === "cliente") {
-        localStorage.setItem("userId", resultado.id);
+        setUserId(resultado.id)
         setTipoUsuario("cliente");
         navigate("/profile");
       } else {

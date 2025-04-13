@@ -2,19 +2,18 @@ import React, { useEffect, useState } from "react";
 import "./CardProfile.css";
 import { getClientById } from "../../autenticação/getClientById";
 import LoadingSpinner from "../catalog/LoadingSpinner";
+import { useUser } from "../login/UserContext"; // ajuste o caminho conforme estrutura do projeto
 
 const ProfileCard = () => {
   const [client, setClient] = useState(null);
   const [modalType, setModalType] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const clientId = localStorage.getItem("userId");
-  
+  const { userId } = useUser();
 
   useEffect(() => {
     const fetchClient = async () => {
       try {
-        const data = await getClientById(1);
+        const data = await getClientById(userId);
         console.log(data)
         setClient(data);
       } catch (error) {
@@ -24,8 +23,8 @@ const ProfileCard = () => {
       }
     };
 
-    if (clientId) fetchClient();
-  }, [clientId]);
+    if (userId) fetchClient();
+  }, [userId]);
 
   const openModalEndereco = () => setModalType("endereco");
   const openModalEmail = () => setModalType("email");
