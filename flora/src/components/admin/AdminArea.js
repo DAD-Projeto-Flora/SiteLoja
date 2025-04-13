@@ -10,7 +10,7 @@ const AdminPage = () => {
   const [clients_bd, setClients] = useState([]);
 
   useEffect(() => {
-    fetch("/api/products")
+    fetch("/api/getProducts")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .catch((err) => console.error("Erro ao carregar produtos:", err));
