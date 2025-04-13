@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCardBestSellers";
 import "./BestSellers.css";
 
 const BestSellers = () => {
-    const products = [
-        { id: 1, title: "Produto 1", price: "100,00", image: "/Neutrox.svg", rating: 4 },
-        { id: 2, title: "Produto 2", price: "150,00", image: "/Neutrox.svg", rating: 5 },
-        { id: 3, title: "Produto 3", price: "200,00", image: "/Neutrox.svg", rating: 3 }
-    ];
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        // Faz a requisição para a API que retorna todos os produtos
+        fetch("https://apilojaflora.onrender.com/product/getProducts")
+            .then(response => response.json())
+            .then(data => {
+                // Ordena os produtos por rating (decrescente) e pega os 3 primeiros
+                console.log(data);
+                const topRatedProducts = data
+                    .sort((a, b) => b.rating - a.rating)
+                    .slice(0, 3);
+                setProducts(topRatedProducts);
+            })
+            .catch(error => {
+                console.error("Erro ao buscar os produtos:", error);
+            });
+    }, []);
 
     return (
         <div className="blueCube" style={{ backgroundImage: 'url(/blueCube.svg)' }}>
@@ -19,10 +32,10 @@ const BestSellers = () => {
                 {products.map(product => (
                     <ProductCard 
                         key={product.id} 
-                        title={product.title} 
-                        price={product.price} 
-                        image={product.image} 
-                        rating={product.rating}
+                        title={product.nome} 
+                        price={product.precoUnid} 
+                        image={product.urlImagem} 
+                        rating={product.notaAvaliacao}
                     />
                 ))}
             </div>

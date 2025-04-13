@@ -144,6 +144,11 @@
 
 .containerAdress{
   display: flex;
+  justify-content: space-between;
+}
+
+.containerAdress input{
+  width: 32%;
 }
 
 .payCard{
