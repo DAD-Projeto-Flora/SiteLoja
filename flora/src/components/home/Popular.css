@@ -1,5 +1,4 @@
 .popular{
-    
     width: 100%;
     text-align: center;
 }
@@ -11,7 +10,7 @@
 .popular-products{
     display: flex;
     justify-content: center;
-    gap: 70px;
+    gap: 50px;
     margin-top: 50px;
 }
 
