@@ -115,8 +115,6 @@ const PaymentPage = () => {
         <p>Subtotal: <span>R$ {subtotal?.toFixed(2)}</span></p>
         <p>Frete: <span>R$ {shippingCost?.toFixed(2)}</span></p>
         <p className="total">Total: <span>R$ {total?.toFixed(2)}</span></p>
-
-          <p className="total">Total: <span>$112.92</span></p>
           <button className="place-order" onClick={handleSubmit}>Place Order</button>
         </div>
       </div>
