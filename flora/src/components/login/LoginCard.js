@@ -39,7 +39,7 @@ export default function LoginCard() {
   return (
     <div className="login-container">
       <img src="/circulos.svg" alt="círculos" className="login-circle" />
-      <img src="/logoCompleta.svg" alt="logo" className="login-leaf" />
+      <img src="/LogoCompleta.svg" alt="logo" className="login-leaf" />
       <div className="login-card">
         <h2 className="login-title">
           Bem-vindo <br /> à Flora!
