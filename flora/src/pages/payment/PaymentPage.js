@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./PaymentPage.css";
 import generatePDF from "../../utils/generatePDF"; 
+import { useLocation } from "react-router-dom";
 
 
 const PaymentPage = () => {
+  const location = useLocation();
+  const { cartItems, subtotal, shippingCost, total } = location.state || {};
   const [cardNumber, setCardNumber] = useState("");
   const [cardImage, setCardImage] = useState("/default-card.png");
   const [states, setStates] = useState([]);
@@ -101,17 +104,17 @@ const PaymentPage = () => {
         </div>
 
         <div className="order-summary">
-          <h2 className="title-paymentpage">Finalizar</h2>
-          <div className="order-item">
-            <img src="Neutrox.svg" alt="Gourmet Coffee Beans" />
-            <div>
-              <h4>Gourmet Coffee Beans</h4>
-              <p className="small">Premium quality, ethically sourced.</p>
-            </div>
+        <h2 className="title-paymentpage">Resumo do Pedido</h2>
+        {cartItems && cartItems.map((item, index) => (
+          <div key={index} className="order-item">
+            <h4>{item.name}</h4>
+            <p>Quantidade: {item.quantity}</p>
+            <p>Preço: R$ {item.price.toFixed(2)}</p>
           </div>
-          <p>Subtotal: <span>$99.00</span></p>
-          <p>Shipping: <span>$5.00</span></p>
-          <p>Tax: <span>$8.92</span></p>
+        ))}
+        <p>Subtotal: <span>R$ {subtotal?.toFixed(2)}</span></p>
+        <p>Frete: <span>R$ {shippingCost?.toFixed(2)}</span></p>
+        <p className="total">Total: <span>R$ {total?.toFixed(2)}</span></p>
 
           <p className="total">Total: <span>$112.92</span></p>
           <button className="place-order" onClick={handleSubmit}>Place Order</button>

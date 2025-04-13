@@ -17,7 +17,14 @@ const CheckoutPage = () => {
 
   const handleCheckout = () => {
     if (isLoggedIn) {
-      navigate("/payment");
+      navigate("/payment", {
+        state: {
+          cartItems,
+          subtotal,
+          shippingCost,
+          total,
+        },
+      });
     } else {
       navigate("/login");
     }
