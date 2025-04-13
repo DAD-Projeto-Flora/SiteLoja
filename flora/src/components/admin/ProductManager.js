@@ -15,6 +15,25 @@ const ProductManager = ({ products }) => {
     setSelectedProduct(null);
   };
 
+  const deleteProduct = async (id) => {
+    try {
+      const response = await fetch(`https://apilojaflora.onrender.com/product/deleteProduct/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Erro ao deletar produto");
+      }
+
+      alert("Produto deletado com sucesso!");
+      // Atualize a lista de produtos ou recarregue a página
+      window.location.reload();
+    } catch (error) {
+      console.error("Erro ao deletar produto:", error);
+      alert("Erro ao deletar produto. Tente novamente.");
+    }
+  };
+
   return (
     <div className="product-manager-container">
       <div className="crud-header">
@@ -70,7 +89,7 @@ const ProductManager = ({ products }) => {
             </div>
             <div className="product-actions">
               <button className="edit-button" onClick={() => openEditModal(product)}>Editar</button>
-              <button className="delete-button">Excluir</button>
+              <button className="delete-button" onClick={() => deleteProduct(product.id)}>Excluir</button>
             </div>
           </div>
         ))}
