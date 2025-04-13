@@ -6,20 +6,20 @@ const ProductPage = () => {
   const { id } = useParams(); // Obtém o ID do produto da URL
   const [produto, setProduto] = useState(null);
   const [loading, setLoading] = useState(true); // Adiciona estado de carregamento
+  const [error, setError] = useState(null); // Adiciona estado para erros
 
   useEffect(() => {
     // Busca o produto pelo ID
     const fetchProduct = async () => {
       try {
-        const response = await fetch("https://apilojaflora.onrender.com/product/getProduct/" + id);
-        console.log(response)
+        setLoading(true);
+        const response = await fetch(`https://apilojaflora.onrender.com/product/getProduct/${id}`);
         if (!response.ok) {
           throw new Error("Erro ao buscar o produto: " + response.statusText);
         }
-        const produtoEncontrado = await response.json(); // Converte a resposta para JSON
-        setProduto(produtoEncontrado);
+        setProduto(response);
       } catch (error) {
-        console.error("Erro ao buscar o produto:", error);
+        setError(error.message);
       } finally {
         setLoading(false); // Finaliza o carregamento
       }
@@ -30,6 +30,10 @@ const ProductPage = () => {
 
   if (loading) {
     return <p>Carregando...</p>; // Exibe mensagem enquanto carrega
+  }
+
+  if (error) {
+    return <p>Erro: {error}</p>; // Exibe mensagem de erro
   }
 
   if (!produto) {
