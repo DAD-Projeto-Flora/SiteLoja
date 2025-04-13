@@ -25,6 +25,10 @@ const PaymentPage = () => {
     { name: "Tax", price: 8.92 },
   ]);
 
+  console.log(subtotal)
+  console.log(shippingCost)
+  console.log(total)
+
   useEffect(() => {
     fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
       .then(response => response.json())
@@ -105,13 +109,9 @@ const PaymentPage = () => {
 
         <div className="order-summary">
         <h2 className="title-paymentpage">Resumo do Pedido</h2>
-        {cartItems && cartItems.map((item, index) => (
-          <div key={index} className="order-item">
-            <h4>{item.name}</h4>
-            <p>Quantidade: {item.quantity}</p>
-            <p>Preço: R$ {item.price.toFixed(2)}</p>
-          </div>
-        ))}
+        
+       
+    
         <p>Subtotal: <span>R$ {subtotal?.toFixed(2)}</span></p>
         <p>Frete: <span>R$ {shippingCost?.toFixed(2)}</span></p>
         <p className="total">Total: <span>R$ {total?.toFixed(2)}</span></p>
