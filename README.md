@@ -7,6 +7,7 @@ Este projeto é uma reestruturação do site da empresa Flora, do grupo J&F, des
 
 - [Breno Silva](https://github.com/Brenosilva13)
 - [Cintya Rios](https://github.com/ciintyaarioss)
+- [Melissa Pires](https://github.com/melpiress)
 
 
 ## Deploy
