@@ -24,8 +24,8 @@ const CheckoutPage = () => {
   };
 
   const calculateShipping = async () => {
-    if (!zipCode) {
-      setError("Digite um CEP válido.");
+    if (!zipCode || zipCode.length !== 8 || isNaN(zipCode)) {
+      setError("Digite um CEP válido com 8 dígitos.");
       return;
     }
 
@@ -33,8 +33,20 @@ const CheckoutPage = () => {
     setError("");
 
     try {
-      // Simulação de cálculo de frete
-      const simulatedCost = 12.5; // substitua com resposta real da API futuramente
+      // Simulação de cálculo de frete com base no CEP
+      let simulatedCost;
+      const firstDigit = parseInt(zipCode[0]);
+
+      if (firstDigit >= 0 && firstDigit <= 3) {
+        simulatedCost = 15.0; // Região Sul e Sudeste
+      } else if (firstDigit >= 4 && firstDigit <= 6) {
+        simulatedCost = 25.0; // Região Centro-Oeste
+      } else if (firstDigit >= 7 && firstDigit <= 9) {
+        simulatedCost = 35.0; // Região Norte e Nordeste
+      } else {
+        simulatedCost = 50.0; // CEP inválido ou fora do padrão
+      }
+
       setShippingCost(simulatedCost);
     } catch (err) {
       setError("Erro ao calcular frete.");
