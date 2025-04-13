@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./PaymentPage.css";
 import generatePDF from "../../utils/generatePDF"; 
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const PaymentPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { cartItems, subtotal, shippingCost, total } = location.state || {};
   const [cardNumber, setCardNumber] = useState("");
   const [cardImage, setCardImage] = useState("/default-card.png");
@@ -17,6 +18,7 @@ const PaymentPage = () => {
     state: "",
     zip: "",
   });
+  const [isOrderConfirmed, setIsOrderConfirmed] = useState(false);
 
   useEffect(() => {
     fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
@@ -52,7 +54,7 @@ const PaymentPage = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const updatedUserInfo = {
       ...userInfo,
       city: cities.find(city => city.nome === userInfo.city)?.nome || userInfo.city,
@@ -64,7 +66,32 @@ const PaymentPage = () => {
       price: parseFloat(item.price || item.precoUnid || 0),
     }));
 
-    generatePDF(updatedUserInfo, updatedOrderSummary);
+    const orderData = {
+      userInfo: updatedUserInfo,
+      items: updatedOrderSummary,
+      total,
+    };
+
+    try {
+      const response = await fetch("https://apilojaflora.onrender.com/order/saveOrder", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      });
+
+      if (response.ok) {
+        setIsOrderConfirmed(true); // Exibe mensagem de confirmação
+        setTimeout(() => {
+          navigate("/"); // Redireciona para a home
+        }, 3000); // Aguarda 3 segundos antes de redirecionar
+      } else {
+        console.error("Erro ao salvar o pedido:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Erro ao salvar o pedido:", error);
+    }
   };
 
   const [currentYear] = useState(new Date().getFullYear());
@@ -149,7 +176,8 @@ const PaymentPage = () => {
           <p>Subtotal: <span>R$ {subtotal?.toFixed(2)}</span></p>
           <p>Frete: <span>R$ {shippingCost?.toFixed(2)}</span></p>
           <p className="total">Total: <span>R$ {total?.toFixed(2)}</span></p>
-          <button className="place-order" onClick={handleSubmit}>Place Order</button>
+          <button className="place-order" onClick={handleSubmit}>Finalizar Compra</button>
+          {isOrderConfirmed && <p className="confirmation-message">Pedido confirmado! Redirecionando para a home...</p>}
         </div>
       </div>
 
@@ -174,21 +202,15 @@ const PaymentPage = () => {
             ))}
           </select>
           <select>
-              <option>MM</option>
-              {Array.from({ length: 12 }, (_, i) => (
-                <option key={i + 1} value={String(i + 1).padStart(2, "0")}>{String(i + 1).padStart(2, "0")}</option>
-              ))}
-            </select>
-            <select>
-              <option>YYYY</option>
-              {Array.from({ length: 10 }, (_, i) => (
-                <option key={currentYear + i} value={currentYear + i}>{currentYear + i}</option>
-              ))}
-            </select>
-            <input type="text" placeholder="CVV" className="input-payment-page"/>
-          </div>
+            <option>YYYY</option>
+            {Array.from({ length: 10 }, (_, i) => (
+              <option key={currentYear + i} value={currentYear + i}>{currentYear + i}</option>
+            ))}
+          </select>
+          <input type="text" placeholder="CVV" className="input-payment-page"/>
         </div>
       </div>
+    </div>
   );
 };
 
