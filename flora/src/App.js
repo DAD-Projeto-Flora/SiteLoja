@@ -10,7 +10,7 @@ import Register from "./pages/register/Register";
 import History from "./pages/history/History";
 import PaymentPage from "./pages/payment/PaymentPage";
 import Catalog from "./pages/catalog/Catalog";
-import Product from "./pages/product/Product";
+import ProductPage from "./components/productpage/ProductPage";
 import Admin from "./pages/admin/Admin";
 
 const App = () => {
@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/history" element={ < History />} />
         <Route path="/payment" element={ < PaymentPage />} />
         <Route path="/catalog" element={ < Catalog />} />
-        <Route path="/productpage" element={<Product />} />
+        <Route path="/productpage/:id" element={<ProductPage />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>

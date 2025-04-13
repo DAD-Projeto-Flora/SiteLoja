@@ -25,7 +25,13 @@ const ProductCard = ({ produto }) => {
   };
 
   return (
-    <Link to={`/productpage/${produto.id}`} className="link-sem-estilo"> 
+    <Link 
+      to={{
+        pathname: `/productpage/${produto.id}`,
+        state: { produto }, // Passa o produto como estado
+      }} 
+      className="link-sem-estilo"
+    > 
       <div className="produto-card">
         <div className="img-produto">
           <img src={produto.imagem} alt={produto.nome} />
