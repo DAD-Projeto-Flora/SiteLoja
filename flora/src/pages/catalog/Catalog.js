@@ -11,7 +11,6 @@ const Catalog = () => {
       <Header />
       <div className="catalogo-container">
       
-        <Filter />
         <div className="catalogo-conteudo">
           <ProductsList />
         </div>
