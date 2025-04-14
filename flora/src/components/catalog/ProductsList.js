@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import LoadingSpinner from "./LoadingSpinner";
+import Filter from "./Filter"; // Importar o componente Filter
 import "./ProductCard.css";
 import Order from "./Order";
 
@@ -18,9 +19,11 @@ const ProductsList = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [orderBy, setOrderBy] = useState("relevancia");
+  const [selectedCategories, setSelectedCategories] = useState([]); // Estado para categorias
+  const [priceRange, setPriceRange] = useState({ min: 0, max: Infinity }); // Estado para faixa de preço
   const query = useQuery();
   const searchTerm = query.get("search")?.toLowerCase() || "";
-  const categoryId = query.get("categoryId"); 
+  const categoryId = query.get("categoryId");
 
   useEffect(() => {
     const fetchProdutos = async () => {
@@ -55,8 +58,9 @@ const ProductsList = () => {
           id: produto.id,
           nome: truncateText(produto.nome, 30),
           imagem: produto.urlImagem,
-          preco: produto.precoUnid.toFixed(2).replace(".", ","),
+          preco: produto.precoUnid,
           avaliacao: produto.notaAvaliacao,
+          categoria: produto.categoria, // Adicionar categoria
         }));
         setProdutos(produtosFormatados);
       } catch (error) {
@@ -69,9 +73,16 @@ const ProductsList = () => {
     fetchProdutos();
   }, [categoryId, orderBy]); // Reexecutar quando categoryId ou orderBy mudar
 
-  const produtosFiltrados = produtos.filter((produto) =>
-    produto.nome.toLowerCase().includes(searchTerm)
-  );
+  const produtosFiltrados = produtos
+    .filter((produto) =>
+      produto.nome.toLowerCase().includes(searchTerm)
+    )
+    .filter((produto) =>
+      selectedCategories.length === 0 || selectedCategories.includes(produto.categoria)
+    )
+    .filter((produto) =>
+      produto.preco >= priceRange.min && produto.preco <= priceRange.max
+    );
 
   if (loading) {
     return <LoadingSpinner />;
@@ -83,6 +94,10 @@ const ProductsList = () => {
 
   return (
     <div>
+      <Filter
+        setSelectedCategories={setSelectedCategories}
+        setPriceRange={setPriceRange}
+      />
       <Order setOrderBy={setOrderBy} />
       <div className="lista-produtos">
         {produtosFiltrados.length > 0 ? (
