@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Filter.css";
 
-const Filter = () => {
+const Filter = ({ setSelectedCategories, setPriceRange }) => {
+  const [categories, setCategories] = useState([]);
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+
+  const handleCategoryChange = (category) => {
+    setCategories((prev) =>
+      prev.includes(category)
+        ? prev.filter((c) => c !== category)
+        : [...prev, category]
+    );
+  };
+
+  const applyFilters = () => {
+    setSelectedCategories(categories);
+    setPriceRange({
+      min: minPrice ? parseFloat(minPrice) : 0,
+      max: maxPrice ? parseFloat(maxPrice) : Infinity,
+    });
+  };
+
   return (
     <aside className="filter-container">
       <div className="filter-title">
@@ -11,31 +31,63 @@ const Filter = () => {
       <div className="filter-opcoes">
         <h4>Por Categoria</h4>
         <div className="category-option">
-          <label>Cabelo</label>
-          <input type="checkbox" /> 
+          <label>
+            <input
+              type="checkbox"
+              onChange={() => handleCategoryChange("Cabelo")}
+            />
+            Cabelo
+          </label>
         </div>
         <div className="category-option">
-          <label>Higiene pessoal</label>
-          <input type="checkbox" /> 
+          <label>
+            <input
+              type="checkbox"
+              onChange={() => handleCategoryChange("Higiene pessoal")}
+            />
+            Higiene pessoal
+          </label>
         </div>
         <div className="category-option">
-          <label>Casa</label>
-          <input type="checkbox" /> 
+          <label>
+            <input
+              type="checkbox"
+              onChange={() => handleCategoryChange("Casa")}
+            />
+            Casa
+          </label>
         </div>
         <div className="category-option">
-          <label>Controle de insetos</label>
-          <input type="checkbox" /> 
+          <label>
+            <input
+              type="checkbox"
+              onChange={() => handleCategoryChange("Controle de insetos")}
+            />
+            Controle de insetos
+          </label>
         </div>
       </div>
-      <hr></hr>
+      <hr />
       <div className="filter-price">
         <h4>Por preço</h4>
         <div className="price-option">
-          <input type="number"></input>
-          <hr></hr>
-          <input type="number"></input>
+          <input
+            type="number"
+            placeholder="Mínimo"
+            value={minPrice}
+            onChange={(e) => setMinPrice(e.target.value)}
+          />
+          <hr />
+          <input
+            type="number"
+            placeholder="Máximo"
+            value={maxPrice}
+            onChange={(e) => setMaxPrice(e.target.value)}
+          />
         </div>
-        <button className="price-button">Aplicar</button>
+        <button className="price-button" onClick={applyFilters}>
+          Aplicar
+        </button>
       </div>
     </aside>
   );

@@ -15,11 +15,11 @@ const Sidebar = () => {
           <img src="/IconPerfil.svg" alt="User Icon" />
         </button>
       </NavLink>
-      <NavLink to="/wallet" activeClassName="active">
+      {/* <NavLink to="/wallet" activeClassName="active">
         <button>
           <img src="/wallet.svg" alt="Wallet Icon" />
         </button>
-      </NavLink>
+      </NavLink> */}
       <NavLink to="/settings" activeClassName="active">
         <button>
           <img src="/setting.svg" alt="Settings Icon" />
