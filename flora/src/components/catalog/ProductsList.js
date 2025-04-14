@@ -93,11 +93,7 @@ const ProductsList = () => {
   }
 
   return (
-    <div>
-      <Filter
-        setSelectedCategories={setSelectedCategories}
-        setPriceRange={setPriceRange}
-      />
+    <div className="products-list">
       <Order setOrderBy={setOrderBy} />
       <div className="lista-produtos">
         {produtosFiltrados.length > 0 ? (

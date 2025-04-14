@@ -85,3 +85,10 @@
   text-decoration: none;
   color: inherit;
 }
+
+.products-list{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
