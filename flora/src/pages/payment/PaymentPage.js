@@ -182,6 +182,7 @@ const PaymentPage = () => {
                 className="input-payment-page"
                 value={userInfo.address}
                 onChange={(e) => setUserInfo({ ...userInfo, address: e.target.value })}
+                required
               />
               <div className="containerAdress">
                 <input
@@ -190,6 +191,7 @@ const PaymentPage = () => {
                   className="input-payment-page"
                   value={userInfo.neighborhood}
                   onChange={(e) => setUserInfo({ ...userInfo, neighborhood: e.target.value })}
+                  required
                 />
                 <input
                   type="text"
@@ -197,6 +199,7 @@ const PaymentPage = () => {
                   className="input-payment-page"
                   value={userInfo.complement}
                   onChange={(e) => setUserInfo({ ...userInfo, complement: e.target.value })}
+                  required
                 />
                 <input
                   type="number"
@@ -204,6 +207,7 @@ const PaymentPage = () => {
                   className="input-payment-page"
                   value={userInfo.number}
                   onChange={(e) => setUserInfo({ ...userInfo, number: e.target.value })}
+                  required
                 />
               </div>
               <div className="city-state-zip">
@@ -212,6 +216,7 @@ const PaymentPage = () => {
                     setSelectedState(e.target.value);
                     setUserInfo({ ...userInfo, state: e.target.value });
                   }}
+                  required
                 >
                   <option value="">Estado</option>
                   {states.map((state) => (
@@ -220,6 +225,7 @@ const PaymentPage = () => {
                 </select>
                 <select
                   onChange={(e) => setUserInfo({ ...userInfo, city: e.target.value })}
+                  required
                 >
                   <option>Cidade</option>
                   {cities.map((city) => (
@@ -232,6 +238,7 @@ const PaymentPage = () => {
                   className="input-payment-page"
                   value={userInfo.zip}
                   onChange={(e) => setUserInfo({ ...userInfo, zip: e.target.value })}
+                  required
                 />
               </div>
             </div>
@@ -248,7 +255,7 @@ const PaymentPage = () => {
 
           <div className="payment-method">
             <h2 className="title-paymentpage">Método de pagamento</h2>
-            <input type="text" placeholder="First & Last Name" className="input-payment-page" />
+            <input type="text" placeholder="First & Last Name" className="input-payment-page" required />
             <div className="payCard">
               <input 
                 type="text" 
@@ -256,23 +263,24 @@ const PaymentPage = () => {
                 value={cardNumber} 
                 onChange={handleCardInputChange}
                 className="input-payment-page" 
+                required
               />
               <img src={cardImage} alt="Cartão" className="cardImage"/>
             </div>
             <div className="expiry-cvv">
-              <select>
+              <select required>
                 <option>MM</option>
                 {Array.from({ length: 12 }, (_, i) => (
                   <option key={i + 1} value={String(i + 1).padStart(2, "0")}>{String(i + 1).padStart(2, "0")}</option>
                 ))}
               </select>
-              <select>
+              <select required>
                 <option>YYYY</option>
                 {Array.from({ length: 10 }, (_, i) => (
                   <option key={currentYear + i} value={currentYear + i}>{currentYear + i}</option>
                 ))}
               </select>
-              <input type="text" placeholder="CVV" className="input-payment-page"/>
+              <input type="text" placeholder="CVV" className="input-payment-page" required />
             </div>
           </div>
         </>
