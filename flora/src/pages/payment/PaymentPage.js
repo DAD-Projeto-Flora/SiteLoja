@@ -85,7 +85,6 @@ const PaymentPage = () => {
   const handleSubmit = async () => {
     setIsLoading(true); 
     try {
-      // Verifique se cartItems é um array válido
       if (!Array.isArray(cartItems) || cartItems.length === 0) {
         throw new Error("Carrinho vazio ou inválido.");
       }

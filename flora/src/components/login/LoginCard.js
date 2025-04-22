@@ -92,9 +92,6 @@ export default function LoginCard() {
               )}
             </button>
           </div>
-          <div className="forgot-password">
-            <a href="#">Esqueceu a senha?</a>
-          </div>
         </div>
 
         <button className="login-button" onClick={handleLogin}>

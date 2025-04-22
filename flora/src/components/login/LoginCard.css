@@ -83,21 +83,6 @@
   cursor: pointer;
 }
 
-.forgot-password {
-  text-align: right;
-  margin-top: 10px;
-}
-
-.forgot-password a {
-  font-size: 0.9rem;
-  color: #0077cc;
-  text-decoration: none;
-}
-
-.forgot-password a:hover {
-  text-decoration: underline;
-}
-
 .login-button {
   width: 100%;
   padding: 10px;
